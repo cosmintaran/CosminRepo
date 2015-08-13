@@ -1,0 +1,4 @@
+﻿Insert into Beneficiari(Nume,Prenume,CNP,Serie_CI,NR_CI,Adresa) values('Malaestean','Oana-Mihaela',2820805205563,'TM',699469,'Str. Zurobara nr.3 mun. Timisoara')
+Insert into Beneficiari(Nume,Prenume,CNP,Serie_CI,NR_CI,Adresa) values('Popa','Victor',1670825330787,'TM',726890,'Str. Praga nr.13 loc. Dumbravita')
+Insert into Beneficiari(Nume,Prenume,CNP,Serie_CI,NR_CI,Adresa) values('Volacu','Gheorghe',1700826220015,'TM',936925,'Str. Prieteniei nr.5 mun. Timisoara')
+Insert into Beneficiari(Nume,Prenume,CNP,Serie_CI,NR_CI,Adresa) values('IF Man Teodor Eugen','Pensiunea Zavoi',17023858,'-','loc Finis nr.371, jud. Bihor')

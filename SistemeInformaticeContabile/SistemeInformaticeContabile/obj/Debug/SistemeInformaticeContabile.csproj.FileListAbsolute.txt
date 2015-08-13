@@ -1,0 +1,29 @@
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\ContaDataBase.mdf
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\ContaDataBase_log.ldf
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.exe
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.pdb
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.Properties.Resources.resources
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.csproj.GenerateResource.Cache
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.exe
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.pdb
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.csprojResolveAssemblyReference.cache
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.MainForm.resources
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.exe.config
+C:\Users\Cosmin\Google Drive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.exe.config
+C:\Users\Cosmin\Google Drive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.exe
+C:\Users\Cosmin\Google Drive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.pdb
+C:\Users\Cosmin\Google Drive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\ContaDataBase.mdf
+C:\Users\Cosmin\Google Drive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\ContaDataBase_log.ldf
+C:\Users\Cosmin\Google Drive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.exe
+C:\Users\Cosmin\Google Drive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.pdb
+C:\Users\Cosmin\Google Drive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.csprojResolveAssemblyReference.cache
+C:\Users\Cosmin\Google Drive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.JobForm.resources
+C:\Users\Cosmin\Google Drive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.MainForm.resources
+C:\Users\Cosmin\Google Drive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.Properties.Resources.resources
+C:\Users\Cosmin\Google Drive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.csproj.GenerateResource.Cache
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.JobForm.resources
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.ContracteForm.resources
+D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.BeneficiariForm.resources
+C:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.exe.config
+C:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.exe
+C:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.pdb

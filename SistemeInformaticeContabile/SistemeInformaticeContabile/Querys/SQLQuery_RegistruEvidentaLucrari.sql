@@ -1,0 +1,4 @@
+﻿Select RegistruEvidenteLucrari.Acceptata_Respinsa,Nr_OCPI,Data_inregistrare,Termen_Solutionare,Avizator_Registrator,Tip_Lucrare,Nr_proiect,An_Proiect,
+Nr_Cad_Top,RegistruEvidenteLucrari.UAT,RegistruEvidenteLucrari.Nr_Contract,Receptionat_Respins from RegistruEvidenteLucrari 
+Full Outer Join Lucrare on RegistruEvidenteLucrari.Tip_Lucrare=Lucrare.Id 
+Full Outer Join Contracte on RegistruEvidenteLucrari.Nr_Contract=Contracte.Id
