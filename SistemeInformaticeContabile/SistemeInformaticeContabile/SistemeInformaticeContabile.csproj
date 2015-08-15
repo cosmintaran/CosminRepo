@@ -113,6 +113,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
+    <None Include="Credential.crd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -124,10 +125,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ContaDataBase.mdf">
+    <Content Include="Databases\ContaDataBase.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ContaDataBase_log.ldf">
+    <Content Include="Databases\ContaDataBase_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>ContaDataBase.mdf</DependentUpon>
     </Content>

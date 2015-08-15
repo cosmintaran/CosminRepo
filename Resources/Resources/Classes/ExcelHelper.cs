@@ -19,6 +19,7 @@ namespace Resources
         private bool wbStatus;
         private bool excelAppStatus;
 
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ExcelHelper"/> class.
         /// </summary>
@@ -171,7 +172,7 @@ namespace Resources
             else
             {
                 isDeleted = false;
-                throw new Exception("Error deleting worksheet Worksheet sheetName dosen't exist");               
+                throw new Exception("Error deleting worksheet Worksheet sheetName dosen't exist");
             }
 
             return isDeleted;
@@ -330,12 +331,8 @@ namespace Resources
                 }
                 Excel.Worksheet ws = (Excel.Worksheet)Wb.Worksheets[worksheetName];
 
-                //Hier dann auf die entsprechenden Spalten und Zeilen zugreifen
+
                 Excel.Range range = ws.UsedRange;
-                //int currentColumn = range.Column;
-                //int currentRow = range.Row;
-                //int lastColumn = range.Columns.Count;
-                //int lastRow = range.Rows.Count;
                 myValues = (object[,])range.Cells.Value;
                 Marshal.ReleaseComObject(ws);
                 return true;
@@ -357,7 +354,7 @@ namespace Resources
                 {
                     result = new DataTable();
                     return false;
-                    throw new Exception ("Error at ExcelHelper.ReadWorksheet() Sheet '" + worksheetName + "' isn't part of workbook " + Wb.FullName);
+                    throw new Exception("Error at ExcelHelper.ReadWorksheet() Sheet '" + worksheetName + "' isn't part of workbook " + Wb.FullName);
                 }
                 Excel.Worksheet ws = (Excel.Worksheet)Wb.Worksheets[worksheetName];
 
@@ -414,7 +411,7 @@ namespace Resources
             {
                 result = new DataTable();
                 return false;
-                throw new Exception ("Error at ExcelHelper.ReadWorksheet()");
+                throw new Exception("Error at ExcelHelper.ReadWorksheet()");
             }
         }
 
@@ -471,7 +468,7 @@ namespace Resources
                 catch (Exception ex)
                 {
                     return false;
-                    throw  ex;
+                    throw ex;
                 }
                 finally
                 {
@@ -514,7 +511,7 @@ namespace Resources
             Excel.Worksheet l_Ws = null;
             if (IsWorksheetExist(worksheetName))
             {
-                l_Ws =(Excel.Worksheet)Wb.Worksheets.get_Item(worksheetName);
+                l_Ws = (Excel.Worksheet)Wb.Worksheets.get_Item(worksheetName);
             }
             else
             {
@@ -606,7 +603,7 @@ namespace Resources
                 writeRange.Value2 = array;
             }
             else
-            { throw new Exception( "Worksheet worksheetName already exist"); }
+            { throw new Exception("Worksheet worksheetName already exist"); }
         }
 
         /// <summary>
@@ -615,7 +612,7 @@ namespace Resources
         /// <param name="pivotTableName">Name of the pivot table.</param>
         /// <param name="worksheetName">Name of the worksheet.</param>
         /// <param name="formater">A dictionary whit Dictionary(string, Tuple(Excel.XlPivotFieldOrientation, Excel.XlConsolidationFunction)).</param>
-        public void CreatePivotTable(string pivotTableName, string worksheetName, Dictionary<string, Tuple <Excel.XlPivotFieldOrientation, Excel.XlConsolidationFunction>> formater)
+        public void CreatePivotTable(string pivotTableName, string worksheetName, Dictionary<string, Tuple<Excel.XlPivotFieldOrientation, Excel.XlConsolidationFunction>> formater)
         {
             Ws = SetCurrentWorksheet(worksheetName);
 
@@ -626,7 +623,7 @@ namespace Resources
             else
                 Ws = SetCurrentWorksheet(pivotTableName);
 
-            Excel.Range startPivot =(Excel.Range)Ws.Cells[1, 1];
+            Excel.Range startPivot = (Excel.Range)Ws.Cells[1, 1];
             try
             {
 
@@ -649,10 +646,11 @@ namespace Resources
             catch (Exception)
             {
                 Dispose();
-                throw new Exception("Error creating PivotTable");   
+                throw new Exception("Error creating PivotTable");
             }
 
         }
+
     }
 
 }

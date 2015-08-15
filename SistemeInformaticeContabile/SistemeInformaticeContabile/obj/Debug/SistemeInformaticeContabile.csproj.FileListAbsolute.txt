@@ -27,3 +27,14 @@ D:\GoogleDrive\Scoala\Programare\C#\SistemeInformaticeContabile\SistemeInformati
 C:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.exe.config
 C:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.exe
 C:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.pdb
+c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\Databases\ContaDataBase.mdf
+c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\Databases\ContaDataBase_log.ldf
+c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.exe
+c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.pdb
+c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.csprojResolveAssemblyReference.cache
+c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.BeneficiariForm.resources
+c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.ContracteForm.resources
+c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.JobForm.resources
+c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.MainForm.resources
+c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.Properties.Resources.resources
+c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.csproj.GenerateResource.Cache
