@@ -9,3 +9,8 @@ D:\GoogleDrive\Scoala\Programare\C#\Resources\Resources\obj\Debug\Resources.cspr
 D:\GoogleDrive\Scoala\Programare\C#\Resources\Resources\obj\Debug\Resources.dll
 D:\GoogleDrive\Scoala\Programare\C#\Resources\Resources\obj\Debug\Resources.pdb
 C:\Users\User\Source\Repos\CosminRepo\Resources\Resources\obj\Debug\Resources.csproj.ResolveComReference.cache
+C:\Users\User\Source\Repos\CosminRepo\Resources\Resources\obj\Debug\Resources.csprojResolveAssemblyReference.cache
+c:\Users\User\Source\Repos\CosminRepo\Resources\Resources\bin\Debug\Resources.dll
+c:\Users\User\Source\Repos\CosminRepo\Resources\Resources\bin\Debug\Resources.pdb
+c:\Users\User\Source\Repos\CosminRepo\Resources\Resources\obj\Debug\Resources.dll
+c:\Users\User\Source\Repos\CosminRepo\Resources\Resources\obj\Debug\Resources.pdb

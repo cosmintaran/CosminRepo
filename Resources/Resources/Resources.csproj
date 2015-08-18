@@ -34,7 +34,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -43,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Classes\CSVHelper.cs" />
     <Compile Include="Classes\ExcelConnector.cs" />
-    <Compile Include="Classes\ExcelHelper.cs" />
     <Compile Include="Classes\RijandaelEncryptor.cs" />
     <Compile Include="Interfaces\ICSV.cs" />
     <Compile Include="Interfaces\IDatabase.cs" />
