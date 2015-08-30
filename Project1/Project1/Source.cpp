@@ -2,7 +2,7 @@
 #include<iostream>
 using namespace std;
 
-static class Student
+class Student
 {
 public:
 	char* nume;
