@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.DatabaseServices;
+
 namespace TestObjectARX
 {
-   public class Incapere
+   public class TextHelper
     {
-       public string NrIncapere { get; set; }
-       public string DestinatieIncapere { get; set; }
-       public double SuprafataIncapere { get; set; }
+       public TextHelper() { }
+
+      // public Dictionary<DBText,DBText,DBText> 
     }
 }

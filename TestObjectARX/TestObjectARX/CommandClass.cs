@@ -85,7 +85,8 @@ namespace TestObjectARX
             PromptIntegerOptions scaraOpt = new PromptIntegerOptions("Scara planului 1: ");
             PromptIntegerResult scaraResult = ed.GetInteger(scaraOpt);
             SelecteazaIncapere(out incapere, ed, acCurDb);
-
+            TableHelper tb = new TableHelper(acDoc);
+            tb.DrawSupUtilTabel(incapere, "Releveu parter");
         }
         private void SelecteazaIncapere(out List<Incapere> incapere, Editor ed, Database acCurDb)
         {
@@ -104,20 +105,20 @@ namespace TestObjectARX
                         if (obj.GetType() == typeof(Polyline))
                         {
                             Polyline poly = (Polyline)obj;
-                            camera.PolyID = poly.BlockId;
                             camera.SuprafataIncapere = poly.Area;
                             PromptResult result;
                             PromptStringOptions interogare;
                             interogare = new PromptStringOptions("\nNr. Incapere: ");
                             result = ed.GetString(interogare);
-                            camera.NrIncapere = result.ToString();
+                            camera.NrIncapere = result.StringResult;
                             interogare = new PromptStringOptions("\nDestinatie Incapere: ");
                             result = ed.GetString(interogare);
-                            camera.DestinatieIncapere = result.ToString();
+                            camera.DestinatieIncapere = result.StringResult;
                             incapere.Add(camera);
                         }
                         else
                         { ed.WriteMessage("\nEntitatea selectata nu este o polilinie"); }
+                        trans.Commit();
                     }
                 }
                 else
