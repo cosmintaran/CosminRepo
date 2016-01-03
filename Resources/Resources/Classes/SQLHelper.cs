@@ -7,17 +7,20 @@ using System.Diagnostics;
 
 namespace Resources
 {
-   public class SQLHelper : IDatabase
+    public class MSSQLHelper : IDatabase
     {
+        #region Data Members
         private SqlConnection m_connection;
         private string connectionString;
+        #endregion
 
+        #region Connection 
 
-        public SQLHelper(string connectionString)
+        public MSSQLHelper(string connectionString)
         {
             this.connectionString = connectionString;
         }
-        public bool Open(string connectionString)
+        public bool Open()
         {
             bool isSucceded = false;
             try
@@ -26,6 +29,7 @@ namespace Resources
                 m_connection = new SqlConnection(connectionString);
                 m_connection.Open();
                 isSucceded = true;
+
             }
             catch (Exception ex)
             {
@@ -36,9 +40,29 @@ namespace Resources
             return isSucceded;
         }
 
+        public bool CloseConnection()
+        {
+            bool isClosed = false;
+            Debug.WriteLine("Trying to close connection....");
+            try
+            {
+                m_connection.Close();
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+            Debug.WriteLine("Connection closed succsesfuly.");
+            return isClosed;
+        }
+        #endregion Connection
+
+
+        #region Command
         public bool ExecuteNonQuery(string sqlQuery)
         {
-            bool isQuerySucceded = false;            
+            bool isQuerySucceded = false;
 
             return isQuerySucceded;
         }
@@ -57,23 +81,6 @@ namespace Resources
         {
             return true;
         }
-
-
-        public bool CloseConnection()
-        {
-            bool isClosed = false;
-            Debug.WriteLine("Trying to close connection....");
-            try
-            {
-                m_connection.Close();
-            }
-            catch (Exception ex)
-            {
-                return false;
-                throw ex;
-            }
-            Debug.WriteLine("Connection closed succsesfuly.");
-            return isClosed;
-        }
+        #endregion Command
     }
 }

@@ -38,3 +38,6 @@ c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInforma
 c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.MainForm.resources
 c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.Properties.Resources.resources
 c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.csproj.GenerateResource.Cache
+C:\Users\cosmi\OneDrive\Documente\Repository\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.exe.config
+C:\Users\cosmi\OneDrive\Documente\Repository\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.exe
+C:\Users\cosmi\OneDrive\Documente\Repository\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.pdb

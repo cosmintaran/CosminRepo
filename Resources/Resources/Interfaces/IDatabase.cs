@@ -5,7 +5,7 @@ namespace Resources.Interfaces
 {
     interface IDatabase
     {
-        bool Open(string connectionString);
+        bool Open();
         bool CloseConnection();
         bool ExecuteQuery(string sqlQuery, out IList<string> lsInput);
         bool ExecuteQuery(string sqlQuery, out DataTable dtInput);
