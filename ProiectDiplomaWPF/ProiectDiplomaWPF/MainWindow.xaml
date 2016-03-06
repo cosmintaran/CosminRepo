@@ -1,0 +1,24 @@
+﻿<Window x:Class="ProiectDiplomaWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:content="clr-namespace:ProiectDiplomaWPF.View"
+        Title="Contabilitate Primara P.F.A" Height="600" Width="1240">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="135"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <GridSplitter HorizontalAlignment="Left" VerticalAlignment="Stretch" Grid.Column="2" ResizeBehavior="PreviousAndNext" Width="3"/>
+        <Border Grid.Row="1" Grid.Column="0">
+        <content:TemplateControl/>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="1">
+            <content:LucrariResult/>
+        </Border>
+    </Grid>
+</Window>
