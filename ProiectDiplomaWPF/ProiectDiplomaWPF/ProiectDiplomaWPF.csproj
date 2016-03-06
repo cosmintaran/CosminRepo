@@ -125,6 +125,12 @@
     <Resource Include="Resources\ic_delete_48px.ico" />
     <Resource Include="Resources\ic_save_48px.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\add_plus-24.ico" />
+    <Resource Include="Resources\checkmark-24.ico" />
+    <Resource Include="Resources\cross-24.ico" />
+    <Resource Include="Resources\new-24.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

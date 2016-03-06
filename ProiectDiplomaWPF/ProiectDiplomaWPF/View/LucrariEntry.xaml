@@ -6,6 +6,29 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
-    </Grid>
+        <GroupBox Margin="5, 5, 0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <DockPanel Grid.Row="0">
+                    <Button Name="bttNew" Height="20" Width="20" HorizontalAlignment="Left" Margin="5,10,0,0">
+                        <Image Height="auto" Width="auto" Source="/Resources/new-24.ico"/>
+                    </Button>
+                    <Button Name="bttAdd" Height="20" Width="20" HorizontalAlignment="Left" Margin="10,10,0,0">
+                        <Image Height="auto" Width="auto" Source="/Resources/checkmark-24.ico"/>
+                    </Button>
+                    <Button Name="bttAbort" Height="20" Width="20" HorizontalAlignment="Left" Margin="10,10,0,0">
+                        <Image Height="auto" Width="auto" Source="/Resources/cross-24.ico"/>
+                    </Button>
+                </DockPanel>
+                
+                <DockPanel>
+                    
+                </DockPanel>
+                
+            </Grid>
+        </GroupBox>
+            </Grid>
 </UserControl>

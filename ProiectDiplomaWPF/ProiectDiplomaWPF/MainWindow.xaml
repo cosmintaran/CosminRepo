@@ -14,11 +14,15 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <GridSplitter HorizontalAlignment="Left" VerticalAlignment="Stretch" Grid.Column="2" ResizeBehavior="PreviousAndNext" Width="3"/>
-        <Border Grid.Row="1" Grid.Column="0">
+        <DockPanel Grid.Row="1" Grid.Column="0">
         <content:TemplateControl/>
-        </Border>
-        <Border Grid.Row="1" Grid.Column="1">
+        </DockPanel>
+        <DockPanel Grid.Row="1" Grid.Column="1">
             <content:LucrariResult/>
-        </Border>
+        </DockPanel>
+        
+        <DockPanel Grid.Row="1" Grid.Column="2">
+            <content:LucrariEntry/>
+        </DockPanel>
     </Grid>
 </Window>
