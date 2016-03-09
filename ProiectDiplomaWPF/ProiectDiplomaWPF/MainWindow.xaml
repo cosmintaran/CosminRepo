@@ -11,17 +11,17 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="135"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <GridSplitter HorizontalAlignment="Left" VerticalAlignment="Stretch" Grid.Column="2" ResizeBehavior="PreviousAndNext" Width="3"/>
         <DockPanel Grid.Row="1" Grid.Column="0">
         <content:TemplateControl/>
         </DockPanel>
         <DockPanel Grid.Row="1" Grid.Column="1">
             <content:LucrariResult/>
         </DockPanel>
-        
-        <DockPanel Grid.Row="1" Grid.Column="2">
+        <GridSplitter Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch"/>
+        <DockPanel Grid.Row="1" Grid.Column="3">
             <content:LucrariEntry/>
         </DockPanel>
     </Grid>

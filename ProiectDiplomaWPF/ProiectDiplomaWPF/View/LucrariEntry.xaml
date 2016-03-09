@@ -4,16 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="440">
     <Grid>
-        <GroupBox Margin="5, 5, 0,0">
+        <GroupBox Margin="0, 5, 0,0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                
+                <!-- Contrlol Bar partea de sus -->
                 <DockPanel Grid.Row="0">
-                    <Button Name="bttNew" Height="20" Width="20" HorizontalAlignment="Left" Margin="5,10,0,0">
+                    <Button Name="bttNew" Height="20" Width="20" HorizontalAlignment="Left" Margin="5,10,0,0" >
                         <Image Height="auto" Width="auto" Source="/Resources/new-24.ico"/>
                     </Button>
                     <Button Name="bttAdd" Height="20" Width="20" HorizontalAlignment="Left" Margin="10,10,0,0">
@@ -23,12 +25,48 @@
                         <Image Height="auto" Width="auto" Source="/Resources/cross-24.ico"/>
                     </Button>
                 </DockPanel>
-                
-                <DockPanel>
-                    
-                </DockPanel>
-                
+
+                <!-- Nr proiect -->
+                <StackPanel Grid.Row="1" Margin="0,0,0,0">
+                    <Separator/>
+                    <DockPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,15,0,0" Width="auto" Height="auto">
+                        <Label Name="lblNrDoc" Content="Nr. Proiect" FontWeight="Bold"/>
+                        <TextBox Name="txbNrDoc" MinWidth="75" Width="auto" Height="22" Margin="18,0,0,0"/>
+                    </DockPanel>
+
+                    <!-- Accept/Refuz Nr. Inreg OCPI -->
+                    <DockPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="auto" Height="auto">
+                        <Label Name="lblAcceptRefuz" Content="Accept/Refuz" FontWeight="Bold" Margin="0,0,0,0"/>
+                        <ComboBox Name="cmbAcceptRefuz" Height="22" MinWidth="110" Margin="0,0,15,0"/>
+                        <Label Name="lblNrOCPI" Content="Nr.Inreg.OCPI" FontWeight="Bold"/>
+                        <TextBox Name="txbNrOCPI" MinWidth="105" Height="22"/>
+                    </DockPanel>
+
+                    <!-- Data inregistrare/Termen solutionare -->
+                    <DockPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="auto" Height="auto">
+                        <Label Name="lblDataInregOCPI" Content="Data Inreg." FontWeight="Bold" Margin="0,0,0,0" />
+                        <DatePicker Name="dtpInreg" MinWidth="110" Height="23" Margin="14,0,15,0" />
+                        <Label Name="lblTermen" Content="Termen OCPI" FontWeight="Bold"/>
+                        <DatePicker Name="dtpTermen" MinWidth="110" Height="23"/>                        
+                    </DockPanel>
+
+                    <!-- Beneficiar/Nr. Contract -->
+                    <DockPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="auto" Height="auto">
+                        <Label Name="lblContract" Content="Nr. Contract." FontWeight="Bold"/>
+                        <ComboBox Name="cmbNrContract" Height="22" MinWidth="82" Margin="6,0,0,0"/>
+                        <Label Name="lblName" Content="Beneficiar" FontWeight="Bold" Margin="0,0,0,0"/>
+                        <ComboBox Name="cmbBeneficiar" Height="22" MinWidth="170" Margin="0"/>
+                    </DockPanel>
+
+                    <!-- Tip Lucrare/ U.A.T.-->
+                    <DockPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="auto" Height="auto">
+                        <Label  Name="lblTiplucrare" Content="Tip lucrare" FontWeight="Bold"/>
+                        <ComboBox Name="cmbTipLucrare" Height="22" MinWidth="170" Margin="0"/>
+                    </DockPanel> 
+
+                </StackPanel>
+
             </Grid>
         </GroupBox>
-            </Grid>
+    </Grid>
 </UserControl>

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="575" d:DesignWidth="600">
+             d:DesignHeight="575" d:DesignWidth="500">
     <Grid >
         <GroupBox Margin="5, 5, 0,0">
             <Grid>
@@ -14,13 +14,14 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <DockPanel Grid.Row="0">
-                    <Label Content="Lucrari" FontStyle="Italic" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,5,0,0" Width="64" Height="Auto"/>
+                    <Label Content="Lucrari" FontStyle="Italic" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,5,0,0" Width="64" Height="Auto" VerticalAlignment="Center"/>
                     <Button Name="bttExportResult" Height="20" Width="20" HorizontalAlignment="Right" Margin="0,10,10,0">
                         <Image Width="auto" Height="auto" Source="/Resources/ic_save_48px.ico"/>
                     </Button>
                 </DockPanel>
 
                 <StackPanel Grid.Row="1" HorizontalAlignment="Stretch">
+                    <Separator/>
                     <CheckBox Name="ckbLucFrom" Content="De la Data" Margin="10,0,0,0" FontWeight="Bold" Height="auto" VerticalAlignment="Top"/>
                     <DockPanel>
                         <Label Content="Cauta" Name="lblCauta" Height="auto" Margin="10,10,0,0" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -30,6 +31,7 @@
                 </StackPanel>
 
                 <Border Grid.Row="2">
+                    
                         <ListView Margin="0,15,0,0" Name="lvLucrari">
                         <ListView.View>
                             <GridView>
