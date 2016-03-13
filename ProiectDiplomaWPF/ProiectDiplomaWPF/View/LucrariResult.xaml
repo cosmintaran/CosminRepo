@@ -35,8 +35,9 @@
                         <ListView Margin="0,15,0,0" Name="lvLucrari">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Proiect" Width="Auto"/>
-                                <GridViewColumn Header="Nr.Inreg" Width="Auto"/>
+                                <GridViewColumn Header="Acceptat/Refuzat" Width="Auto" DisplayMemberBinding="{Binding AcceptRespins}"/>
+                                <GridViewColumn Header="Proiect" Width="Auto" DisplayMemberBinding="{Binding }"/>
+                                <GridViewColumn Header="Nr.Inreg" Width="Auto" DisplayMemberBinding="{Binding NrInregOCPI}"/>
                                 <GridViewColumn Header="Termen" Width="Auto"/>
                                 <GridViewColumn Header="Tip Lucrare" Width="Auto"/>
                                 <GridViewColumn Header="Contract" Width="Auto"/>

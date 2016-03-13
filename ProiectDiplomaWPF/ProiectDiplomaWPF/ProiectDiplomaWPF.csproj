@@ -71,7 +71,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\LucrariForm.cs" />
-    <Compile Include="Model\SQLHelper.cs" />
+    <Compile Include="ViewModel\MainButtons.cs" />
+    <Compile Include="ViewModel\SQLHelper.cs" />
     <Compile Include="ViewModel\DatabaseConnection.cs" />
     <Compile Include="View\LucrariEntry.xaml.cs">
       <DependentUpon>LucrariEntry.xaml</DependentUpon>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace ProiectDiplomaWPF.Model
+namespace ProiectDiplomaWPF.ViewModel
 {
     class SQLHelper
     {
