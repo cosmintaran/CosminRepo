@@ -68,8 +68,11 @@ namespace TestObjectARX
 
             CSVHelper write = new CSVHelper(filePath);
             write.WriteCoordTable(vertexPoly);
-            PromptPointResult pickPoint = ed.GetPoint("Pick Table Insertion Point");
-            Point3d insertionPoint = pickPoint.Value;
+            //PromptPointResult pickPoint = ed.GetPoint("Pick Table Insertion Point");
+            //Point3d insertionPoint = pickPoint.Value;
+
+            TableHelper tb = new TableHelper(acDoc);
+            tb.DrawCoordTable(vertexPoly);
         }
 
         /*************************************Suprafete Utile Releveu***************************************/
