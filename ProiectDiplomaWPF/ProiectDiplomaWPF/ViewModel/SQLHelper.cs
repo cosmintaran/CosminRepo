@@ -36,7 +36,7 @@ namespace ProiectDiplomaWPF.ViewModel
         }
 
 
-         public void ExecuteQuery(out List<object> objList, String sqlQuery)
+         public void ExecuteQuery(out IList<object> objList, String sqlQuery)
         {
             objList = new List<object>();
             try
@@ -77,5 +77,6 @@ namespace ProiectDiplomaWPF.ViewModel
             if (m_con != null)
                 m_con.Close();
         }
+
     }
 }
