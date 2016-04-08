@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ContabilitatePrimaraPFA")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Continental AG")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ContabilitatePrimaraPFA")]
-[assembly: AssemblyCopyright("Copyright © Continental AG 2016")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("07f9881b-51a0-4dd7-9ce7-5356a9891b62")]
+[assembly: Guid("84f7bc30-203a-44dd-8c86-a79dae5d77c4")]
 
 // Version information for an assembly consists of the following four values:
 //

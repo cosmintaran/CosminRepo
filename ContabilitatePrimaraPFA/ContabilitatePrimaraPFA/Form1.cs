@@ -1,27 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ContabilitatePrimaraPFA.Forms;
-
-namespace ContabilitatePrimaraPFA
+﻿namespace ContabilitatePrimaraPFA
 {
+    using System;
+    using System.Windows.Forms;
+
     public partial class Form1 : Form
     {
+        UserControl luc = null;
         public Form1()
         {
             InitializeComponent();
+            Object init = "Lucrari";
+            PaintUserControl(init,null);
         }
 
-        private void adaugaPFAToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PaintUserControl(object sender, EventArgs e)
         {
-            Date_PFA pfaForm = new Date_PFA();
-            pfaForm.Show();
+            mainPanel.Controls.Clear();
+
+            switch(sender.ToString())
+            {
+                case "Lucrari":
+                    luc = UIFactory.CreateUI(sender.ToString());
+                    break;
+                default:
+                    luc = UIFactory.CreateUI((sender as Button).Text);
+                    break;
+            }
+            
+            if (!mainPanel.Controls.Contains(luc))
+            {
+                if (luc != null)
+                {
+                    mainPanel.Controls.Add(luc);
+                    luc.Dock = DockStyle.Fill;
+                    luc.BringToFront();
+                }
+            }
+            else
+            {
+                luc.BringToFront();
+            }
         }
     }
 }
