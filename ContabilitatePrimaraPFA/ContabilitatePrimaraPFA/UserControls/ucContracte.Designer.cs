@@ -1,6 +1,6 @@
 ﻿namespace ContabilitatePrimaraPFA.UserControls
 {
-    partial class ucBeneficiar
+    partial class ucContracte
     {
         /// <summary> 
         /// Required designer variable.

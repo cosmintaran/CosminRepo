@@ -52,7 +52,7 @@
             this.grBoxOperatiuni.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grBoxOperatiuni.Location = new System.Drawing.Point(12, 165);
             this.grBoxOperatiuni.Name = "grBoxOperatiuni";
-            this.grBoxOperatiuni.Size = new System.Drawing.Size(100, 346);
+            this.grBoxOperatiuni.Size = new System.Drawing.Size(100, 428);
             this.grBoxOperatiuni.TabIndex = 0;
             this.grBoxOperatiuni.TabStop = false;
             this.grBoxOperatiuni.Text = "Operatiuni";
@@ -135,17 +135,18 @@
             this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainPanel.AutoScroll = true;
             this.mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.mainPanel.Location = new System.Drawing.Point(119, 28);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1062, 483);
+            this.mainPanel.Size = new System.Drawing.Size(1062, 565);
             this.mainPanel.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 523);
+            this.ClientSize = new System.Drawing.Size(1193, 605);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.grBoxCursValutar);
             this.Controls.Add(this.grBoxOperatiuni);

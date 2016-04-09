@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ContabilitatePrimaraPFA.UserControls
 {
-    public partial class ucBeneficiar : UserControl
+    public partial class ucContracte : UserControl
     {
-        public ucBeneficiar()
+        public ucContracte()
         {
             InitializeComponent();
         }
