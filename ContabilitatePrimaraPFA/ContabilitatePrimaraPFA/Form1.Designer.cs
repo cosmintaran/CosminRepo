@@ -140,10 +140,12 @@
             this.mainPanel.Location = new System.Drawing.Point(119, 28);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(1062, 565);
+            
             this.mainPanel.TabIndex = 3;
             // 
             // Form1
             // 
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1193, 605);

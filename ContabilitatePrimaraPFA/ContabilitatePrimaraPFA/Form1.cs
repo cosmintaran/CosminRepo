@@ -23,7 +23,12 @@
                     luc = UIFactory.CreateUI(sender.ToString());
                     break;
                 default:
-                    luc = UIFactory.CreateUI((sender as Button).Text);
+                    {
+                        string currentUserControl = luc.Name;
+                       currentUserControl = currentUserControl.Remove(0, 2);
+                        if ((sender as Button).Text != currentUserControl)
+                            luc = UIFactory.CreateUI((sender as Button).Text);
+                    }
                     break;
             }
             

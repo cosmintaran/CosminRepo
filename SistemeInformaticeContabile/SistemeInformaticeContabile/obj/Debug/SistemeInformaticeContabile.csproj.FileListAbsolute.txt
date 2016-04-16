@@ -41,3 +41,6 @@ c:\Users\User\Source\Repos\CosminRepo\SistemeInformaticeContabile\SistemeInforma
 C:\Users\cosmi\OneDrive\Documente\Repository\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.exe.config
 C:\Users\cosmi\OneDrive\Documente\Repository\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.exe
 C:\Users\cosmi\OneDrive\Documente\Repository\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.pdb
+e:\SandBox\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\bin\Debug\SistemeInformaticeContabile.exe.config
+e:\SandBox\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.exe
+e:\SandBox\CosminRepo\SistemeInformaticeContabile\SistemeInformaticeContabile\obj\Debug\SistemeInformaticeContabile.pdb
