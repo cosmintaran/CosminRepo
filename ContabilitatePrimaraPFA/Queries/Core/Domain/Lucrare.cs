@@ -1,4 +1,4 @@
-﻿namespace ContabilitatePrimaraPFA.Model
+﻿namespace Queries.Core.Domain
 {
     using System;
     using System.Collections.Generic;
@@ -21,12 +21,12 @@
         public byte AcceptataRespinsaId    { get; set; }
         public int ContractId              { get; set; }
         public byte ReceptionatRespinsId   { get; set; }
-        
-        
+             
         public virtual ICollection<Beneficiar> Beneficiar { get; set; }
         public virtual AcceptatRespins AcceptRespins{ get; set; }
         public virtual Contract Contract   { get; set; }
         public virtual ReceptionatRespins  ReceptionatRespins{ get; set; }
+        public virtual TipLucrare TipLucrari { get; set; }
        
     }
 }

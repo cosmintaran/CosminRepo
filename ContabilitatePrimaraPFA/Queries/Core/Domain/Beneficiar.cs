@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace ContabilitatePrimaraPFA.Model
+namespace Queries.Core.Domain
 {
     public class Beneficiar
     {

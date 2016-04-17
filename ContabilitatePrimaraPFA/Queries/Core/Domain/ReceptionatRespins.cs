@@ -1,4 +1,4 @@
-﻿namespace ContabilitatePrimaraPFA.Model
+﻿namespace Queries.Core.Domain
 {
     public class ReceptionatRespins
     {

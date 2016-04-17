@@ -1,5 +1,6 @@
-﻿using ContabilitatePrimaraPFA.Model;
+﻿using Queries.Core.Domain;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Queries.Persitence
 {
@@ -21,6 +22,7 @@ namespace Queries.Persitence
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ContaConfiguration());
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
     }

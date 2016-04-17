@@ -56,10 +56,20 @@
     <Compile Include="Core\Domain\Factura.cs" />
     <Compile Include="Core\Domain\Lucrare.cs" />
     <Compile Include="Core\Domain\ReceptionatRespins.cs" />
+    <Compile Include="Core\Domain\TipLucrare.cs" />
+    <Compile Include="Core\Repositories\IBeneficiarRepository.cs" />
+    <Compile Include="Core\Repositories\IChitantaRepository.cs" />
+    <Compile Include="Core\Repositories\IContractRepository.cs" />
+    <Compile Include="Core\Repositories\IFacturaRepository.cs" />
+    <Compile Include="Core\Repositories\ILucrareRepository.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Persitence\EntityConfigurations\ContaConfiguration.cs" />
     <Compile Include="Persitence\ContaContext.cs" />
+    <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Persitence\Repositories\BeneficiarRepository.cs" />
+    <Compile Include="Persitence\Repositories\LucrareRepository.cs" />
     <Compile Include="Persitence\Repositories\Repository.cs" />
+    <Compile Include="Persitence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

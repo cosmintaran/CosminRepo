@@ -11,8 +11,7 @@
         #region Declared Members
         private static  ucLucrari m_instance = null;
         private static readonly object padlock = new object();
-        //private SQLHelper m_sql = null;
-        #endregion
+                #endregion
 
         #region Init Area
         public  static ucLucrari GetUILucrari 

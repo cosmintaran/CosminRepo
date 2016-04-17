@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Queries.Persitence.Repositories
 {
-    class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected readonly DbContext Context;
 

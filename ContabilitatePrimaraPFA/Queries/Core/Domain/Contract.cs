@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ContabilitatePrimaraPFA.Model
+namespace Queries.Core.Domain
 {
     public class Contract
     {

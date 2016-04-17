@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System;
 
-namespace ContabilitatePrimaraPFA.Model
+namespace Queries.Core.Domain
 {
     public class Chitanta
     {
