@@ -1,16 +1,31 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System;
-
 namespace Queries.Core.Domain
 {
-    public class Chitanta
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("Chitanta")]
+    public partial class Chitanta
     {
-        public int ChitantaId { get; set; }
-         [Required]
-        public int NrChitanta { get; set; }
-        [StringLength(3)][Required]
-        public string Serie { get; set; }
+        public long ChitantaId { get; set; }
+
+        [Column("Serie Chitanta")]
         [Required]
-        public DateTime? DataChitanta {get; set;}
+        [StringLength(4)]
+        public string Serie_Chitanta { get; set; }
+
+        [Column("NR. Chitanta")]
+        [Required]
+        [StringLength(6)]
+        public string NR__Chitanta { get; set; }
+
+        [Column("Data Emiterii", TypeName = "date")]
+        public DateTime Data_Emiterii { get; set; }
+
+        public long? FacturaId { get; set; }
+
+        public virtual Factura Factura { get; set; }
     }
 }

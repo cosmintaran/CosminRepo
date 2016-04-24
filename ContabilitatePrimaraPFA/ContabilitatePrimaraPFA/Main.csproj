@@ -72,6 +72,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Classes\UIFactory.cs" />
+    <Compile Include="View\Classes\FormValidator.cs" />
     <Compile Include="View\UserControls\ucContracte.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -116,11 +117,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Database\Query\CitescJudet.sql" />
-    <Content Include="Database\Query\CreateDatabase.sql" />
-    <Content Include="Database\Query\FillListLucrari.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Queries\Queries.csproj">

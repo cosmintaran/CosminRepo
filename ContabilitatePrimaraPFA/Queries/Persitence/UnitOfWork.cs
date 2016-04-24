@@ -13,6 +13,8 @@ namespace Queries.Persitence
             m_context = context;
             Lucrari = new LucrareRepository(m_context);
             Beneficiari = new BeneficiarRepository(m_context);
+            AcceptateRespinse = new AcceptatRespinsRepository(m_context);
+            TipLucrare = new TipLucrareRepository(m_context);
         }
 
         #region Propertys
@@ -28,6 +30,10 @@ namespace Queries.Persitence
 
 
         public ILucrareRepository Lucrari { get; }
+
+        public IAcceptatRespinsRepository AcceptateRespinse { get; }
+        public ITipLucrareRepository TipLucrare { get; }
+
         #endregion //end of Properties
 
         public int Complete()

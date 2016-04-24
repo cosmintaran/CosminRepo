@@ -6,28 +6,24 @@ namespace Queries.Core.Domain
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("TipLucrare")]
-    public partial class TipLucrare
+    [Table("TipAct")]
+    public partial class TipAct
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipLucrare()
+        public TipAct()
         {
-           Lucrare = new HashSet<Lucrare>();
+            Beneficiar = new HashSet<Beneficiar>();
         }
 
-        public int TipLucrareId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public byte TipActId { get; set; }
 
-        [Column("Cod Lucrare")]
+        [Column("TipAct")]
         [Required]
-        [StringLength(5)]
-        public string Cod_Lucrare { get; set; }
-
-        [Column("Tip Lucrare")]
-        [Required]
-        [StringLength(125)]
-        public string Tip_Lucrare { get; set; }
+        [StringLength(22)]
+        public string TipAct1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lucrare> Lucrare { get; set; }
+        public virtual ICollection<Beneficiar> Beneficiar { get; set; }
     }
 }

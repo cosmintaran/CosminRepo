@@ -10,7 +10,8 @@ namespace Queries.Core
         IFacturaRepository Facturi        { get; }
         IChitantaRepository Chitante      { get; }
         IBeneficiarRepository Beneficiari { get; }
-
+        IAcceptatRespinsRepository AcceptateRespinse { get; }
+        ITipLucrareRepository TipLucrare { get; }
         int Complete();
     }
 }

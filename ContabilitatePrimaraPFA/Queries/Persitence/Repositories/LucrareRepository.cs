@@ -17,22 +17,22 @@ namespace Queries.Persitence.Repositories
 
         public IEnumerable<Lucrare> GetLucrareWithBeneficiar(int id)
         {
-            return ContaContext.Lucrari.Where(s => s.BeneficiarId == id).OrderBy(s => s.Nrproiect).ToList();
+            return ContaContext.Lucrare.Where(s => s.BeneficiarId== id).OrderBy(s => s.Nr__Proiect).ToList();
         }
 
         public IEnumerable<Lucrare> GetLucrareWithContract(int id)
         {
-            return ContaContext.Lucrari.Where(s => s.ContractId == id).OrderBy( s => s.Nrproiect).ToList();
+            return ContaContext.Lucrare.Where(s => s.ContractId == id).OrderBy( s => s.Nr__Proiect).ToList();
         }
 
         public IEnumerable<Lucrare> GetLucrariByType(int id)
         {
-            return ContaContext.Lucrari.Where(s => s.TipLucrareId == id).OrderBy(s => s.Nrproiect).ToList();
+            return ContaContext.Lucrare.Where(s => s.TipLucrareId == id).OrderBy(s => s.Nr__Proiect).ToList();
         }
 
         public IEnumerable<Lucrare> GetLucrariByYear(DateTime year)
         {
-            return ContaContext.Lucrari.Where(s => s.AnProiect.Value.Year == year.Year).OrderBy(s => s.Nrproiect).ToList();
+            return ContaContext.Lucrare.Where(s => s.An_Proiect == year.Year.ToString()).OrderBy(s => s.Nr__Proiect).ToList();
         }
 
         public ContaContext ContaContext

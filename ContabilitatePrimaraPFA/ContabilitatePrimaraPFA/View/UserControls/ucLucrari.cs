@@ -2,16 +2,23 @@
 {
     using System.Windows.Forms;
     using System;
+    using Queries.Core.Domain;
+    using Queries.Persitence;
     using System.Collections.Generic;
-    using ContabilitatePrimaraPFA.Controller;
+
+    
 
     public partial class ucLucrari : UserControl
     {
 
+        public delegate void FormChangedEventHandler(object sender, EventArgs args);
+        public event FormChangedEventHandler UserControlChanging;
+
+
         #region Declared Members
         private static  ucLucrari m_instance = null;
         private static readonly object padlock = new object();
-                #endregion
+        #endregion
 
         #region Init Area
         public  static ucLucrari GetUILucrari 
@@ -33,14 +40,15 @@
         private ucLucrari()
         {
             InitializeComponent();
-            
+            FillCombobox();
         }
         #endregion
 
         #region Command region
-        private void bttSave_Click (object sender, System.EventArgs e)
+        private void bttSave_Click (object sender, EventArgs e)
         {
-           
+
+
         }        
         
         private void bttNewLucrare_Click (object sender, EventArgs e)
@@ -72,5 +80,43 @@
              txtUAT.Text = "";
          }
         #endregion
+
+        private bool FillCombobox()
+        {
+           bool isSucceded = true;
+            try
+            {
+                var contaContext = new ContaContext();
+
+                var unitOfWork = new UnitOfWork(contaContext);
+                IEnumerable<AcceptataRefuzata> acc = unitOfWork.AcceptateRespinse.GetAll();
+                IEnumerable<TipLucrare> tiplucrare = unitOfWork.TipLucrare.GetAll();
+                
+                foreach (var item in acc)
+                    cbAcceptResp.Items.Add(item.Status);
+
+                foreach (var item in tiplucrare)
+                    cbTipLucrare.Items.Add(item.Tip_Lucrare);
+
+            }
+            catch(Exception ex) { }
+
+
+            return isSucceded;
+        }
+
+        private void cbContract_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbContract.SelectedItem.ToString() == "<new...>")
+            {
+                ChangeForm("Contracte");
+            }
+        }
+
+        protected virtual void ChangeForm(string formName)
+        {
+            if(UserControlChanging != null)         
+                UserControlChanging(formName, EventArgs.Empty);
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace ContabilitatePrimaraPFA
             if (m_dUserControl.Count == 0)
             {
                 m_dUserControl.Add("Lucrari", ucLucrari.GetUILucrari);
-                m_dUserControl.Add("Contracte", ucContracte.GetUIContracte);
+                m_dUserControl.Add("Contracte", ucContracte.GetUIContracte);               
             }
             return m_dUserControl[uiName];
         }

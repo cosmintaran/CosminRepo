@@ -1,7 +1,5 @@
 ﻿using Queries.Core.Domain;
 using Queries.Core.Repositories;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 
 
@@ -19,7 +17,7 @@ namespace Queries.Persitence.Repositories
 
         public Beneficiar GetBeneficiarByCNP(int id)
         {
-           return ContaContext.Beneficiari.Where(s => s.CNP == id) as Beneficiar;
+           return ContaContext.Beneficiar.Where(s => s.CNP == id) as Beneficiar;
         }
 
         public ContaContext ContaContext

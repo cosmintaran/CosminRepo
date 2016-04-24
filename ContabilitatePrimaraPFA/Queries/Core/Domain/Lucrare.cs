@@ -1,32 +1,60 @@
-﻿namespace Queries.Core.Domain
+namespace Queries.Core.Domain
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    public class Lucrare
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("Lucrare")]
+    public partial class Lucrare
     {
-        [Key]
-        public int LucrareId               { get; private set; }     
-        public string NrInregOCPI          { get; set; }
-        public DateTime? DataInregistrare  { get; set; }
-        public DateTime? TermenSolutionare { get; set; }
-        public string AvizatorRegistrator  { get; set; }
-        public byte TipLucrareId           { get; set; }
-        public int Nrproiect               { get; set; }
-        public DateTime? AnProiect         { get; set; }
-        public string Cadastral            { get; set; }
-        public string UAT                  { get; set; }
-        public string Observatii           { get; set; }
-        public int BeneficiarId            { get; set; }
-        public byte AcceptataRespinsaId    { get; set; }
-        public int ContractId              { get; set; }
-        public byte ReceptionatRespinsId   { get; set; }
-             
-        public virtual ICollection<Beneficiar> Beneficiar { get; set; }
-        public virtual AcceptatRespins AcceptRespins{ get; set; }
-        public virtual Contract Contract   { get; set; }
-        public virtual ReceptionatRespins  ReceptionatRespins{ get; set; }
-        public virtual TipLucrare TipLucrari { get; set; }
-       
+        public long LucrareId { get; set; }
+
+        public byte AcceptataRefuzataId { get; set; }
+
+        public int Nr_OCPI { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime Data_inregistrare { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? Termen_Solutionare { get; set; }
+
+        [Column(TypeName = "text")]
+        public string Avizator_Registrator { get; set; }
+
+        public int? TipLucrareId { get; set; }
+
+        [Column("Nr. Proiect")]
+        [Required]
+        [StringLength(4)]
+        public string Nr__Proiect { get; set; }
+
+        [Column("An Proiect")]
+        [Required]
+        [StringLength(4)]
+        public string An_Proiect { get; set; }
+
+        public long? ContractId { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string UAT { get; set; }
+
+        [Column("Receptionat/Respins")]
+        public byte? Receptionat_Respins { get; set; }
+
+        public long? BeneficiarId { get; set; }
+
+        public virtual AcceptataRefuzata AcceptataRefuzata { get; set; }
+
+        public virtual Beneficiar Beneficiar { get; set; }
+
+        public virtual Contract Contract { get; set; }
+
+        public virtual ReceptionatRespins ReceptionatRespins { get; set; }
+
+        public virtual TipLucrare TipLucrare { get; set; }
     }
 }
