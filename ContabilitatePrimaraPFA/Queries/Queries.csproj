@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Queries</RootNamespace>
     <AssemblyName>Queries</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -26,6 +26,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -69,7 +70,8 @@
     <Compile Include="Core\Domain\AcceptataRefuzata.cs" />
     <Compile Include="Core\Domain\Beneficiar.cs" />
     <Compile Include="Core\Domain\Chitanta.cs" />
-    <Compile Include="Core\Repositories\IAcceptatRespinsRepository.cs" />
+    <Compile Include="Core\Repositories\IAcceptatRefuzataRepository.cs" />
+    <Compile Include="Core\Repositories\IReceptionatRespinsRepository.cs" />
     <Compile Include="Core\Repositories\ITipLucrareRepository.cs" />
     <Compile Include="Persitence\ContaContext.cs" />
     <Compile Include="Core\Domain\Contract.cs" />
@@ -86,9 +88,11 @@
     <Compile Include="Core\Repositories\ILucrareRepository.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
-    <Compile Include="Persitence\Repositories\AcceptatRespinsRepository.cs" />
+    <Compile Include="Persitence\Repositories\AcceptatRefuzataRepository.cs" />
     <Compile Include="Persitence\Repositories\BeneficiarRepository.cs" />
+    <Compile Include="Persitence\Repositories\ContractRepository.cs" />
     <Compile Include="Persitence\Repositories\LucrareRepository.cs" />
+    <Compile Include="Persitence\Repositories\ReceprionataRespinsaRepository.cs" />
     <Compile Include="Persitence\Repositories\Repository.cs" />
     <Compile Include="Persitence\Repositories\TipLucrareRepository.cs" />
     <Compile Include="Persitence\UnitOfWork.cs" />

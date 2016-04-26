@@ -1,4 +1,5 @@
-﻿namespace ContabilitatePrimaraPFA.UserControls
+﻿using System.Windows;
+namespace ContabilitatePrimaraPFA.UserControls
 {
     partial class ucLucrari
     {
@@ -28,6 +29,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bttNewLucrare = new System.Windows.Forms.Button();
             this.bttEditLucrare = new System.Windows.Forms.Button();
             this.bttDeleteLucrari = new System.Windows.Forms.Button();
@@ -61,12 +65,16 @@
             this.dateTimePickerTermen = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.LucrariView = new System.Windows.Forms.DataGridView();
+            this.errorProviderLucrari = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.bttSearch = new System.Windows.Forms.Button();
             this.grBoxLucrare.SuspendLayout();
             this.pControls.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LucrariView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLucrari)).BeginInit();
             this.SuspendLayout();
             // 
             // bttNewLucrare
@@ -82,7 +90,7 @@
             // bttEditLucrare
             // 
             this.bttEditLucrare.Enabled = false;
-            this.bttEditLucrare.Location = new System.Drawing.Point(63, 16);
+            this.bttEditLucrare.Location = new System.Drawing.Point(66, 16);
             this.bttEditLucrare.Name = "bttEditLucrare";
             this.bttEditLucrare.Size = new System.Drawing.Size(51, 23);
             this.bttEditLucrare.TabIndex = 1;
@@ -108,7 +116,7 @@
             this.grBoxLucrare.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grBoxLucrare.Location = new System.Drawing.Point(416, 17);
             this.grBoxLucrare.Name = "grBoxLucrare";
-            this.grBoxLucrare.Size = new System.Drawing.Size(572, 456);
+            this.grBoxLucrare.Size = new System.Drawing.Size(581, 456);
             this.grBoxLucrare.TabIndex = 4;
             this.grBoxLucrare.TabStop = false;
             this.grBoxLucrare.Text = "Lucrare";
@@ -148,7 +156,7 @@
             this.pControls.Controls.Add(this.dateTimePickerTermen);
             this.pControls.Location = new System.Drawing.Point(6, 21);
             this.pControls.Name = "pControls";
-            this.pControls.Size = new System.Drawing.Size(559, 435);
+            this.pControls.Size = new System.Drawing.Size(575, 435);
             this.pControls.TabIndex = 0;
             this.pControls.TabStop = true;
             // 
@@ -175,7 +183,7 @@
             // txtObservatii
             // 
             this.txtObservatii.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtObservatii.Location = new System.Drawing.Point(346, 243);
+            this.txtObservatii.Location = new System.Drawing.Point(346, 242);
             this.txtObservatii.Multiline = true;
             this.txtObservatii.Name = "txtObservatii";
             this.txtObservatii.Size = new System.Drawing.Size(206, 42);
@@ -203,7 +211,7 @@
             // 
             // txtAvizator
             // 
-            this.txtAvizator.Location = new System.Drawing.Point(88, 243);
+            this.txtAvizator.Location = new System.Drawing.Point(88, 242);
             this.txtAvizator.Multiline = true;
             this.txtAvizator.Name = "txtAvizator";
             this.txtAvizator.Size = new System.Drawing.Size(184, 42);
@@ -231,10 +239,11 @@
             // 
             // txtDoc
             // 
-            this.txtDoc.Location = new System.Drawing.Point(84, 12);
+            this.txtDoc.Location = new System.Drawing.Point(84, 9);
             this.txtDoc.Name = "txtDoc";
             this.txtDoc.Size = new System.Drawing.Size(59, 21);
             this.txtDoc.TabIndex = 1;
+            this.txtDoc.Validating += new System.ComponentModel.CancelEventHandler(this.txtDoc_Validating);
             // 
             // txtCad
             // 
@@ -242,6 +251,7 @@
             this.txtCad.Name = "txtCad";
             this.txtCad.Size = new System.Drawing.Size(189, 21);
             this.txtCad.TabIndex = 10;
+            this.txtCad.Validating += new System.ComponentModel.CancelEventHandler(this.txtCad_Validating);
             // 
             // lblCadastralTop
             // 
@@ -257,24 +267,25 @@
             // 
             this.lblAcceptResp.AutoSize = true;
             this.lblAcceptResp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAcceptResp.Location = new System.Drawing.Point(279, 87);
+            this.lblAcceptResp.Location = new System.Drawing.Point(278, 90);
             this.lblAcceptResp.Name = "lblAcceptResp";
-            this.lblAcceptResp.Size = new System.Drawing.Size(78, 15);
+            this.lblAcceptResp.Size = new System.Drawing.Size(81, 15);
             this.lblAcceptResp.TabIndex = 2;
-            this.lblAcceptResp.Text = "Accept/Resp.";
+            this.lblAcceptResp.Text = "Accept/Refuz.";
             // 
             // txtUAT
             // 
-            this.txtUAT.Location = new System.Drawing.Point(87, 125);
+            this.txtUAT.Location = new System.Drawing.Point(87, 128);
             this.txtUAT.Name = "txtUAT";
             this.txtUAT.Size = new System.Drawing.Size(185, 21);
             this.txtUAT.TabIndex = 10;
+            this.txtUAT.Validating += new System.ComponentModel.CancelEventHandler(this.txtUAT_Validating);
             // 
             // lblNrInregOCPI
             // 
             this.lblNrInregOCPI.AutoSize = true;
             this.lblNrInregOCPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNrInregOCPI.Location = new System.Drawing.Point(163, 15);
+            this.lblNrInregOCPI.Location = new System.Drawing.Point(163, 12);
             this.lblNrInregOCPI.Name = "lblNrInregOCPI";
             this.lblNrInregOCPI.Size = new System.Drawing.Size(88, 15);
             this.lblNrInregOCPI.TabIndex = 2;
@@ -284,7 +295,7 @@
             // 
             this.lblReceptionatRespins.AutoSize = true;
             this.lblReceptionatRespins.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReceptionatRespins.Location = new System.Drawing.Point(12, 87);
+            this.lblReceptionatRespins.Location = new System.Drawing.Point(12, 90);
             this.lblReceptionatRespins.Name = "lblReceptionatRespins";
             this.lblReceptionatRespins.Size = new System.Drawing.Size(75, 15);
             this.lblReceptionatRespins.TabIndex = 0;
@@ -292,19 +303,22 @@
             // 
             // cbReceptionatRespins
             // 
+            this.cbReceptionatRespins.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbReceptionatRespins.FormattingEnabled = true;
-            this.cbReceptionatRespins.Location = new System.Drawing.Point(88, 87);
+            this.cbReceptionatRespins.Location = new System.Drawing.Point(88, 86);
             this.cbReceptionatRespins.Name = "cbReceptionatRespins";
             this.cbReceptionatRespins.Size = new System.Drawing.Size(184, 23);
-            this.cbReceptionatRespins.TabIndex = 9;
+            this.cbReceptionatRespins.TabIndex = 2;
             // 
             // cbAcceptResp
             // 
+            this.cbAcceptResp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAcceptResp.FormattingEnabled = true;
-            this.cbAcceptResp.Location = new System.Drawing.Point(359, 88);
+            this.cbAcceptResp.Location = new System.Drawing.Point(359, 86);
             this.cbAcceptResp.Name = "cbAcceptResp";
             this.cbAcceptResp.Size = new System.Drawing.Size(188, 23);
-            this.cbAcceptResp.TabIndex = 3;
+            this.cbAcceptResp.TabIndex = 2;
+            this.cbAcceptResp.Validating += new System.ComponentModel.CancelEventHandler(this.cbAcceptResp_Validating);
             // 
             // lblContract
             // 
@@ -322,18 +336,20 @@
             this.cbContract.FormattingEnabled = true;
             this.cbContract.Items.AddRange(new object[] {
             "<new...>"});
-            this.cbContract.Location = new System.Drawing.Point(87, 204);
+            this.cbContract.Location = new System.Drawing.Point(87, 203);
             this.cbContract.Name = "cbContract";
             this.cbContract.Size = new System.Drawing.Size(185, 23);
             this.cbContract.TabIndex = 5;
             this.cbContract.SelectedIndexChanged += new System.EventHandler(this.cbContract_SelectedIndexChanged);
+            this.cbContract.Validating += new System.ComponentModel.CancelEventHandler(this.cbContract_Validating);
             // 
             // txtInreg
             // 
-            this.txtInreg.Location = new System.Drawing.Point(257, 12);
+            this.txtInreg.Location = new System.Drawing.Point(257, 9);
             this.txtInreg.Name = "txtInreg";
             this.txtInreg.Size = new System.Drawing.Size(83, 21);
             this.txtInreg.TabIndex = 4;
+            this.txtInreg.Validating += new System.ComponentModel.CancelEventHandler(this.txtInreg_Validating);
             // 
             // lblTipLucrare
             // 
@@ -347,16 +363,18 @@
             // 
             // cbTipLucrare
             // 
+            this.cbTipLucrare.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipLucrare.FormattingEnabled = true;
-            this.cbTipLucrare.Location = new System.Drawing.Point(87, 167);
+            this.cbTipLucrare.Location = new System.Drawing.Point(87, 166);
             this.cbTipLucrare.Name = "cbTipLucrare";
             this.cbTipLucrare.Size = new System.Drawing.Size(465, 23);
-            this.cbTipLucrare.TabIndex = 7;
+            this.cbTipLucrare.TabIndex = 4;
+            this.cbTipLucrare.Validating += new System.ComponentModel.CancelEventHandler(this.cbTipLucrare_Validating);
             // 
             // dateTimePickerInreg
             // 
             this.dateTimePickerInreg.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerInreg.Location = new System.Drawing.Point(84, 43);
+            this.dateTimePickerInreg.Location = new System.Drawing.Point(84, 41);
             this.dateTimePickerInreg.Name = "dateTimePickerInreg";
             this.dateTimePickerInreg.Size = new System.Drawing.Size(188, 21);
             this.dateTimePickerInreg.TabIndex = 5;
@@ -375,7 +393,7 @@
             // 
             this.lblTermenSolutionare.AutoSize = true;
             this.lblTermenSolutionare.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTermenSolutionare.Location = new System.Drawing.Point(279, 43);
+            this.lblTermenSolutionare.Location = new System.Drawing.Point(279, 44);
             this.lblTermenSolutionare.Name = "lblTermenSolutionare";
             this.lblTermenSolutionare.Size = new System.Drawing.Size(74, 15);
             this.lblTermenSolutionare.TabIndex = 0;
@@ -384,7 +402,7 @@
             // dateTimePickerTermen
             // 
             this.dateTimePickerTermen.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerTermen.Location = new System.Drawing.Point(359, 40);
+            this.dateTimePickerTermen.Location = new System.Drawing.Point(359, 41);
             this.dateTimePickerTermen.Name = "dateTimePickerTermen";
             this.dateTimePickerTermen.Size = new System.Drawing.Size(188, 21);
             this.dateTimePickerTermen.TabIndex = 6;
@@ -393,6 +411,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.bttSearch);
+            this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.bttDeleteLucrari);
             this.groupBox1.Controls.Add(this.bttNewLucrare);
             this.groupBox1.Controls.Add(this.bttEditLucrare);
@@ -407,7 +427,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.LucrariView);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(3, 72);
             this.groupBox2.Name = "groupBox2";
@@ -416,17 +436,59 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Evidenta Lucrari";
             // 
-            // dataGridView1
+            // LucrariView
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.LucrariView.AllowUserToAddRows = false;
+            this.LucrariView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(395, 376);
-            this.dataGridView1.TabIndex = 0;
+            this.LucrariView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.LucrariView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.LucrariView.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LucrariView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.LucrariView.DefaultCellStyle = dataGridViewCellStyle10;
+            this.LucrariView.Location = new System.Drawing.Point(6, 19);
+            this.LucrariView.Name = "LucrariView";
+            this.LucrariView.RowHeadersVisible = false;
+            this.LucrariView.Size = new System.Drawing.Size(395, 376);
+            this.LucrariView.TabIndex = 0;
+            // 
+            // errorProviderLucrari
+            // 
+            this.errorProviderLucrari.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderLucrari.ContainerControl = this;
+            this.errorProviderLucrari.Tag = "Test";
+            this.errorProviderLucrari.RightToLeftChanged += new System.EventHandler(this.bttSave_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(190, 18);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(145, 20);
+            this.txtSearch.TabIndex = 3;
+            // 
+            // bttSearch
+            // 
+            this.bttSearch.Location = new System.Drawing.Point(341, 16);
+            this.bttSearch.Name = "bttSearch";
+            this.bttSearch.Size = new System.Drawing.Size(51, 23);
+            this.bttSearch.TabIndex = 4;
+            this.bttSearch.Text = "Search";
+            this.bttSearch.UseVisualStyleBackColor = true;
             // 
             // ucLucrari
             // 
@@ -442,8 +504,10 @@
             this.pControls.ResumeLayout(false);
             this.pControls.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LucrariView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLucrari)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -483,6 +547,9 @@
         private System.Windows.Forms.Button bttClearlucrare;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView LucrariView;
+        private System.Windows.Forms.ErrorProvider errorProviderLucrari;
+        private System.Windows.Forms.Button bttSearch;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

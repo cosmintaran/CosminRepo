@@ -10,5 +10,6 @@ namespace Queries.Core.Repositories
         IEnumerable<Lucrare> GetLucrareWithBeneficiar(int id);
         IEnumerable<Lucrare> GetLucrariByYear(DateTime year);
         IEnumerable<Lucrare> GetLucrariByType(int type);
+        IEnumerable<Lucrare> GetLucrariForView(int year); 
     }
 }

@@ -9,10 +9,9 @@ namespace ContabilitatePrimaraPFA.View.Classes
 {
    public class FormValidator
     {
-        public static bool NamesValidator(string _value)
+        public static bool NamesValidator(string _value, string pattern)
         {
             bool isValid = false;
-            string pattern = "[A-Za-z]";
             Match match = Regex.Match(_value, pattern,RegexOptions.IgnoreCase);
             if (match.Success)
                 isValid = true;

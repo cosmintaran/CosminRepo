@@ -13,26 +13,29 @@ namespace Queries.Persitence
             m_context = context;
             Lucrari = new LucrareRepository(m_context);
             Beneficiari = new BeneficiarRepository(m_context);
-            AcceptateRespinse = new AcceptatRespinsRepository(m_context);
+            AcceptateRespinse = new AcceptatRefuzataRepository(m_context);
             TipLucrare = new TipLucrareRepository(m_context);
+            ReceptionateRespinse = new ReceprionataRespinsaRepository(m_context);
+            Contracte = new ContractRepository(m_context);
         }
 
         #region Propertys
-        public IBeneficiarRepository Beneficiari { get;}
 
-        public IChitantaRepository Chitante { get; }
-  
+        public IBeneficiarRepository Beneficiari { get; set; }
 
-        public IContractRepository Contracte { get; }
+        public IChitantaRepository Chitante { get; set; }
 
+        public IContractRepository Contracte { get; set; }
 
-        public IFacturaRepository Facturi { get; }
+        public IFacturaRepository Facturi { get; set; }
 
+        public ILucrareRepository Lucrari { get; set; }
 
-        public ILucrareRepository Lucrari { get; }
+        public IAcceptatRefuzataRepository AcceptateRespinse { get; set; }
 
-        public IAcceptatRespinsRepository AcceptateRespinse { get; }
-        public ITipLucrareRepository TipLucrare { get; }
+        public ITipLucrareRepository TipLucrare { get; set; }
+
+        public IReceptionatRespinsRepository ReceptionateRespinse { get; set; }
 
         #endregion //end of Properties
 
