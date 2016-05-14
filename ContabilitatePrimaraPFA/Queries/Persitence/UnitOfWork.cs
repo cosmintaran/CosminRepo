@@ -6,17 +6,17 @@
 
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ContaContext m_context;
+        private ContaContext _mContext;
 
         public UnitOfWork (ContaContext context)
         {
-            m_context = context;
-            Lucrari = new LucrareRepository(m_context);
-            Beneficiari = new BeneficiarRepository(m_context);
-            AcceptateRespinse = new AcceptatRefuzataRepository(m_context);
-            TipLucrare = new TipLucrareRepository(m_context);
-            ReceptionateRespinse = new ReceprionataRespinsaRepository(m_context);
-            Contracte = new ContractRepository(m_context);
+            _mContext = context;
+            Lucrari = new LucrareRepository(_mContext);
+            Beneficiari = new BeneficiarRepository(_mContext);
+            AcceptateRespinse = new AcceptatRefuzataRepository(_mContext);
+            TipLucrare = new TipLucrareRepository(_mContext);
+            ReceptionateRespinse = new ReceprionataRespinsaRepository(_mContext);
+            Contracte = new ContractRepository(_mContext);
         }
 
         #region Propertys
@@ -41,12 +41,12 @@
 
         public int Complete()
         {
-            return m_context.SaveChanges();
+            return _mContext.SaveChanges();
         }
 
         public void Dispose()
         {
-            m_context.Dispose();
+            _mContext.Dispose();
         }
     }
 }

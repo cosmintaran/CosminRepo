@@ -4,15 +4,11 @@
     using System;
     using Queries.Core.Domain;
     using Queries.Persitence;
-    using System.Collections.Generic;
     using System.ComponentModel;
-    using ContabilitatePrimaraPFA.View.Classes;
-    using System.Collections;
-    using ContabilitatePrimaraPFA.View.Forms;
+    using Classes;
+    using Forms;
 
-
-
-    public partial class ucLucrari : UserControl
+    public partial class UcLucrari : UserControl
     {
 
         public delegate void FormChangedEventHandler(object sender, EventArgs args);
@@ -20,33 +16,32 @@
 
 
         #region Declared Members
-        private static ucLucrari m_instance = null;
-        private static readonly object padlock = new object();
-        Lucrare m_lucrare = null;
+        private static UcLucrari _mInstance;
+        private static readonly object Padlock = new object();
+        private Lucrare _oldLucrare;
+        private Lucrare _newLucrare;
+
         #endregion
 
         #region Init Area
-        public static ucLucrari GetUILucrari
+        public static UcLucrari GetUiLucrari
         {
             get
             {
-                lock (padlock)
+                lock (Padlock)
                 {
-                    if (m_instance == null)
-                    {
-                        m_instance = new ucLucrari();
-                    }
-
-                    return m_instance;
+                    return _mInstance ?? (_mInstance = new UcLucrari());
                 }
             }
         }
 
-        private ucLucrari()
+        private UcLucrari()
         {
             InitializeComponent();
+            _newLucrare = new Lucrare();
             FillCombobox();
-            FillGridView(DateTime.Today.Year);
+            FillGridView(DateTime.Today.Year.ToString());
+            ClearFormLucrare();
         }
         #endregion
 
@@ -54,18 +49,16 @@
 
         private void bttSave_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
-            {
-                Lucrare lucrare = null;
-                PrepareObject(out lucrare);
-                ContaContext con = new ContaContext();
-                UnitOfWork unitOfWork = new UnitOfWork(con);
-                unitOfWork.Lucrari.Add(lucrare);
-                int a = unitOfWork.Complete();
-                unitOfWork.Dispose();
-                FillGridView(2015);
-            }
+            if (!ValidateChildren(ValidationConstraints.Enabled)) return;
 
+
+            PrepareObject();
+            var con = new ContaContext();
+            var unitOfWork = new UnitOfWork(con);
+            unitOfWork.Lucrari.Add(_newLucrare);
+            unitOfWork.Complete();
+            unitOfWork.Dispose();
+            FillGridView(DateTime.Today.Year.ToString());
         }
 
         private void bttNewLucrare_Click(object sender, EventArgs e)
@@ -74,27 +67,15 @@
                 grBoxLucrare.Enabled = true;
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void LucrariView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (bttDeleteLucrari.Enabled == false || bttEditLucrare.Enabled == false)
-            {
-                bttDeleteLucrari.Enabled = true;
-                bttEditLucrare.Enabled = true;
-            }
+            if (bttDeleteLucrari.Enabled) return;
+            bttDeleteLucrari.Enabled = true;
         }
 
         private void bttClearlucrare_Click(object sender, EventArgs e)
         {
-            cbAcceptResp.SelectedIndex = -1;
-            cbContract.SelectedIndex = -1;
-            cbReceptionatRespins.SelectedIndex = -1;
-            cbTipLucrare.SelectedIndex = -1;
-            txtAvizator.Text = "";
-            txtCad.Text = "";
-            txtDoc.Text = "";
-            txtInreg.Text = "";
-            txtObservatii.Text = "";
-            txtUAT.Text = "";
+            ClearFormLucrare();
         }
 
         private void bttSearch_Click(object sender, EventArgs e)
@@ -103,7 +84,7 @@
             form.Show();
         }
 
-        private void LucrariView_CellContentDoubleClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        private void LucrariView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = null;
             foreach (DataGridViewRow iterator in LucrariView.SelectedRows)
@@ -111,113 +92,140 @@
                 row = iterator;
             }
 
-            if (row != null) //daca randul este gol sau nu exista nu face nimic
+            if (row == null) return;
+            var conta = new ContaContext();
+            var unitOfWork = new UnitOfWork(conta);
+
+            int id = 0;
+            if(row.Index > 0)
+                id = (int)row.Cells["LucrareId"].Value;
+
+            if (id <= 0) return;
+            _oldLucrare = unitOfWork.Lucrari.Get(id);
+
+            int sStatusAccept = unitOfWork.AcceptateRespinse.Get(_oldLucrare.AcceptataRefuzataId).AcceptataRefuzataId;
+            if (--sStatusAccept >= 0)
+                cbAcceptResp.SelectedIndex = sStatusAccept;
+
+            int sStatusRec = unitOfWork.ReceptionateRespinse.Get(_oldLucrare.ReceptionatRespinsId).ReceptionatRespinsId;
+            if(--sStatusRec >= 0)
+                cbReceptionatRespins.SelectedItem = sStatusRec;
+
+            if (_oldLucrare.ContractId != null)
+                cbContract.SelectedText = unitOfWork.Contracte.Get((int)_oldLucrare.ContractId).NrContract;
+
+            if (_oldLucrare.DataInregistrare != null)
+                dateTimePickerInreg.Value = (DateTime)_oldLucrare.DataInregistrare;
+
+            if (_oldLucrare.TermenSolutionare != null)
+                dateTimePickerTermen.Value = (DateTime)_oldLucrare.TermenSolutionare;
+
+            txtInreg.Text = _oldLucrare.Nr_OCPI;
+            txtDoc.Text = _oldLucrare.NrProiect;
+            txtAvizator.Text = _oldLucrare.AvizatorRegistrator;
+            txtUAT.Text = _oldLucrare.UAT;
+            txtObservatii.Text = _oldLucrare.Observatii;
+            txtCad.Text = _oldLucrare.CadTop;
+
+            if (bttNewLucrare.Enabled)
+                bttNewLucrare.Enabled = false;
+
+            if (!grBoxLucrare.Enabled)
+                grBoxLucrare.Enabled = true;
+
+            unitOfWork.Dispose();
+            conta.Dispose();
+        }
+
+        private void bttTipLucrare_Click(object sender, EventArgs e)
+        {
+            using (SelectTipLucrari sel = new SelectTipLucrari())
             {
-                ContaContext conta = new ContaContext();
-                var unitOfWork = new UnitOfWork(conta);
-
-                int id =(int)row.Cells["LucrareId"].Value;
-
-                if(id > 0) 
-                {
-                    m_lucrare = unitOfWork.Lucrari.Get(id);
-
-                    cbAcceptResp.SelectedItem = unitOfWork.AcceptateRespinse.Get(m_lucrare.AcceptataRefuzataId).StatusAccept;
-                    cbReceptionatRespins.SelectedItem = unitOfWork.ReceptionateRespinse.Get(m_lucrare.ReceptionatRespinsId).StatusRec;
-                    cbTipLucrare.SelectedIndex = (int)m_lucrare.TipLucrareId - 1;
-                    int ctr = cbContract.SelectedIndex;
-                    cbContract.SelectedText = unitOfWork.Contracte.Get((int)m_lucrare.ContractId).NrContract;
-                    txtInreg.Text = m_lucrare.Nr_OCPI.ToString();
-                    dateTimePickerInreg.Value = (DateTime)m_lucrare.DataInregistrare;
-                    dateTimePickerTermen.Value = (DateTime)m_lucrare.TermenSolutionare;
-                    txtDoc.Text = m_lucrare.Nr_Proiect.ToString();
-                    txtAvizator.Text = m_lucrare.AvizatorRegistrator;
-                    txtUAT.Text = m_lucrare.UAT;
-
-                    if (bttNewLucrare.Enabled == true)
-                        bttNewLucrare.Enabled = false;
-
-                    if (bttEditLucrare.Enabled == false)
-                        bttEditLucrare.Enabled = true;
-
-                    if (bttDeleteLucrari.Enabled == false)
-                        bttDeleteLucrari.Enabled = true;
-
-                    if (grBoxLucrare.Enabled == false)
-                        grBoxLucrare.Enabled = true;
-
-                    if (bttSave.Enabled == true)
-                        bttSave.Enabled = false;
-
-                    unitOfWork.Dispose();
-                    conta.Dispose();
-
-                }
+                var result = sel.ShowDialog();
+                if (result != DialogResult.OK) return;
+                _newLucrare.TipLucrareId = sel.SelectedCodLucrare;
             }
 
+        }
+
+        private void bttDeleteLucrari_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = null;
+            foreach (DataGridViewRow iterator in LucrariView.SelectedRows)
+            {
+                selectedRow = iterator;
+            }
+            if (selectedRow != null)
+            {
+                var id = (int?) selectedRow.Cells["LucrareId"].Value;
+                if (id == null) return;
+                ContaContext contaContext = new ContaContext();
+                UnitOfWork unityOfWork = new UnitOfWork(contaContext);
+                Lucrare lucrare = unityOfWork.Lucrari.Get((int)id);
+                unityOfWork.Lucrari.Remove(lucrare);
+                unityOfWork.Complete();
+                unityOfWork.Dispose();
+            }
+            bttDeleteLucrari.Enabled = false;
+            FillGridView(DateTime.Now.Year.ToString());
         }
 
         #endregion
 
         # region Logical Area
 
-        private bool FillCombobox()
+        private void FillCombobox()
         {
-            bool isSucceded = true;
             try
             {
-                BindingSource bindAcceptrefuz = new BindingSource();
-                BindingSource bindTipLucrare = new BindingSource();
-                BindingSource bindRecResp = new BindingSource();
-                BindingSource bindContract = new BindingSource();
+                var bindAcceptrefuz = new BindingSource();
+                var bindRecResp = new BindingSource();
+                var bindContract = new BindingSource();
 
                 var contaContext = new ContaContext();
                 var unitOfWork = new UnitOfWork(contaContext);
 
+                //Acceptata/Respinsa
                 bindAcceptrefuz.DataSource = unitOfWork.AcceptateRespinse.GetAll();
                 cbAcceptResp.DataSource = bindAcceptrefuz;
                 cbAcceptResp.DisplayMember = "StatusAccept";
 
-                bindTipLucrare.DataSource = unitOfWork.TipLucrare.GetAll();
-                cbTipLucrare.DataSource = bindTipLucrare;
-                cbTipLucrare.DisplayMember = "TipLucrare1";
-
+                //Receptionat/Respins
                 bindRecResp.DataSource = unitOfWork.ReceptionateRespinse.GetAll();
                 cbReceptionatRespins.DataSource = bindRecResp;
                 cbReceptionatRespins.DisplayMember = "StatusRec";
 
+                //Numar contract
                 bindContract.DataSource = unitOfWork.Contracte.GetContractsByYear(DateTime.Today.Year);
                 bindContract.Add(new Contract { NrContract = "<new...>" });
                 cbContract.DataSource = bindContract;
                 cbContract.DisplayMember = "NrContract";
 
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message.ToString(), "Error initializing fields", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (Exception ex) { MessageBox.Show(ex.Message, @"Error initializing fields", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
-
-            return isSucceded;
         }
 
-        private bool FillGridView(int year)
+        private void FillGridView(string year)
         {
-            bool isSucceded = true;
+
             try
             {
                 ContaContext conta = new ContaContext();
                 UnitOfWork unityOfWork = new UnitOfWork(conta);
-                BindingSource bindingSource = new BindingSource();
-                bindingSource.DataSource = unityOfWork.Lucrari.GetLucrariForGridView(DateTime.Today.Year);
+                BindingSource bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByYear(year) };
                 LucrariView.DataSource = bindingSource;
-                LucrariView.Columns["LucrareId"].Visible = false;
+                var dataGridViewColumn = LucrariView.Columns["LucrareId"];
+                if (dataGridViewColumn != null)
+                    dataGridViewColumn.Visible = false;
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            return isSucceded;
+            catch (InvalidOperationException ex) { MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void cbContract_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if ((cbContract.SelectedItem as Contract).NrContract == "<new...>")
+            var contract = cbContract.SelectedItem as Contract;
+            if (contract != null && contract.NrContract == "<new...>")
             {
                 ChangeForm("Contracte");
             }
@@ -225,30 +233,47 @@
 
         protected virtual void ChangeForm(string formName)
         {
-            if (UserControlChanging != null)
-                UserControlChanging(formName, EventArgs.Empty);
+            UserControlChanging?.Invoke(formName, EventArgs.Empty);
         }
 
-        private void PrepareObject(out Lucrare lucrare)
+        private void PrepareObject()
         {
-            lucrare = new Lucrare();
-            try
-            {
+            var acceptataRefuzata = cbAcceptResp.SelectedItem as AcceptataRefuzata;
+            if (acceptataRefuzata != null)
+                _newLucrare.AcceptataRefuzataId = acceptataRefuzata.AcceptataRefuzataId;
 
-                lucrare.AcceptataRefuzataId = (cbAcceptResp.SelectedItem as AcceptataRefuzata).AcceptataRefuzataId;
-                lucrare.ContractId = (cbContract.SelectedItem as Contract).ContractId;
-                lucrare.ReceptionatRespinsId = (cbReceptionatRespins.SelectedItem as ReceptionatRespins).ReceptionatRespinsId;
-                lucrare.TipLucrareId = (cbTipLucrare.SelectedItem as TipLucrare).TipLucrareId;
-                lucrare.AvizatorRegistrator = txtAvizator.Text;
-                lucrare.DataInregistrare = dateTimePickerInreg.Value;
-                lucrare.Nr_Proiect = txtDoc.Text;
-                lucrare.Nr_OCPI = txtInreg.Text;
-                lucrare.TermenSolutionare = dateTimePickerTermen.Value;
-                lucrare.UAT = txtUAT.Text;
-                lucrare.AnProiect = DateTime.Now.Year.ToString();
+            _newLucrare.Nr_OCPI = txtInreg.Text;
+            _newLucrare.DataInregistrare = dateTimePickerInreg.Value;
+            _newLucrare.TermenSolutionare = dateTimePickerTermen.Value;
+            _newLucrare.AvizatorRegistrator = txtAvizator.Text;
+            //TipLucrare din form SelectTipLucrare
+            _newLucrare.NrProiect = txtDoc.Text;
+            _newLucrare.AnProiect = DateTime.Now.Year.ToString();
+            _newLucrare.CadTop = txtCad.Text;
+            _newLucrare.UAT = txtUAT.Text;
 
-            }
-            catch (Exception ex) {/*TODO trateaza exceptia*/}
+            var contract = cbContract.SelectedItem as Contract;
+            if (contract != null)
+                _newLucrare.ContractId = contract.ContractId;
+
+            var receptionatRespins = cbReceptionatRespins.SelectedItem as ReceptionatRespins;
+            if (receptionatRespins != null)
+                _newLucrare.ReceptionatRespinsId = receptionatRespins.ReceptionatRespinsId;
+
+            _newLucrare.Observatii = txtObservatii.Text;
+        }
+
+        private void ClearFormLucrare()
+        {
+            cbAcceptResp.SelectedIndex = -1;
+            cbContract.SelectedIndex = -1;
+            cbReceptionatRespins.SelectedIndex = -1;
+            txtAvizator.Text = "";
+            txtCad.Text = "";
+            txtDoc.Text = "";
+            txtInreg.Text = "";
+            txtObservatii.Text = "";
+            txtUAT.Text = "";
         }
 
         #endregion
@@ -278,8 +303,8 @@
         {
             if (!FormValidator.NamesValidator(txtInreg.Text, "[0-9]"))
             {
-                /*e.Cancel = true*/
-                ; txtInreg.Focus(); errorProviderLucrari.SetError(txtInreg, "Campul contine caractere invalide");
+                /*e.Cancel = true;*/
+                txtInreg.Focus(); errorProviderLucrari.SetError(txtInreg, "Campul contine caractere invalide");
             }
             else { e.Cancel = false; errorProviderLucrari.SetError(txtInreg, ""); }
         }
@@ -288,8 +313,8 @@
         {
             if (String.IsNullOrEmpty(txtUAT.Text))
             {
-                /*e.Cancel = true*/
-                ; txtUAT.Focus(); errorProviderLucrari.SetError(txtUAT, "Campul UAT trebuie completat");
+                /*e.Cancel = true;*/
+                txtUAT.Focus(); errorProviderLucrari.SetError(txtUAT, "Campul UAT trebuie completat");
             }
 
             else if (!FormValidator.NamesValidator(txtUAT.Text, "[A-Za-z]"))
@@ -322,18 +347,6 @@
             }
         }
 
-        private void cbTipLucrare_Validating(object sender, CancelEventArgs e)
-        {
-            if (String.IsNullOrEmpty(cbTipLucrare.Text))
-            {
-                /*e.Cancel = true;*/
-                cbTipLucrare.Focus(); errorProviderLucrari.SetError(cbTipLucrare, "Selectati o valoare");
-            }
-
-            else
-            { e.Cancel = false; errorProviderLucrari.SetError(cbTipLucrare, ""); }
-        }
-
         private void cbAcceptResp_Validating(object sender, CancelEventArgs e)
         {
             if (String.IsNullOrEmpty(cbAcceptResp.Text))
@@ -348,7 +361,7 @@
 
         private void cbContract_Validating(object sender, CancelEventArgs e)
         {
-            if (String.IsNullOrEmpty(cbContract.Text) || cbContract.Text == "<new..>")
+            if (String.IsNullOrEmpty(cbContract.Text) || cbContract.Text == @"<new..>")
             {
                 /*e.Cancel = true;*/
                 cbContract.Focus(); errorProviderLucrari.SetError(cbContract, "Selectati o valoare");
@@ -359,7 +372,6 @@
 
         #endregion Fileds Validation Area
 
-        
 
     }
 }

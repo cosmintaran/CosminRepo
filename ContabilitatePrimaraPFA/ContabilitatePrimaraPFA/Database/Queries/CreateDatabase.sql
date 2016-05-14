@@ -107,6 +107,9 @@ Numar NVARCHAR(6) NOT NULL,
 Adresa TEXT
 )
 
+Insert INTO Beneficiar (Nume, Prenume, CNP,TipActId,Serie,Numar,Adresa) Values
+('Taran', 'Constantin', '1790110354858', 2 , 'TZ', '385689', 'Strada Sirius nr.21 Timisoara')
+
 CREATE TABLE Contract
 (
 ContractId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
@@ -117,6 +120,9 @@ BeneficiarId int REFERENCES Beneficiar (BeneficiarId),
 Suma DECIMAL NOT NULL,
 Observatii TEXT
 )
+
+INSERT INTO Contract (NrContract,Data,BeneficiarId,ObiectulContractului,Suma,Observatii) VALUES
+('01','2016-05-03', 1 , 'Intabulare', 500, 'Test values') 
 
 CREATE TABLE Factura
 (
@@ -156,3 +162,9 @@ UAT NVARCHAR(100) NOT NULL,
 Observatii TEXT NULL,
 ReceptionatRespinsId  INT NOT NULL REFERENCES ReceptionatRespins(ReceptionatRespinsId),
 )
+
+INSERT INTO Lucrare (AcceptataRefuzataId, [Nr.OCPI],[DataInregistrare], [TermenSolutionare], [AvizatorRegistrator], TipLucrareId
+[Nr.Proiect],[AnProiect],ContractId,[Cad/Top],UAT,Observatii,ReceptionatRespinsId) VALUES
+(1,'10000','2016-05-03', '2016-06-01', 'Rodina Lenuta', 3, '01', '2016', 1, '1269/5/2', 'Timisoara', 'Test', 2)
+
+

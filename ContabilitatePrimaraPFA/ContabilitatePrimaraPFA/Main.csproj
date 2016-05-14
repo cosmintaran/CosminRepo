@@ -95,6 +95,12 @@
     <Compile Include="View\Forms\CautaLucrari.Designer.cs">
       <DependentUpon>CautaLucrari.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Forms\SelectTipLucrari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\SelectTipLucrari.Designer.cs">
+      <DependentUpon>SelectTipLucrari.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\ucContracte.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </Compile>
     <EmbeddedResource Include="View\Forms\CautaLucrari.resx">
       <DependentUpon>CautaLucrari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Forms\SelectTipLucrari.resx">
+      <DependentUpon>SelectTipLucrari.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserControls\ucContracte.resx">
       <DependentUpon>ucContracte.cs</DependentUpon>

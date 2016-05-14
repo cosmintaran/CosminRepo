@@ -7,7 +7,7 @@ namespace Queries.Core.Domain
     using System.Data.Entity.Spatial;
 
     [Table("TipLucrare")]
-    public partial class TipLucrare
+    public sealed class TipLucrare
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TipLucrare()
@@ -24,9 +24,9 @@ namespace Queries.Core.Domain
         [Column("TipLucrare")]
         [Required]
         [StringLength(125)]
-        public string TipLucrare1 { get; set; }
+        public string Tip_Lucrare { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lucrare> Lucrare { get; set; }
+        public ICollection<Lucrare> Lucrare { get; set; }
     }
 }

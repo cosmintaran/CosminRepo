@@ -1,22 +1,21 @@
-﻿namespace ContabilitatePrimaraPFA
+﻿
+namespace ContabilitatePrimaraPFA.View.Classes
 {
-    using ContabilitatePrimaraPFA.View.UserControls;
     using System.Collections.Generic;
     using System.Windows.Forms;
+    using UserControls;
 
-    public class UIFactory
+    public class UiFactory
     {
-        private static Dictionary<string, UserControl> m_dUserControl = new Dictionary<string, UserControl>();
+        private static Dictionary<string, UserControl> _mDUserControl = new Dictionary<string, UserControl>();
 
-        public static UserControl CreateUI(string uiName)
+        public static UserControl CreateUi(string uiName)
         {
-            if (m_dUserControl.Count == 0)
-            {
-                m_dUserControl.Add("Lucrari", ucLucrari.GetUILucrari);
-                m_dUserControl.Add("Contracte", ucContracte.GetUIContracte);
-                m_dUserControl.Add("Facturi", ucFacturi.GetUIFacturi);
-            }
-            return m_dUserControl[uiName];
+            if (_mDUserControl.Count != 0) return _mDUserControl[uiName];
+            _mDUserControl.Add("Lucrari", UcLucrari.GetUiLucrari);
+            _mDUserControl.Add("Contracte", ucContracte.GetUIContracte);
+            _mDUserControl.Add("Facturi", ucFacturi.GetUIFacturi);
+            return _mDUserControl[uiName];
         }
 
     }

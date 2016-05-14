@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
+﻿
 namespace ContabilitatePrimaraPFA.View.Classes
 {
-   public class FormValidator
+    using System.Text.RegularExpressions;
+
+    public class FormValidator
     {
-        public static bool NamesValidator(string _value, string pattern)
+        public static bool NamesValidator(string value, string pattern)
         {
-            bool isValid = false;
-            Match match = Regex.Match(_value, pattern,RegexOptions.IgnoreCase);
+            var isValid = false;
+            var match = Regex.Match(value, pattern,RegexOptions.IgnoreCase);
             if (match.Success)
                 isValid = true;
             return isValid;

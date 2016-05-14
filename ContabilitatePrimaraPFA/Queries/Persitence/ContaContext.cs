@@ -1,11 +1,8 @@
+using System.Data.Entity;
+using Queries.Core.Domain;
+
 namespace Queries.Persitence
 {
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-    using Queries.Core.Domain;
-
     public partial class ContaContext : DbContext
     {
         public ContaContext()
@@ -58,6 +55,10 @@ namespace Queries.Persitence
 
             modelBuilder.Entity<Lucrare>()
                 .Property(e => e.AvizatorRegistrator)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Lucrare>()
+                .Property(e => e.CadTop)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Lucrare>()

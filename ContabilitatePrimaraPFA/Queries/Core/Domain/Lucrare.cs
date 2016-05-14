@@ -31,7 +31,7 @@ namespace Queries.Core.Domain
         [Column("Nr.Proiect")]
         [Required]
         [StringLength(6)]
-        public string Nr_Proiect { get; set; }
+        public string NrProiect { get; set; }
 
         [Required]
         [StringLength(4)]
@@ -39,8 +39,8 @@ namespace Queries.Core.Domain
 
         public int? ContractId { get; set; }
 
+        [Column("Cad/Top", TypeName = "text")]
         [Required]
-        [Column(TypeName = "text")]
         public string CadTop { get; set; }
 
         [Required]
