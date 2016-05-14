@@ -9,47 +9,50 @@ namespace Queries.Core.Domain
     [Table("Lucrare")]
     public partial class Lucrare
     {
-        public long LucrareId { get; set; }
+        public int LucrareId { get; set; }
 
-        public byte AcceptataRefuzataId { get; set; }
+        public int AcceptataRefuzataId { get; set; }
 
-        public int Nr_OCPI { get; set; }
+        [Column("Nr.OCPI")]
+        [StringLength(10)]
+        public string Nr_OCPI { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime Data_inregistrare { get; set; }
+        public DateTime? DataInregistrare { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? Termen_Solutionare { get; set; }
+        public DateTime? TermenSolutionare { get; set; }
 
         [Column(TypeName = "text")]
-        public string Avizator_Registrator { get; set; }
+        public string AvizatorRegistrator { get; set; }
 
         public int? TipLucrareId { get; set; }
 
-        [Column("Nr. Proiect")]
+        [Column("Nr.Proiect")]
+        [Required]
+        [StringLength(6)]
+        public string Nr_Proiect { get; set; }
+
         [Required]
         [StringLength(4)]
-        public string Nr__Proiect { get; set; }
+        public string AnProiect { get; set; }
 
-        [Column("An Proiect")]
+        public int? ContractId { get; set; }
+
         [Required]
-        [StringLength(4)]
-        public string An_Proiect { get; set; }
-
-        public long? ContractId { get; set; }
+        [Column(TypeName = "text")]
+        public string CadTop { get; set; }
 
         [Required]
         [StringLength(100)]
         public string UAT { get; set; }
 
-        [Column("Receptionat/Respins")]
-        public byte? Receptionat_Respins { get; set; }
+        [Column(TypeName = "text")]
+        public string Observatii { get; set; }
 
-        public long? BeneficiarId { get; set; }
+        public int ReceptionatRespinsId { get; set; }
 
         public virtual AcceptataRefuzata AcceptataRefuzata { get; set; }
-
-        public virtual Beneficiar Beneficiar { get; set; }
 
         public virtual Contract Contract { get; set; }
 

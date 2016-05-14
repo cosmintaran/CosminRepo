@@ -9,22 +9,21 @@ namespace Queries.Core.Domain
     [Table("Chitanta")]
     public partial class Chitanta
     {
-        public long ChitantaId { get; set; }
+        public int ChitantaId { get; set; }
 
-        [Column("Serie Chitanta")]
         [Required]
         [StringLength(4)]
-        public string Serie_Chitanta { get; set; }
+        public string SerieChitanta { get; set; }
 
-        [Column("NR. Chitanta")]
+        [Column("Nr.Chitanta")]
         [Required]
         [StringLength(6)]
-        public string NR__Chitanta { get; set; }
+        public string Nr_Chitanta { get; set; }
 
-        [Column("Data Emiterii", TypeName = "date")]
-        public DateTime Data_Emiterii { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime DataEmiterii { get; set; }
 
-        public long? FacturaId { get; set; }
+        public int FacturaId { get; set; }
 
         public virtual Factura Factura { get; set; }
     }

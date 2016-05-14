@@ -16,7 +16,7 @@ namespace Queries.Core.Domain
             Lucrare = new HashSet<Lucrare>();
         }
 
-        public long ContractId { get; set; }
+        public int ContractId { get; set; }
 
         [Required]
         [StringLength(4)]
@@ -25,11 +25,11 @@ namespace Queries.Core.Domain
         [Column(TypeName = "date")]
         public DateTime Data { get; set; }
 
-        public long? BeneficiarId { get; set; }
+        public int? BeneficiarId { get; set; }
 
-        [Column("Scopul/Obiectul Contractului", TypeName = "text")]
+        [Column(TypeName = "text")]
         [Required]
-        public string Scopul_Obiectul_Contractului { get; set; }
+        public string ObiectulContractului { get; set; }
 
         public decimal Suma { get; set; }
 

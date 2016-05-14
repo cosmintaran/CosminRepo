@@ -15,29 +15,27 @@ namespace Queries.Core.Domain
             Chitanta = new HashSet<Chitanta>();
         }
 
-        public long FacturaId { get; set; }
+        public int FacturaId { get; set; }
 
-        [Column("Serie Factura")]
         [Required]
         [StringLength(4)]
-        public string Serie_Factura { get; set; }
+        public string SerieFactura { get; set; }
 
-        [Column("Nr. Factura")]
+        [Column("Nr.Factura")]
         [Required]
-        [StringLength(5)]
-        public string Nr__Factura { get; set; }
+        [StringLength(6)]
+        public string Nr_Factura { get; set; }
 
-        [Column("Data Factura", TypeName = "date")]
-        public DateTime Data_Factura { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime DataFactura { get; set; }
 
         public decimal Suma { get; set; }
 
-        public long? ContractId { get; set; }
+        public int? ContractId { get; set; }
 
         public bool Plata { get; set; }
 
-        [Column("Platitor TVA")]
-        public bool Platitor_TVA { get; set; }
+        public bool PlatitorTVA { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Chitanta> Chitanta { get; set; }

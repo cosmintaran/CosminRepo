@@ -5,6 +5,6 @@ namespace Queries.Core.Repositories
 {
     public interface IBeneficiarRepository : IRepository<Beneficiar>
     {
-        Beneficiar GetBeneficiarByCNP(int id);
+        Beneficiar GetBeneficiarByCNP(string cnp);
     }
 }

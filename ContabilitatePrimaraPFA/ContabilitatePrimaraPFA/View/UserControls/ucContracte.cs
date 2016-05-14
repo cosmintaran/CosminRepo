@@ -1,13 +1,15 @@
-﻿
-namespace ContabilitatePrimaraPFA.UserControls
+﻿namespace ContabilitatePrimaraPFA.View.UserControls
 {
     using System.Windows.Forms;
 
     public partial class ucContracte : UserControl
     {
+        #region Declared Members
         private static ucContracte m_Contracte = null;
         private static readonly object padlock = new object();
+        #endregion
 
+        #region Init Area
         public static ucContracte GetUIContracte
         {
             get
@@ -23,11 +25,13 @@ namespace ContabilitatePrimaraPFA.UserControls
             }
             
         }
-
-
         private ucContracte()
         {
             InitializeComponent();
         }
+        #endregion
+
+
+
     }
 }

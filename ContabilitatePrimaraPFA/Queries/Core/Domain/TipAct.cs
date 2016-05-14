@@ -15,8 +15,7 @@ namespace Queries.Core.Domain
             Beneficiar = new HashSet<Beneficiar>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public byte TipActId { get; set; }
+        public int TipActId { get; set; }
 
         [Column("TipAct")]
         [Required]

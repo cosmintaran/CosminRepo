@@ -15,12 +15,11 @@ namespace Queries.Core.Domain
             Lucrare = new HashSet<Lucrare>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public byte AcceptataRefuzataId { get; set; }
+        public int AcceptataRefuzataId { get; set; }
 
         [Required]
         [StringLength(10)]
-        public string Status { get; set; }
+        public string StatusAccept { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lucrare> Lucrare { get; set; }

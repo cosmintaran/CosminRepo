@@ -15,9 +15,9 @@ namespace Queries.Persitence.Repositories
 
         }
 
-        public Beneficiar GetBeneficiarByCNP(int id)
+        public Beneficiar GetBeneficiarByCNP(string cnp)
         {
-           return ContaContext.Beneficiar.Where(s => s.CNP == id) as Beneficiar;
+           return ContaContext.Beneficiar.Where(s => s.CNP == cnp) as Beneficiar;
         }
 
         public ContaContext ContaContext

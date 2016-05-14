@@ -1,9 +1,9 @@
-﻿using Queries.Core;
-using Queries.Core.Repositories;
-using Queries.Persitence.Repositories;
-
-namespace Queries.Persitence
+﻿namespace Queries.Persitence
 {
+    using Queries.Core;
+    using Queries.Core.Repositories;
+    using Queries.Persitence.Repositories;
+
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ContaContext m_context;

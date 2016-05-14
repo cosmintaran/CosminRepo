@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-namespace ContabilitatePrimaraPFA.UserControls
+namespace ContabilitatePrimaraPFA.View.UserControls
 {
     partial class ucLucrari
     {
@@ -30,8 +30,8 @@ namespace ContabilitatePrimaraPFA.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bttNewLucrare = new System.Windows.Forms.Button();
             this.bttEditLucrare = new System.Windows.Forms.Button();
             this.bttDeleteLucrari = new System.Windows.Forms.Button();
@@ -64,11 +64,10 @@ namespace ContabilitatePrimaraPFA.UserControls
             this.lblTermenSolutionare = new System.Windows.Forms.Label();
             this.dateTimePickerTermen = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bttSearch = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.LucrariView = new System.Windows.Forms.DataGridView();
             this.errorProviderLucrari = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.bttSearch = new System.Windows.Forms.Button();
             this.grBoxLucrare.SuspendLayout();
             this.pControls.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -412,7 +411,6 @@ namespace ContabilitatePrimaraPFA.UserControls
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.bttSearch);
-            this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.bttDeleteLucrari);
             this.groupBox1.Controls.Add(this.bttNewLucrare);
             this.groupBox1.Controls.Add(this.bttEditLucrare);
@@ -421,6 +419,16 @@ namespace ContabilitatePrimaraPFA.UserControls
             this.groupBox1.Size = new System.Drawing.Size(407, 49);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
+            // 
+            // bttSearch
+            // 
+            this.bttSearch.Location = new System.Drawing.Point(177, 16);
+            this.bttSearch.Name = "bttSearch";
+            this.bttSearch.Size = new System.Drawing.Size(59, 23);
+            this.bttSearch.TabIndex = 4;
+            this.bttSearch.Text = "Search...";
+            this.bttSearch.UseVisualStyleBackColor = true;
+            this.bttSearch.Click += new System.EventHandler(this.bttSearch_Click);
             // 
             // groupBox2
             // 
@@ -439,32 +447,32 @@ namespace ContabilitatePrimaraPFA.UserControls
             // LucrariView
             // 
             this.LucrariView.AllowUserToAddRows = false;
-            this.LucrariView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.LucrariView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.LucrariView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.LucrariView.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LucrariView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.LucrariView.DefaultCellStyle = dataGridViewCellStyle10;
-            this.LucrariView.Location = new System.Drawing.Point(6, 19);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LucrariView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.LucrariView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.LucrariView.DefaultCellStyle = dataGridViewCellStyle4;
+            this.LucrariView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LucrariView.Location = new System.Drawing.Point(3, 16);
             this.LucrariView.Name = "LucrariView";
             this.LucrariView.RowHeadersVisible = false;
-            this.LucrariView.Size = new System.Drawing.Size(395, 376);
+            this.LucrariView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.LucrariView.Size = new System.Drawing.Size(401, 382);
             this.LucrariView.TabIndex = 0;
             // 
             // errorProviderLucrari
@@ -472,23 +480,6 @@ namespace ContabilitatePrimaraPFA.UserControls
             this.errorProviderLucrari.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderLucrari.ContainerControl = this;
             this.errorProviderLucrari.Tag = "Test";
-            this.errorProviderLucrari.RightToLeftChanged += new System.EventHandler(this.bttSave_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(190, 18);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(145, 20);
-            this.txtSearch.TabIndex = 3;
-            // 
-            // bttSearch
-            // 
-            this.bttSearch.Location = new System.Drawing.Point(341, 16);
-            this.bttSearch.Name = "bttSearch";
-            this.bttSearch.Size = new System.Drawing.Size(51, 23);
-            this.bttSearch.TabIndex = 4;
-            this.bttSearch.Text = "Search";
-            this.bttSearch.UseVisualStyleBackColor = true;
             // 
             // ucLucrari
             // 
@@ -504,7 +495,6 @@ namespace ContabilitatePrimaraPFA.UserControls
             this.pControls.ResumeLayout(false);
             this.pControls.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LucrariView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLucrari)).EndInit();
@@ -550,6 +540,5 @@ namespace ContabilitatePrimaraPFA.UserControls
         private System.Windows.Forms.DataGridView LucrariView;
         private System.Windows.Forms.ErrorProvider errorProviderLucrari;
         private System.Windows.Forms.Button bttSearch;
-        private System.Windows.Forms.TextBox txtSearch;
     }
 }

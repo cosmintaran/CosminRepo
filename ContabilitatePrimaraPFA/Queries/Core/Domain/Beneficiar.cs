@@ -13,10 +13,9 @@ namespace Queries.Core.Domain
         public Beneficiar()
         {
             Contract = new HashSet<Contract>();
-            Lucrare = new HashSet<Lucrare>();
         }
 
-        public long BeneficiarId { get; set; }
+        public int BeneficiarId { get; set; }
 
         [Required]
         [StringLength(40)]
@@ -26,16 +25,18 @@ namespace Queries.Core.Domain
         [StringLength(50)]
         public string Prenume { get; set; }
 
-        public long CNP { get; set; }
+        [Required]
+        [StringLength(14)]
+        public string CNP { get; set; }
 
-        public byte? TipActId { get; set; }
+        public int? TipActId { get; set; }
 
         [Required]
         [StringLength(3)]
         public string Serie { get; set; }
 
         [Required]
-        [StringLength(5)]
+        [StringLength(6)]
         public string Numar { get; set; }
 
         [Column(TypeName = "text")]
@@ -45,8 +46,5 @@ namespace Queries.Core.Domain
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contract { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lucrare> Lucrare { get; set; }
     }
 }

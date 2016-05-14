@@ -5,15 +5,17 @@
 
     public partial class Form1 : Form
     {
+        #region declaration Area
         UserControl userControl = null;
-
+        //string 
+        #endregion
         //Constructor
         public Form1()
         {
             InitializeComponent();
             object init = "Lucrari";
             PaintUserControl(init,null);
-            ((UserControls.ucLucrari)userControl).UserControlChanging += this.PaintUserControl;
+            ((View.UserControls.ucLucrari)userControl).UserControlChanging += this.PaintUserControl;
         }
 
         //UserControl changer

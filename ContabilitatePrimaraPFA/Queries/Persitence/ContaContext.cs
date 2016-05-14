@@ -1,7 +1,11 @@
 namespace Queries.Persitence
 {
+    using System;
     using System.Data.Entity;
-    using Core.Domain;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
+    using Queries.Core.Domain;
+
     public partial class ContaContext : DbContext
     {
         public ContaContext()
@@ -32,7 +36,7 @@ namespace Queries.Persitence
                 .IsUnicode(false);
 
             modelBuilder.Entity<Contract>()
-                .Property(e => e.Scopul_Obiectul_Contractului)
+                .Property(e => e.ObiectulContractului)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Contract>()
@@ -47,14 +51,23 @@ namespace Queries.Persitence
                 .Property(e => e.Suma)
                 .HasPrecision(18, 0);
 
+            modelBuilder.Entity<Factura>()
+                .HasMany(e => e.Chitanta)
+                .WithRequired(e => e.Factura)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Lucrare>()
-                .Property(e => e.Avizator_Registrator)
+                .Property(e => e.AvizatorRegistrator)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Lucrare>()
+                .Property(e => e.Observatii)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ReceptionatRespins>()
                 .HasMany(e => e.Lucrare)
-                .WithOptional(e => e.ReceptionatRespins)
-                .HasForeignKey(e => e.Receptionat_Respins);
+                .WithRequired(e => e.ReceptionatRespins)
+                .WillCascadeOnDelete(false);
         }
     }
 }

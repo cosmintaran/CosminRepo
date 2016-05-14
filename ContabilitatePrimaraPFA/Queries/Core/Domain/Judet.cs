@@ -9,7 +9,7 @@ namespace Queries.Core.Domain
     [Table("Judet")]
     public partial class Judet
     {
-        public short JudetId { get; set; }
+        public int JudetId { get; set; }
 
         [Column("Denumire Judet")]
         [Required]
