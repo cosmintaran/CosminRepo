@@ -51,7 +51,6 @@
         {
             if (!ValidateChildren(ValidationConstraints.Enabled)) return;
 
-
             PrepareObject();
             var con = new ContaContext();
             var unitOfWork = new UnitOfWork(con);
@@ -59,12 +58,21 @@
             unitOfWork.Complete();
             unitOfWork.Dispose();
             FillGridView(DateTime.Today.Year.ToString());
+            
+            // Disable grupbox Lucrari
+            if (!bttNewLucrare.Enabled)
+                bttNewLucrare.Enabled = true;
+
+            if (grBoxLucrare.Enabled)
+                grBoxLucrare.Enabled = false;
         }
 
         private void bttNewLucrare_Click(object sender, EventArgs e)
         {
             if (grBoxLucrare.Enabled == false)
                 grBoxLucrare.Enabled = true;
+
+            bttNewLucrare.Enabled = false;
         }
 
         private void LucrariView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -155,10 +163,11 @@
             {
                 selectedRow = iterator;
             }
-            if (selectedRow != null)
+
+            var dataGridViewCell = selectedRow?.Cells["LucrareId"].Value;
+            if (dataGridViewCell != null)
             {
-                var id = (int?) selectedRow.Cells["LucrareId"].Value;
-                if (id == null) return;
+                var id = dataGridViewCell;
                 ContaContext contaContext = new ContaContext();
                 UnitOfWork unityOfWork = new UnitOfWork(contaContext);
                 Lucrare lucrare = unityOfWork.Lucrari.Get((int)id);
@@ -166,6 +175,7 @@
                 unityOfWork.Complete();
                 unityOfWork.Dispose();
             }
+
             bttDeleteLucrari.Enabled = false;
             FillGridView(DateTime.Now.Year.ToString());
         }
@@ -214,10 +224,20 @@
                 ContaContext conta = new ContaContext();
                 UnitOfWork unityOfWork = new UnitOfWork(conta);
                 BindingSource bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByYear(year) };
+                
+                if (bindingSource.DataSource == null) return;
                 LucrariView.DataSource = bindingSource;
-                var dataGridViewColumn = LucrariView.Columns["LucrareId"];
-                if (dataGridViewColumn != null)
+                if (LucrariView.Columns["LucrareId"] == null)
+                {
+                    LucrariView.Rows.Clear();
+                    LucrariView.Refresh();
+                }
+                else
+                {
+                    var dataGridViewColumn = LucrariView.Columns["LucrareId"];
                     dataGridViewColumn.Visible = false;
+                }
+
             }
             catch (InvalidOperationException ex) { MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
