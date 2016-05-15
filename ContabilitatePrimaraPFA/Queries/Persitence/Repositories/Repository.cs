@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Data.Entity;
+
 using System.Linq;
 
 namespace Queries.Persitence.Repositories
@@ -49,6 +50,11 @@ namespace Queries.Persitence.Repositories
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
             Context.Set<TEntity>().RemoveRange(entities);
+        }
+
+        public void UpdateEntry(TEntity entity)
+        {
+            Context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

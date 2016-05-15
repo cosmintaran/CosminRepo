@@ -28,30 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radioBttBeneficiar = new System.Windows.Forms.RadioButton();
             this.bttCautaLucrare = new System.Windows.Forms.Button();
             this.txtCautaLucrare = new System.Windows.Forms.TextBox();
-            this.radioBttCNP = new System.Windows.Forms.RadioButton();
-            this.radioBttAn = new System.Windows.Forms.RadioButton();
-            this.radioBttTipLucrare = new System.Windows.Forms.RadioButton();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.NrCtr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CriteriuCautare = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.bttExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // radioBttBeneficiar
-            // 
-            this.radioBttBeneficiar.AutoSize = true;
-            this.radioBttBeneficiar.Location = new System.Drawing.Point(13, 41);
-            this.radioBttBeneficiar.Name = "radioBttBeneficiar";
-            this.radioBttBeneficiar.Size = new System.Drawing.Size(103, 17);
-            this.radioBttBeneficiar.TabIndex = 0;
-            this.radioBttBeneficiar.TabStop = true;
-            this.radioBttBeneficiar.Text = "Nume Beneficiar";
-            this.radioBttBeneficiar.UseVisualStyleBackColor = true;
             // 
             // bttCautaLucrare
             // 
-            this.bttCautaLucrare.Location = new System.Drawing.Point(278, 12);
+            this.bttCautaLucrare.Location = new System.Drawing.Point(294, 12);
             this.bttCautaLucrare.Name = "bttCautaLucrare";
-            this.bttCautaLucrare.Size = new System.Drawing.Size(75, 23);
+            this.bttCautaLucrare.Size = new System.Drawing.Size(56, 23);
             this.bttCautaLucrare.TabIndex = 1;
             this.bttCautaLucrare.Text = "Cauta";
             this.bttCautaLucrare.UseVisualStyleBackColor = true;
@@ -64,50 +53,53 @@
             this.txtCautaLucrare.Size = new System.Drawing.Size(259, 20);
             this.txtCautaLucrare.TabIndex = 2;
             // 
-            // radioBttCNP
+            // listView1
             // 
-            this.radioBttCNP.AutoSize = true;
-            this.radioBttCNP.Location = new System.Drawing.Point(13, 70);
-            this.radioBttCNP.Name = "radioBttCNP";
-            this.radioBttCNP.Size = new System.Drawing.Size(56, 17);
-            this.radioBttCNP.TabIndex = 3;
-            this.radioBttCNP.TabStop = true;
-            this.radioBttCNP.Text = "C.N.P.";
-            this.radioBttCNP.UseVisualStyleBackColor = true;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.NrCtr,
+            this.CriteriuCautare});
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(13, 39);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(259, 153);
+            this.listView1.TabIndex = 3;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.Click += new System.EventHandler(this.listView1_Click);
             // 
-            // radioBttAn
+            // NrCtr
             // 
-            this.radioBttAn.AutoSize = true;
-            this.radioBttAn.Location = new System.Drawing.Point(172, 41);
-            this.radioBttAn.Name = "radioBttAn";
-            this.radioBttAn.Size = new System.Drawing.Size(107, 17);
-            this.radioBttAn.TabIndex = 4;
-            this.radioBttAn.TabStop = true;
-            this.radioBttAn.Text = "An Documentatie";
-            this.radioBttAn.UseVisualStyleBackColor = true;
+            this.NrCtr.Text = "Nr. Crt";
+            this.NrCtr.Width = 50;
             // 
-            // radioBttTipLucrare
+            // CriteriuCautare
             // 
-            this.radioBttTipLucrare.AutoSize = true;
-            this.radioBttTipLucrare.Location = new System.Drawing.Point(172, 70);
-            this.radioBttTipLucrare.Name = "radioBttTipLucrare";
-            this.radioBttTipLucrare.Size = new System.Drawing.Size(131, 17);
-            this.radioBttTipLucrare.TabIndex = 5;
-            this.radioBttTipLucrare.TabStop = true;
-            this.radioBttTipLucrare.Text = "Cod Tip Documentatie";
-            this.radioBttTipLucrare.UseVisualStyleBackColor = true;
+            this.CriteriuCautare.Text = "Criteriu Cautare";
+            this.CriteriuCautare.Width = 210;
+            // 
+            // bttExit
+            // 
+            this.bttExit.Location = new System.Drawing.Point(294, 53);
+            this.bttExit.Name = "bttExit";
+            this.bttExit.Size = new System.Drawing.Size(56, 23);
+            this.bttExit.TabIndex = 4;
+            this.bttExit.Text = "Renunta";
+            this.bttExit.UseVisualStyleBackColor = true;
             // 
             // CautaLucrari
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 99);
-            this.Controls.Add(this.radioBttTipLucrare);
-            this.Controls.Add(this.radioBttAn);
-            this.Controls.Add(this.radioBttCNP);
+            this.ClientSize = new System.Drawing.Size(361, 204);
+            this.Controls.Add(this.bttExit);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.txtCautaLucrare);
             this.Controls.Add(this.bttCautaLucrare);
-            this.Controls.Add(this.radioBttBeneficiar);
+            this.MaximumSize = new System.Drawing.Size(377, 243);
+            this.MinimumSize = new System.Drawing.Size(377, 243);
             this.Name = "CautaLucrari";
             this.Text = "Cautare Lucrari";
             this.ResumeLayout(false);
@@ -116,12 +108,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.RadioButton radioBttBeneficiar;
         private System.Windows.Forms.Button bttCautaLucrare;
         private System.Windows.Forms.TextBox txtCautaLucrare;
-        private System.Windows.Forms.RadioButton radioBttCNP;
-        private System.Windows.Forms.RadioButton radioBttAn;
-        private System.Windows.Forms.RadioButton radioBttTipLucrare;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button bttExit;
+        private System.Windows.Forms.ColumnHeader NrCtr;
+        private System.Windows.Forms.ColumnHeader CriteriuCautare;
     }
 }

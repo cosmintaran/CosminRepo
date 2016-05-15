@@ -61,6 +61,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Messaging" />
     <Reference Include="System.ServiceModel.DomainServices.EntityFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xaml" />
@@ -89,6 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Classes\UIFactory.cs" />
     <Compile Include="View\Classes\FormValidator.cs" />
+    <Compile Include="View\Classes\Utilities.cs" />
     <Compile Include="View\Forms\CautaLucrari.cs">
       <SubType>Form</SubType>
     </Compile>
