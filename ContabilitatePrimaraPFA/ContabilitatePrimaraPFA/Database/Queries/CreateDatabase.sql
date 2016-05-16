@@ -72,6 +72,7 @@ TipLucrareId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 [TipLucrare] nvarchar(125) NOT NULL
 )
 
+INSERT INTO TipLucrare VALUES('0.0.0','None')
 INSERT INTO TipLucrare VALUES('1.1.1','Aviz incepere lucrari')
 INSERT INTO TipLucrare VALUES('1.1.2','Receptie tehnica pentru lucrari de masuratori terestre')
 INSERT INTO TipLucrare VALUES('2.1.1','Receptie si infiintare carte funciara')
@@ -163,7 +164,7 @@ Observatii TEXT NULL,
 ReceptionatRespinsId  INT NOT NULL REFERENCES ReceptionatRespins(ReceptionatRespinsId),
 )
 
-INSERT INTO Lucrare (AcceptataRefuzataId, [Nr.OCPI],[DataInregistrare], [TermenSolutionare], [AvizatorRegistrator], TipLucrareId
+INSERT INTO Lucrare (AcceptataRefuzataId, [Nr.OCPI],[DataInregistrare], [TermenSolutionare], [AvizatorRegistrator], TipLucrareId,
 [Nr.Proiect],[AnProiect],ContractId,[Cad/Top],UAT,Observatii,ReceptionatRespinsId) VALUES
 (1,'10000','2016-05-03', '2016-06-01', 'Rodina Lenuta', 3, '01', '2016', 1, '1269/5/2', 'Timisoara', 'Test', 2)
 

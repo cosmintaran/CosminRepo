@@ -9,8 +9,8 @@
     {
         #region Class members declaration
         public string SearchKey { get; private set; }
-        public SearchDocCriteria SearchCriteria { get; private set; }
-        private Dictionary<string, SearchDocCriteria> _mDictionary;
+        public SearchCriteria SearchCriteria { get; private set; }
+        private Dictionary<string, SearchCriteria> _mDictionary;
         private string _selectedCriteria;
         private static CautaLucrari _mInstance = null;
         public static readonly object Padlock = new object();
@@ -19,11 +19,11 @@
         private CautaLucrari()
         {
             InitializeComponent();
-             _mDictionary= new Dictionary<string, SearchDocCriteria>
+             _mDictionary= new Dictionary<string, SearchCriteria>
             {
-                { "Nr. Documentatie", SearchDocCriteria.NrDoc}, {"An Documentatie",SearchDocCriteria.AnDoc}, { "Nume Beneficiar",SearchDocCriteria.NumeBeneficiar},
-                { "C.N.P. Beneficiar",SearchDocCriteria.CnpBeneficiar}, {"Cod Documentatie",SearchDocCriteria.TipDoc}, {"Nr. Contract",SearchDocCriteria.NrContract},
-                {"U.A.T.",SearchDocCriteria.Uat}, {"Receptionate",SearchDocCriteria.Receptionata}, {"Respinse",SearchDocCriteria.Respinsa}, {"In Lucru",SearchDocCriteria.InLucru}};
+                { "Nr. Documentatie", SearchCriteria.NrDoc}, {"An Documentatie",SearchCriteria.An}, { "Nume Beneficiar",Classes.SearchCriteria.NumeBeneficiar},
+                { "C.N.P. Beneficiar",Classes.SearchCriteria.CnpBeneficiar}, {"Cod Documentatie",Classes.SearchCriteria.TipDoc}, {"Nr. Contract",Classes.SearchCriteria.NrContract},
+                {"U.A.T.",Classes.SearchCriteria.Uat}, {"Receptionate",Classes.SearchCriteria.Receptionata}, {"Respinse",Classes.SearchCriteria.Respinsa}, {"In Lucru",SearchCriteria.InLucru}};
 
             FillList();
         }
@@ -48,7 +48,7 @@
         {
                  
             SearchKey = txtCautaLucrare.Text;
-            SearchCriteria = string.IsNullOrEmpty(_selectedCriteria) ? SearchDocCriteria.None : _mDictionary[_selectedCriteria];
+            SearchCriteria = string.IsNullOrEmpty(_selectedCriteria) ? SearchCriteria.None : _mDictionary[_selectedCriteria];
                this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -76,15 +76,15 @@
             switch (_selectedCriteria)
             {
                 case "Receptionate":
-                    txtCautaLucrare.Text = @"Receptionata";
+                    txtCautaLucrare.Text = @"Receptionat";
                     txtCautaLucrare.Enabled = false;
                     break;
                 case "Respinse":
-                    txtCautaLucrare.Text = @"Respinsa";
+                    txtCautaLucrare.Text = @"Respins";
                     txtCautaLucrare.Enabled = false;
                     break;
                 case "In Lucru":
-                    txtCautaLucrare.Text = @"InLucru";
+                    txtCautaLucrare.Text = @"In Lucru";
                     txtCautaLucrare.Enabled = false;
                     break;
                 default:

@@ -22,7 +22,7 @@
                          join a in ContaContext.AcceptataRefuzata on l.AcceptataRefuzataId equals a.AcceptataRefuzataId
                          join r in ContaContext.ReceptionatRespins on l.ReceptionatRespinsId equals r.ReceptionatRespinsId
                          join t in ContaContext.TipLucrare on l.TipLucrareId equals t.TipLucrareId
-                         where b.Nume == name
+                         where b.Nume.StartsWith(name) orderby l.AnProiect
                          select new {l.LucrareId, a.StatusAccept,l.Nr_OCPI,l.DataInregistrare, l.TermenSolutionare, l.AvizatorRegistrator,t.Tip_Lucrare,                         
                                      l.NrProiect,l.AnProiect, b.Nume, b.Prenume, l.CadTop, l.UAT,c.NrContract,c.Data.Year, r.StatusRec, l.Observatii}).ToList();
 

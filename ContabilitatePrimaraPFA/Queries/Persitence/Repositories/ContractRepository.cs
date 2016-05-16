@@ -1,35 +1,78 @@
-﻿using Queries.Core.Domain;
-using Queries.Core.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Queries.Persitence.Repositories
+﻿namespace Queries.Persitence.Repositories
 {
-   public class ContractRepository : Repository<Contract>, IContractRepository
+    using Core.Domain;
+    using Core.Repositories;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    public class ContractRepository : Repository<Contract>, IContractRepository
     {
+       // ReSharper disable once SuggestBaseTypeForParameter
        public ContractRepository(ContaContext context)
            :base(context)
        { }
 
-       public IEnumerable<Contract> GetContractsByYear(int year)
+       public IEnumerable<dynamic> GetGridViewContractByYear(int year)
        {
-           return ContaContext.Contract.Where(s => s.Data.Year == year).ToList(); 
+           var holder = (from c in ContaContext.Contract
+               join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId
+               where c.Data.Year == year
+               select new {c.ContractId,c.NrContract, c.Data, b.Nume, b.Prenume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura})
+               .ToList();
+
+           var returnVal = from h in holder
+               select new{ h.NrContract,Data = h.Data.ToShortDateString(),Titular = string.Format("{0} {1}", h.Nume, h.Prenume),
+                           h.Suma,h.Factura,h.Observatii};
+
+           return returnVal;
        }
 
-       public IEnumerable<Contract> GetContractsByNumber(string nrContract)
+        public IEnumerable<Contract> GetContractByYear(int year)
+        {
+            return (from c in ContaContext.Contract where c.Data.Year == year
+                    select c).ToList() ;
+        }
+
+       public IEnumerable<dynamic> GetContractByNumber(string nrContract)
        {
-           return ContaContext.Contract.Where(s => s.NrContract == nrContract).ToList();
-       }
+            var holder = (from c in ContaContext.Contract
+                          join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId
+                          where c.NrContract == nrContract
+                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, b.Prenume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
 
-       public Contract GetContract(int year, string nrContract)
-       {            
-           return (Contract)ContaContext.Contract.Where(s => s.Data.Year == year).Select(x=>x.NrContract == nrContract);
-       }
+            var returnVal = from h in holder
+                            select new{h.NrContract,Data = h.Data.ToShortDateString(),Titular = string.Format("{0} {1}", h.Nume, h.Prenume),h.Suma,
+                                h.Factura,h.Observatii};
+            return returnVal;
+        }
 
-       public ContaContext ContaContext
-       { get { return Context as ContaContext; } }
+       public IEnumerable<dynamic> GetContractByBeneficiar(string name)
+       {
+            var holder = (from c in ContaContext.Contract
+                          join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId
+                          where b.Nume.StartsWith(name) orderby c.Data.Year
+                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, b.Prenume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
+
+            var returnVal = from h in holder
+                            select new{h.NrContract,Data = h.Data.ToShortDateString(),Titular = string.Format("{0} {1}", h.Nume, h.Prenume),
+                                h.Suma,h.Factura,h.Observatii};
+            return returnVal;
+        }
+
+        public IEnumerable<dynamic> GetContractByAmount(decimal val)
+        {
+            var holder = (from c in ContaContext.Contract
+                          join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId
+                          where c.Suma == val orderby c.Data.Year
+                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, b.Prenume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
+
+            var returnVal = from h in holder
+                            select new{h.NrContract,Data = h.Data.ToShortDateString(),Titular = string.Format("{0} {1}", h.Nume, h.Prenume),
+                                h.Suma,h.Factura,h.Observatii};
+            return returnVal;
+        }
+
+
+       public ContaContext ContaContext => Context as ContaContext;
     }
 }

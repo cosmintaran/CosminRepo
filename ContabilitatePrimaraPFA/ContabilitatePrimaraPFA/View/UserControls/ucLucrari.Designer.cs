@@ -30,12 +30,14 @@ namespace ContabilitatePrimaraPFA.View.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bttNewLucrare = new System.Windows.Forms.Button();
             this.bttDeleteLucrari = new System.Windows.Forms.Button();
             this.grBoxLucrare = new System.Windows.Forms.GroupBox();
             this.pControls = new System.Windows.Forms.Panel();
+            this.bttCancel = new System.Windows.Forms.Button();
+            this.bttEdit = new System.Windows.Forms.Button();
             this.bttTipLucrare = new System.Windows.Forms.Button();
             this.bttClearlucrare = new System.Windows.Forms.Button();
             this.bttSave = new System.Windows.Forms.Button();
@@ -67,8 +69,6 @@ namespace ContabilitatePrimaraPFA.View.UserControls
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.LucrariView = new System.Windows.Forms.DataGridView();
             this.errorProviderLucrari = new System.Windows.Forms.ErrorProvider(this.components);
-            this.bttEdit = new System.Windows.Forms.Button();
-            this.bttCancel = new System.Windows.Forms.Button();
             this.grBoxLucrare.SuspendLayout();
             this.pControls.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -152,6 +152,28 @@ namespace ContabilitatePrimaraPFA.View.UserControls
             this.pControls.Size = new System.Drawing.Size(335, 694);
             this.pControls.TabIndex = 0;
             this.pControls.TabStop = true;
+            // 
+            // bttCancel
+            // 
+            this.bttCancel.Location = new System.Drawing.Point(248, 626);
+            this.bttCancel.Name = "bttCancel";
+            this.bttCancel.Size = new System.Drawing.Size(75, 23);
+            this.bttCancel.TabIndex = 16;
+            this.bttCancel.Text = "Cancel";
+            this.bttCancel.UseVisualStyleBackColor = true;
+            this.bttCancel.Visible = false;
+            this.bttCancel.Click += new System.EventHandler(this.bttCancel_Click);
+            // 
+            // bttEdit
+            // 
+            this.bttEdit.Location = new System.Drawing.Point(33, 625);
+            this.bttEdit.Name = "bttEdit";
+            this.bttEdit.Size = new System.Drawing.Size(75, 23);
+            this.bttEdit.TabIndex = 15;
+            this.bttEdit.Text = "Edit";
+            this.bttEdit.UseVisualStyleBackColor = true;
+            this.bttEdit.Visible = false;
+            this.bttEdit.Click += new System.EventHandler(this.bttEdit_Click);
             // 
             // bttTipLucrare
             // 
@@ -443,60 +465,38 @@ namespace ContabilitatePrimaraPFA.View.UserControls
             this.LucrariView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.LucrariView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.LucrariView.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LucrariView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LucrariView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.LucrariView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.LucrariView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.LucrariView.DefaultCellStyle = dataGridViewCellStyle2;
             this.LucrariView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LucrariView.Location = new System.Drawing.Point(3, 16);
             this.LucrariView.Name = "LucrariView";
             this.LucrariView.RowHeadersVisible = false;
             this.LucrariView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LucrariView.Size = new System.Drawing.Size(637, 641);
-            this.LucrariView.CellClick += LucrariView_CellClick;
-            this.LucrariView.CellDoubleClick += LucrariView_CellDoubleClick;   
             this.LucrariView.TabIndex = 0;
+            this.LucrariView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LucrariView_CellClick);
+            this.LucrariView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LucrariView_CellDoubleClick);
             // 
             // errorProviderLucrari
             // 
             this.errorProviderLucrari.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderLucrari.ContainerControl = this;
             this.errorProviderLucrari.Tag = "Test";
-            // 
-            // bttEdit
-            // 
-            this.bttEdit.Location = new System.Drawing.Point(33, 625);
-            this.bttEdit.Name = "bttEdit";
-            this.bttEdit.Size = new System.Drawing.Size(75, 23);
-            this.bttEdit.TabIndex = 15;
-            this.bttEdit.Text = "Edit";
-            this.bttEdit.UseVisualStyleBackColor = true;
-            this.bttEdit.Visible = false;
-            this.bttEdit.Click += new System.EventHandler(this.bttEdit_Click);
-            // 
-            // bttCancel
-            // 
-            this.bttCancel.Location = new System.Drawing.Point(248, 626);
-            this.bttCancel.Name = "bttCancel";
-            this.bttCancel.Size = new System.Drawing.Size(75, 23);
-            this.bttCancel.TabIndex = 16;
-            this.bttCancel.Text = "Cancel";
-            this.bttCancel.UseVisualStyleBackColor = true;
-            this.bttCancel.Visible = false;
-            this.bttCancel.Click += new System.EventHandler(this.bttCancel_Click);
             // 
             // UcLucrari
             // 

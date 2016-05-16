@@ -13,7 +13,7 @@ namespace ContabilitatePrimaraPFA.View.Classes
         {
             if (_mDUserControl.Count != 0) return _mDUserControl[uiName];
             _mDUserControl.Add("Lucrari", UcLucrari.GetUiLucrari);
-            _mDUserControl.Add("Contracte", ucContracte.GetUIContracte);
+            _mDUserControl.Add("Contracte", UcContracte.GetUiContracte);
             _mDUserControl.Add("Facturi", ucFacturi.GetUIFacturi);
             return _mDUserControl[uiName];
         }
