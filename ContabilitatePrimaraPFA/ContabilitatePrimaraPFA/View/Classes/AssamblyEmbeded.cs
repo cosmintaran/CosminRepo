@@ -1,4 +1,4 @@
-﻿namespace ContabilitatePrimaraPFA.Controller
+﻿namespace ContabilitatePrimaraPFA.Classes
 {
     using System.IO;
     using System.Reflection;

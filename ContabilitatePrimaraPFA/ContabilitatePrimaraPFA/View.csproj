@@ -78,8 +78,8 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\AssamblyEmbeded.cs" />
-    <Compile Include="Controller\SQLHelper.cs" />
+    <Compile Include="View\Classes\AssamblyEmbeded.cs" />
+    <Compile Include="View\Classes\SQLHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,11 +91,11 @@
     <Compile Include="View\Classes\UIFactory.cs" />
     <Compile Include="View\Classes\FormValidator.cs" />
     <Compile Include="View\Classes\Utilities.cs" />
-    <Compile Include="View\Forms\CautaLucrari.cs">
+    <Compile Include="View\Forms\FilterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Forms\CautaLucrari.Designer.cs">
-      <DependentUpon>CautaLucrari.cs</DependentUpon>
+    <Compile Include="View\Forms\FilterForm.Designer.cs">
+      <DependentUpon>FilterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Forms\SelectTipLucrari.cs">
       <SubType>Form</SubType>
@@ -134,8 +134,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="View\Forms\CautaLucrari.resx">
-      <DependentUpon>CautaLucrari.cs</DependentUpon>
+    <EmbeddedResource Include="View\Forms\FilterForm.resx">
+      <DependentUpon>FilterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\SelectTipLucrari.resx">
       <DependentUpon>SelectTipLucrari.cs</DependentUpon>

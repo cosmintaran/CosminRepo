@@ -28,11 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bttNewContract = new System.Windows.Forms.Button();
             this.bttDeleteContract = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblFilter = new System.Windows.Forms.Label();
             this.bttSearchContract = new System.Windows.Forms.Button();
             this.grBoxContract = new System.Windows.Forms.GroupBox();
+            this.bttClear = new System.Windows.Forms.Button();
+            this.bttSave = new System.Windows.Forms.Button();
+            this.bttCancel = new System.Windows.Forms.Button();
+            this.bttEdit = new System.Windows.Forms.Button();
             this.bttBeneficiar = new System.Windows.Forms.Button();
             this.dateTimePickerContr = new System.Windows.Forms.DateTimePicker();
             this.txtObs = new System.Windows.Forms.TextBox();
@@ -46,13 +54,13 @@
             this.lblSuma = new System.Windows.Forms.Label();
             this.lblNrContract = new System.Windows.Forms.Label();
             this.gridViewContract = new System.Windows.Forms.DataGridView();
-            this.bttEdit = new System.Windows.Forms.Button();
-            this.bttCancel = new System.Windows.Forms.Button();
-            this.bttSave = new System.Windows.Forms.Button();
-            this.bttClear = new System.Windows.Forms.Button();
+            this.groupBoxContracte = new System.Windows.Forms.GroupBox();
+            this.errorProviderContracte = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.grBoxContract.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewContract)).BeginInit();
+            this.groupBoxContracte.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderContracte)).BeginInit();
             this.SuspendLayout();
             // 
             // bttNewContract
@@ -79,6 +87,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.lblFilter);
             this.groupBox1.Controls.Add(this.bttSearchContract);
             this.groupBox1.Controls.Add(this.bttNewContract);
             this.groupBox1.Controls.Add(this.bttDeleteContract);
@@ -88,13 +97,21 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
+            // lblFilter
+            // 
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.Location = new System.Drawing.Point(231, 21);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(0, 13);
+            this.lblFilter.TabIndex = 6;
+            // 
             // bttSearchContract
             // 
             this.bttSearchContract.Location = new System.Drawing.Point(155, 16);
             this.bttSearchContract.Name = "bttSearchContract";
             this.bttSearchContract.Size = new System.Drawing.Size(60, 23);
             this.bttSearchContract.TabIndex = 5;
-            this.bttSearchContract.Text = "Search...";
+            this.bttSearchContract.Text = "Filter...";
             this.bttSearchContract.UseVisualStyleBackColor = true;
             this.bttSearchContract.Click += new System.EventHandler(this.bttSearchContract_Click);
             // 
@@ -126,6 +143,48 @@
             this.grBoxContract.TabIndex = 5;
             this.grBoxContract.TabStop = false;
             this.grBoxContract.Text = "Contract";
+            // 
+            // bttClear
+            // 
+            this.bttClear.Location = new System.Drawing.Point(232, 530);
+            this.bttClear.Name = "bttClear";
+            this.bttClear.Size = new System.Drawing.Size(75, 23);
+            this.bttClear.TabIndex = 7;
+            this.bttClear.Text = "Clear";
+            this.bttClear.UseVisualStyleBackColor = true;
+            this.bttClear.Click += new System.EventHandler(this.bttClear_Click);
+            // 
+            // bttSave
+            // 
+            this.bttSave.Location = new System.Drawing.Point(10, 530);
+            this.bttSave.Name = "bttSave";
+            this.bttSave.Size = new System.Drawing.Size(75, 23);
+            this.bttSave.TabIndex = 6;
+            this.bttSave.Text = "Save";
+            this.bttSave.UseVisualStyleBackColor = true;
+            this.bttSave.Click += new System.EventHandler(this.bttSave_Click);
+            // 
+            // bttCancel
+            // 
+            this.bttCancel.Location = new System.Drawing.Point(232, 530);
+            this.bttCancel.Name = "bttCancel";
+            this.bttCancel.Size = new System.Drawing.Size(75, 23);
+            this.bttCancel.TabIndex = 5;
+            this.bttCancel.Text = "Cancel";
+            this.bttCancel.UseVisualStyleBackColor = true;
+            this.bttCancel.Visible = false;
+            this.bttCancel.Click += new System.EventHandler(this.bttCancel_Click);
+            // 
+            // bttEdit
+            // 
+            this.bttEdit.Location = new System.Drawing.Point(10, 530);
+            this.bttEdit.Name = "bttEdit";
+            this.bttEdit.Size = new System.Drawing.Size(75, 23);
+            this.bttEdit.TabIndex = 4;
+            this.bttEdit.Text = "Edit";
+            this.bttEdit.UseVisualStyleBackColor = true;
+            this.bttEdit.Visible = false;
+            this.bttEdit.Click += new System.EventHandler(this.bttEdit_Click);
             // 
             // bttBeneficiar
             // 
@@ -160,6 +219,8 @@
             this.txtObiect.Name = "txtObiect";
             this.txtObiect.Size = new System.Drawing.Size(208, 65);
             this.txtObiect.TabIndex = 1;
+            this.txtObiect.Validating += new System.ComponentModel.CancelEventHandler(this.txtObiect_Validating);
+            this.txtObiect.Validated += new System.EventHandler(this.bttSave_Click);
             // 
             // txtSuma
             // 
@@ -167,6 +228,8 @@
             this.txtSuma.Name = "txtSuma";
             this.txtSuma.Size = new System.Drawing.Size(208, 20);
             this.txtSuma.TabIndex = 1;
+            this.txtSuma.Validating += new System.ComponentModel.CancelEventHandler(this.txtSuma_Validating);
+            this.txtSuma.Validated += new System.EventHandler(this.bttSave_Click);
             // 
             // txtNrContr
             // 
@@ -174,6 +237,8 @@
             this.txtNrContr.Name = "txtNrContr";
             this.txtNrContr.Size = new System.Drawing.Size(208, 20);
             this.txtNrContr.TabIndex = 1;
+            this.txtNrContr.Validating += new System.ComponentModel.CancelEventHandler(this.txtNrContr_Validating);
+            this.txtNrContr.Validated += new System.EventHandler(this.bttSave_Click);
             // 
             // lblBeneficiar
             // 
@@ -231,75 +296,71 @@
             // 
             // gridViewContract
             // 
-            this.gridViewContract.AllowUserToDeleteRows = false;
-            this.gridViewContract.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridViewContract.AllowUserToAddRows = false;
+            this.gridViewContract.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridViewContract.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.gridViewContract.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridViewContract.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.gridViewContract.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridViewContract.Location = new System.Drawing.Point(4, 77);
-            this.gridViewContract.MultiSelect = false;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridViewContract.DefaultCellStyle = dataGridViewCellStyle6;
+            this.gridViewContract.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridViewContract.Location = new System.Drawing.Point(3, 16);
             this.gridViewContract.Name = "gridViewContract";
-            this.gridViewContract.Size = new System.Drawing.Size(646, 660);
-            this.gridViewContract.TabIndex = 6;
+            this.gridViewContract.RowHeadersVisible = false;
+            this.gridViewContract.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridViewContract.Size = new System.Drawing.Size(635, 643);
+            this.gridViewContract.TabIndex = 0;
             this.gridViewContract.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewContract_CellClick);
             this.gridViewContract.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewContract_CellDoubleClick);
             // 
-            // bttEdit
+            // groupBoxContracte
             // 
-            this.bttEdit.Location = new System.Drawing.Point(10, 530);
-            this.bttEdit.Name = "bttEdit";
-            this.bttEdit.Size = new System.Drawing.Size(75, 23);
-            this.bttEdit.TabIndex = 4;
-            this.bttEdit.Text = "Edit";
-            this.bttEdit.UseVisualStyleBackColor = true;
-            this.bttEdit.Visible = false;
-            this.bttEdit.Click += new System.EventHandler(this.bttEdit_Click);
+            this.groupBoxContracte.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxContracte.Controls.Add(this.gridViewContract);
+            this.groupBoxContracte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxContracte.Location = new System.Drawing.Point(9, 77);
+            this.groupBoxContracte.Name = "groupBoxContracte";
+            this.groupBoxContracte.Size = new System.Drawing.Size(641, 662);
+            this.groupBoxContracte.TabIndex = 6;
+            this.groupBoxContracte.TabStop = false;
+            this.groupBoxContracte.Text = "Contracte";
             // 
-            // bttCancel
+            // errorProviderContracte
             // 
-            this.bttCancel.Location = new System.Drawing.Point(232, 530);
-            this.bttCancel.Name = "bttCancel";
-            this.bttCancel.Size = new System.Drawing.Size(75, 23);
-            this.bttCancel.TabIndex = 5;
-            this.bttCancel.Text = "Cancel";
-            this.bttCancel.UseVisualStyleBackColor = true;
-            this.bttCancel.Visible = false;
-            this.bttCancel.Click += new System.EventHandler(this.bttCancel_Click);
-            // 
-            // bttSave
-            // 
-            this.bttSave.Location = new System.Drawing.Point(10, 530);
-            this.bttSave.Name = "bttSave";
-            this.bttSave.Size = new System.Drawing.Size(75, 23);
-            this.bttSave.TabIndex = 6;
-            this.bttSave.Text = "Save";
-            this.bttSave.UseVisualStyleBackColor = true;
-            this.bttSave.Click += new System.EventHandler(this.bttSave_Click);
-            // 
-            // bttClear
-            // 
-            this.bttClear.Location = new System.Drawing.Point(232, 530);
-            this.bttClear.Name = "bttClear";
-            this.bttClear.Size = new System.Drawing.Size(75, 23);
-            this.bttClear.TabIndex = 7;
-            this.bttClear.Text = "Clear";
-            this.bttClear.UseVisualStyleBackColor = true;
-            this.bttClear.Click += new System.EventHandler(this.bttClear_Click);
+            this.errorProviderContracte.ContainerControl = this;
             // 
             // UcContracte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.gridViewContract);
+            this.Controls.Add(this.groupBoxContracte);
             this.Controls.Add(this.grBoxContract);
             this.Controls.Add(this.groupBox1);
             this.Name = "UcContracte";
             this.Size = new System.Drawing.Size(1000, 742);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.grBoxContract.ResumeLayout(false);
             this.grBoxContract.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewContract)).EndInit();
+            this.groupBoxContracte.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderContracte)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -328,5 +389,8 @@
         private System.Windows.Forms.Button bttCancel;
         private System.Windows.Forms.Button bttClear;
         private System.Windows.Forms.Button bttSave;
+        private System.Windows.Forms.GroupBox groupBoxContracte;
+        private System.Windows.Forms.Label lblFilter;
+        private System.Windows.Forms.ErrorProvider errorProviderContracte;
     }
 }

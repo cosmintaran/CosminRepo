@@ -1,12 +1,15 @@
-﻿using System.Globalization;
-using ContabilitatePrimaraPFA.View.Classes;
-
+﻿
 namespace ContabilitatePrimaraPFA.View.UserControls
 {
+    using System.Data.Entity.Infrastructure;
     using System;
     using System.Windows.Forms;
     using Queries.Core.Domain;
     using Queries.Persitence;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using Classes;
+    using Forms;
 
     public partial class UcContracte : UserControl
     {
@@ -15,6 +18,7 @@ namespace ContabilitatePrimaraPFA.View.UserControls
         private static readonly object Padlock = new object();
         private Contract _contract;
         private const int DefValue = 1;
+        private FilterCriteria _filter = FilterCriteria.None;
         #endregion
 
         #region Init Area
@@ -32,10 +36,11 @@ namespace ContabilitatePrimaraPFA.View.UserControls
         private UcContracte()
         {
             InitializeComponent();
-            FillGridView(SearchCriteria.An, DateTime.Today.Year.ToString());
+            FillGridView(_filter, DateTime.Today.Year.ToString());
         }
         #endregion
 
+        #region Command region
         private void gridViewContract_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (bttDeleteContract.Enabled) return;
@@ -115,12 +120,22 @@ namespace ContabilitatePrimaraPFA.View.UserControls
 
             if (userConfirm == DialogResult.Yes)
             {
-                unityOfWork.Contracte.Remove(contract);
-                unityOfWork.Complete();
-                unityOfWork.Dispose();
-                contaContext.Dispose();
-                bttDeleteContract.Enabled = false;
-                //FillGridView(SearchDocCriteria.AnDoc, DateTime.Now.Year.ToString());// TODO implementeaza functia vezi ce e cu metoda find din framework 
+                try
+                {
+                    unityOfWork.Contracte.Remove(contract);
+                    unityOfWork.Complete();
+                    unityOfWork.Dispose();
+                    contaContext.Dispose();
+                    bttDeleteContract.Enabled = false;
+                    FillGridView(_filter, DateTime.Now.Year.ToString());
+                    ClearFormContract();
+                }
+                catch (DbUpdateException)
+                {
+                    // ReSharper disable once LocalizableElement
+                    MessageBox.Show("Contractul este folosit de o alta intrare din baza de date.\nStergere refuzata", @"Eroare stergere contract", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch(Exception ex) { MessageBox.Show(ex.Message, @"Eroare stergere contract", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             }
             else
@@ -133,7 +148,29 @@ namespace ContabilitatePrimaraPFA.View.UserControls
 
         private void bttSearchContract_Click(object sender, EventArgs e)
         {
+            Dictionary<string, FilterCriteria> mDictionary = new Dictionary<string, FilterCriteria>()
+            {
+                {"None",FilterCriteria.None}, {"Nr. Contract",FilterCriteria.NrContract}, {"An Contract", FilterCriteria.An },
+                { "Nume Beneficiar",FilterCriteria.NumeBeneficiar },{"Valoare Contract",FilterCriteria.Suma }
+            };
 
+            FilterForm sel = FilterForm.GetCautaForm(mDictionary);
+            var result = sel.ShowDialog();
+            if (result != DialogResult.OK) return;           
+            var key = sel.SearchKey;
+            //if (string.IsNullOrEmpty(key)) return;
+            _filter = sel.FilterCriteria;
+            FillGridView(_filter, key);
+
+            if (IsFilterd())
+            {
+                lblFilter.Text = @"Filter On";
+                lblFilter.Font = new System.Drawing.Font(lblFilter.Font, System.Drawing.FontStyle.Bold);
+            }
+            else
+            {
+                lblFilter.Text = "";
+            }
         }
 
         private void bttBeneficiar_Click(object sender, EventArgs e)
@@ -151,7 +188,7 @@ namespace ContabilitatePrimaraPFA.View.UserControls
             unitOfWork.Complete();
             unitOfWork.Dispose();
 
-            FillGridView(SearchCriteria.An, DateTime.Today.Year.ToString());
+            FillGridView(_filter, DateTime.Today.Year.ToString());
 
             ClearFormContract();
 
@@ -190,26 +227,37 @@ namespace ContabilitatePrimaraPFA.View.UserControls
             PrepareObject();
             ContaContext contaContext = new ContaContext();
             UnitOfWork unityOfWork = new UnitOfWork(contaContext);
+            IList<Contract> checkIfIsExist = (IList<Contract>)unityOfWork.Contracte.GetContractByNumberAndYear(_contract.NrContract, DateTime.Today);
+            if (checkIfIsExist == null || checkIfIsExist.Count > 0)
+            {
+                MessageBox.Show(@"Contractul cu numarul " + _contract.NrContract + @" exista deja.",
+                    @"Eroare la salvare", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNrContr.Text = "";
+                return;
+            }
+
             unityOfWork.Contracte.Add(_contract);
             unityOfWork.Complete();
             unityOfWork.Dispose();
             contaContext.Dispose();
             grBoxContract.Enabled = false;
             bttNewContract.Enabled = true;
+            FillGridView(_filter, DateTime.Today.Year.ToString());
         }
-
+        #endregion Command Region
 
         #region Logic Area
 
         private void PrepareObject()
         {
-            _contract.NrContract = txtNrContr.Text;
+            _contract.NrContract = txtNrContr.Text.Trim();
             _contract.Data = dateTimePickerContr.Value;
-            _contract.Suma = decimal.Parse(txtSuma.Text);
-            _contract.ObiectulContractului = txtObiect.Text;
+            _contract.Suma = !string.IsNullOrEmpty(txtSuma.Text) ? decimal.Parse(txtSuma.Text.Trim()) : 0;
+            _contract.ObiectulContractului = txtObiect.Text.Trim();
             //Setarea se face in bttBeneficiar
-            _contract.BeneficiarId = DefValue; // Initializam campul cu  valoare default daca nu se alege beneficiarul 
-            _contract.Observatii = txtObs.Text;
+            if(_contract.BeneficiarId == null || _contract.BeneficiarId <= 0 )
+                _contract.BeneficiarId = DefValue; // Initializam campul cu  valoare default daca nu se alege beneficiarul 
+            _contract.Observatii = txtObs.Text.Trim();
         }
 
         private void ClearFormContract()
@@ -222,7 +270,7 @@ namespace ContabilitatePrimaraPFA.View.UserControls
             dateTimePickerContr.Value = DateTime.Today;
         }
 
-        private void FillGridView(SearchCriteria criteria, string key)
+        private void FillGridView(FilterCriteria criteria, string key)
         {
             try
             {
@@ -234,14 +282,14 @@ namespace ContabilitatePrimaraPFA.View.UserControls
                 #region Switch 
                 switch (criteria)
                 {
-                    case SearchCriteria.An:
+                    case FilterCriteria.An:
 
                         try
                         {
                             int year = int.Parse(key);
                             bindingSource = new BindingSource
                             {
-                                DataSource = unityOfWork.Contracte.GetContractByYear(year)
+                                DataSource = unityOfWork.Contracte.GetGridViewContractByYear(year)
                             };
                         }
                         catch (Exception)
@@ -249,17 +297,30 @@ namespace ContabilitatePrimaraPFA.View.UserControls
                             return;
                         }
                         break;
-                    case SearchCriteria.NrContract:
-                        bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrareByContract(key) };
+
+                    case FilterCriteria.NrContract:
+                        bindingSource = new BindingSource { DataSource = unityOfWork.Contracte.GetContractByNumber(key) };
                         break;
-                    case SearchCriteria.NrDoc:
-                        bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByNrDocumentatie(key) };
+
+                    case FilterCriteria.Suma:
+                        try
+                        {
+                            decimal value = decimal.Parse(key);
+                            bindingSource = new BindingSource{ DataSource = unityOfWork.Contracte.GetContractByAmount(value) };
+                        }
+                        catch (Exception)
+                        {
+                            return;
+                        }
+                        
                         break;
-                    case SearchCriteria.NumeBeneficiar:
-                        bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByBeneficiarName(key) };
+
+                    case FilterCriteria.NumeBeneficiar:
+                        bindingSource = new BindingSource { DataSource = unityOfWork.Contracte.GetContractByBeneficiar(key) };
                         break;
+
                     default:
-                        bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByYear(key) };
+                        bindingSource = new BindingSource { DataSource = unityOfWork.Contracte.GetContracts() };
                         break;
                 }
                 #endregion Switch
@@ -267,14 +328,14 @@ namespace ContabilitatePrimaraPFA.View.UserControls
                 // ReSharper disable once ConstantConditionalAccessQualifier
                 if (bindingSource?.DataSource == null) return;
                 gridViewContract.DataSource = bindingSource;
-                if (gridViewContract.Columns["LucrareId"] == null)
+                if (gridViewContract.Columns["ContractId"] == null)
                 {
                     gridViewContract.Rows.Clear();
                     gridViewContract.Refresh();
                 }
                 else
                 {
-                    var dataGridViewColumn = gridViewContract.Columns["LucrareId"];
+                    var dataGridViewColumn = gridViewContract.Columns["ContractId"];
                     dataGridViewColumn.Visible = false;
                 }
 
@@ -282,9 +343,68 @@ namespace ContabilitatePrimaraPFA.View.UserControls
             catch (InvalidOperationException ex) { MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
-
+        private bool IsFilterd()
+        {
+            bool isFiltred = _filter != FilterCriteria.None;
+            return isFiltred;
+        }
         #endregion LogicArea
 
+        #region Validation area
 
+
+        #endregion
+
+        private void txtNrContr_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtNrContr.Text))
+            {
+                e.Cancel = true;
+                txtNrContr.Focus(); errorProviderContracte.SetError(txtNrContr, "Campul Nr. Contract trebuie completat");
+            }
+
+            else if (!FormValidator.NamesValidator(txtNrContr.Text, "[A-Za-z0-9]"))
+            {
+                e.Cancel = true;
+                txtNrContr.Focus(); errorProviderContracte.SetError(txtNrContr, "Campul contine caractere invalide");
+            }
+            else
+            {
+                e.Cancel = false; errorProviderContracte.SetError(txtNrContr, "");
+            }
+        }
+
+        private void txtSuma_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtNrContr.Text))
+            {
+                e.Cancel = true;
+                txtSuma.Focus(); errorProviderContracte.SetError(txtSuma, "Campul Valoare Contract trebuie completat");
+            }
+
+            else if (!FormValidator.NamesValidator(txtNrContr.Text, "[0-9]"))
+            {
+                e.Cancel = true;
+                txtSuma.Focus(); errorProviderContracte.SetError(txtSuma, "Campul contine caractere invalide");
+            }
+            else
+            {
+                e.Cancel = false; errorProviderContracte.SetError(txtSuma, "");
+            }
+        }
+
+        private void txtObiect_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtNrContr.Text))
+            {
+                e.Cancel = true;
+                txtObiect.Focus(); errorProviderContracte.SetError(txtNrContr, "Campul Obiect Contract trebuie completat");
+            }
+            else
+            {
+                e.Cancel = false; errorProviderContracte.SetError(txtObiect, "");
+            }
+
+        }
     }
 }

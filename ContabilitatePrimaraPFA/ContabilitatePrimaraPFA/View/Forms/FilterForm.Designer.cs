@@ -1,6 +1,6 @@
 ﻿namespace ContabilitatePrimaraPFA.View.Forms
 {
-    partial class CautaLucrari
+    partial class FilterForm
     {
         /// <summary>
         /// Required designer variable.
@@ -88,6 +88,7 @@
             this.bttExit.TabIndex = 4;
             this.bttExit.Text = "Renunta";
             this.bttExit.UseVisualStyleBackColor = true;
+            this.bttExit.Click += new System.EventHandler(this.bttExit_Click);
             // 
             // CautaLucrari
             // 

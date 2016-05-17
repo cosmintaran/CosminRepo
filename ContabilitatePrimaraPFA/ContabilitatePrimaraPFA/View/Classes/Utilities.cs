@@ -3,7 +3,7 @@
     using System;
 
     [Flags]
-    public enum SearchCriteria : int
+    public enum FilterCriteria : int
     {
         None            = 0 << 0, //0000
         NrDoc           = 1 << 0, //0001

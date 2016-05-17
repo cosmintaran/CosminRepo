@@ -1,5 +1,8 @@
-﻿namespace ContabilitatePrimaraPFA.View.UserControls
+﻿
+namespace ContabilitatePrimaraPFA.View.UserControls
 {
+    using System.Collections.Generic;
+    using System.Data.Entity.Infrastructure;
     using System.Windows.Forms;
     using System;
     using Queries.Core.Domain;
@@ -19,6 +22,7 @@
         private static UcLucrari _mInstance;
         private static readonly object Padlock = new object();
         private Lucrare _lucrare;
+        private FilterCriteria _filter = FilterCriteria.None;
 
         #endregion
 
@@ -39,7 +43,7 @@
             InitializeComponent();
             _lucrare = new Lucrare();
             FillCombobox();
-            FillGridView(SearchCriteria.An, DateTime.Today.Year.ToString());
+            FillGridView(_filter, DateTime.Today.Year.ToString());
             ClearFormLucrare();
         }
         #endregion
@@ -53,10 +57,20 @@
             PrepareObject();
             var con = new ContaContext();
             var unitOfWork = new UnitOfWork(con);
+
+            IList<Lucrare> checkIfIsExist = (IList<Lucrare>)unitOfWork.Lucrari.GetLucrariByNumberAndYear(_lucrare.NrProiect, DateTime.Today);
+            if (checkIfIsExist == null || checkIfIsExist.Count > 0)
+            {
+                MessageBox.Show(@"Documentatia cu numarul " + _lucrare.NrProiect +@"/" +_lucrare.AnProiect+ @" exista deja.",
+                    @"Eroare la salvare", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDoc.Text = "";
+                return;
+            }
+
             unitOfWork.Lucrari.Add(_lucrare);
             unitOfWork.Complete();
             unitOfWork.Dispose();
-            FillGridView(SearchCriteria.An, DateTime.Today.Year.ToString());
+            FillGridView(_filter, DateTime.Today.Year.ToString());
 
             ClearFormLucrare();
             if (!bttNewLucrare.Enabled)
@@ -89,13 +103,32 @@
 
         private void bttSearch_Click(object sender, EventArgs e)
         {
-            CautaLucrari sel = CautaLucrari.GetCautaLucrariForm;
+            Dictionary<string,FilterCriteria> mDictionary = new Dictionary<string, FilterCriteria>
+            {
+                {"None",FilterCriteria.None} ,{"An Documentatie",FilterCriteria.An},{ "Nr. Documentatie", FilterCriteria.NrDoc}, 
+                { "Nume Beneficiar",FilterCriteria.NumeBeneficiar},{ "C.N.P. Beneficiar",FilterCriteria.CnpBeneficiar},
+                { "Cod Documentatie",FilterCriteria.TipDoc},{ "Nr. Contract",FilterCriteria.NrContract},{"U.A.T.",FilterCriteria.Uat},
+                { "Receptionate",FilterCriteria.Receptionata},{ "Respinse",FilterCriteria.Respinsa}, {"In Lucru",FilterCriteria.InLucru}};
+
+            FilterForm sel = FilterForm.GetCautaForm(mDictionary);
             var result = sel.ShowDialog();
             if (result != DialogResult.OK) return;
-            var criteria = sel.SearchCriteria;
             var key = sel.SearchKey;
-            if (string.IsNullOrEmpty(key)) return;
-            FillGridView(criteria, key);
+           // if (string.IsNullOrEmpty(key)) return;
+            _filter = sel.FilterCriteria;
+            FillGridView(_filter, key);
+            if (IsFilterd())
+            {
+                lblFilter.Text = @"Filter On";
+                lblFilter.Font = new System.Drawing.Font(lblFilter.Font, System.Drawing.FontStyle.Bold);
+            }
+            else
+            {
+                lblFilter.Text = "";
+            }
+                
+                           
+            
         }
 
         private void LucrariView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -115,9 +148,6 @@
             if (id == null) return;
             _lucrare = unitOfWork.Lucrari.Get((int)id);
 
-            unitOfWork.Dispose();
-            conta.Dispose();
-
             if (_lucrare == null) return;
 
             int sStatusAccept = unitOfWork.AcceptateRespinse.Get(_lucrare.AcceptataRefuzataId).AcceptataRefuzataId;
@@ -136,6 +166,9 @@
 
             if (_lucrare.TermenSolutionare != null)
                 dateTimePickerTermen.Value = (DateTime)_lucrare.TermenSolutionare;
+
+            unitOfWork.Dispose();
+            conta.Dispose();
 
             txtInreg.Text = _lucrare.Nr_OCPI;
             txtDoc.Text = _lucrare.NrProiect;
@@ -184,12 +217,21 @@
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (userConfirm == DialogResult.Yes)
             {
-                unityOfWork.Lucrari.Remove(lucrare);
-                unityOfWork.Complete();
-                unityOfWork.Dispose();
-                contaContext.Dispose();
-                bttDeleteLucrari.Enabled = false;
-                FillGridView(SearchCriteria.An,DateTime.Now.Year.ToString());
+                try
+                {
+                    unityOfWork.Lucrari.Remove(lucrare);
+                    unityOfWork.Complete();
+                    unityOfWork.Dispose();
+                    contaContext.Dispose();
+                    bttDeleteLucrari.Enabled = false;
+                    FillGridView(_filter, DateTime.Now.Year.ToString());
+                }
+                catch (DbUpdateException)
+                {
+                    // ReSharper disable once LocalizableElement
+                    MessageBox.Show("Documentatie este folosit de o alta intrare din baza de date.\nStergere refuzata", @"Eroare stergere contract", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message, @"Eroare stergere contract", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
             else
             {
@@ -209,7 +251,7 @@
             unitOfWork.Lucrari.UpdateEntry(_lucrare);
             unitOfWork.Complete();
             unitOfWork.Dispose();
-            FillGridView(SearchCriteria.An, DateTime.Today.Year.ToString());
+            FillGridView(_filter, DateTime.Today.Year.ToString());
 
             ClearFormLucrare();
 
@@ -274,7 +316,7 @@
 
         }
 
-        private void FillGridView(SearchCriteria criteria, string key)
+        private void FillGridView(FilterCriteria criteria, string key)
         {
             try
             {
@@ -286,36 +328,36 @@
                 #region Switch 
                 switch (criteria)
                 {
-                    case SearchCriteria.An:
+                    case FilterCriteria.An:
                         bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByYear(key) };
                         break;
-                    case SearchCriteria.CnpBeneficiar:
+                    case FilterCriteria.CnpBeneficiar:
                         bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByBeneficiarName(key) };
                         break;
-                    case SearchCriteria.NrContract:
+                    case FilterCriteria.NrContract:
                         bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrareByContract(key) }; 
                         break;
-                    case SearchCriteria.NrDoc:
+                    case FilterCriteria.NrDoc:
                         bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByNrDocumentatie(key) };
                         break;
-                    case SearchCriteria.NumeBeneficiar:
+                    case FilterCriteria.NumeBeneficiar:
                         bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByBeneficiarName(key) };
                         break;
 
-                    case SearchCriteria.TipDoc:
+                    case FilterCriteria.TipDoc:
                         bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByCodLucrare(key) };
                         break;
-                    case SearchCriteria.Uat:
+                    case FilterCriteria.Uat:
                         bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByUat(key) };
                         break;
-                    case SearchCriteria.Receptionata:
-                    case SearchCriteria.Respinsa:
-                    case SearchCriteria.InLucru:
-                        bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByStatusOCPI(key) };
+                    case FilterCriteria.Receptionata:
+                    case FilterCriteria.Respinsa:
+                    case FilterCriteria.InLucru:
+                        bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByStatusOcpi(key) };
                         break;
                                           
                     default:
-                        bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrariByYear(key) };
+                        bindingSource = new BindingSource { DataSource = unityOfWork.Lucrari.GetLucrari() };
                         break;
                 }
                 #endregion Switch
@@ -358,16 +400,17 @@
             if (acceptataRefuzata != null)
                 _lucrare.AcceptataRefuzataId = acceptataRefuzata.AcceptataRefuzataId;
 
-            _lucrare.Nr_OCPI = txtInreg.Text;
+            _lucrare.Nr_OCPI = txtInreg.Text.Trim();
             _lucrare.DataInregistrare = dateTimePickerInreg.Value;
             _lucrare.TermenSolutionare = dateTimePickerTermen.Value;
-            _lucrare.AvizatorRegistrator = txtAvizator.Text;
-            //TipLucrare din form SelectTipLucrare initializam doar cu val default 
-            _lucrare.TipLucrareId = 1; // Id 1 None
-            _lucrare.NrProiect = txtDoc.Text;
-            _lucrare.AnProiect = DateTime.Now.Year.ToString();
-            _lucrare.CadTop = txtCad.Text;
-            _lucrare.UAT = txtUAT.Text;
+            _lucrare.AvizatorRegistrator = txtAvizator.Text.Trim();
+            //TipLucrare din form SelectTipLucrare initializam doar cu val default
+            if (_lucrare.TipLucrareId == null || _lucrare.TipLucrareId <= 0)
+                _lucrare.TipLucrareId = 1; // Id 1 None     
+            _lucrare.NrProiect = txtDoc.Text.Trim();
+            _lucrare.AnProiect = DateTime.Now.Year.ToString().Trim();
+            _lucrare.CadTop = txtCad.Text.Trim();
+            _lucrare.UAT = txtUAT.Text.Trim();
 
             var contract = cbContract.SelectedItem as Contract;
             if (contract != null)
@@ -377,7 +420,7 @@
             if (receptionatRespins != null)
                 _lucrare.ReceptionatRespinsId = receptionatRespins.ReceptionatRespinsId;
 
-            _lucrare.Observatii = txtObservatii.Text;
+            _lucrare.Observatii = txtObservatii.Text.Trim();
         }
 
         private void ClearFormLucrare()
@@ -391,6 +434,12 @@
             txtInreg.Text = "";
             txtObservatii.Text = "";
             txtUAT.Text = "";
+        }
+
+        private bool IsFilterd()
+        {
+            bool isFiltred = _filter != FilterCriteria.None;
+            return isFiltred;
         }
 
         #endregion

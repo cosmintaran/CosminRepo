@@ -1,4 +1,4 @@
-﻿namespace ContabilitatePrimaraPFA.Controller
+﻿namespace ContabilitatePrimaraPFA.Classes
 {
     using System;
     using System.Collections.Generic;

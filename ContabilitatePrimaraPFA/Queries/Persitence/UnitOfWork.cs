@@ -1,4 +1,6 @@
-﻿namespace Queries.Persitence
+﻿using System;
+
+namespace Queries.Persitence
 {
     using Queries.Core;
     using Queries.Core.Repositories;

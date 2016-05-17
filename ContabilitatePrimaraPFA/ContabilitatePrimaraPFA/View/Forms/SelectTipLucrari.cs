@@ -4,7 +4,6 @@ namespace ContabilitatePrimaraPFA.View.Forms
     using System.Windows.Forms;
     using Queries.Persitence;
     using System;
-    using System.Collections.Generic;
 
     public partial class SelectTipLucrari : Form
     {

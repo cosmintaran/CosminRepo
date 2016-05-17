@@ -14,6 +14,16 @@
 
         }
 
+
+        public IEnumerable<Lucrare> GetLucrariByNumberAndYear(string number, DateTime year)
+        {
+            return (from l in ContaContext.Lucrare
+                where
+                    l.NrProiect == number && l.AnProiect == year.Year.ToString()
+                orderby l.AnProiect
+                select l).ToList();
+        }
+
         public IEnumerable<dynamic> GetLucrariByBeneficiarName(string name)
         {
             var holder = (from l in ContaContext.Lucrare
@@ -129,7 +139,7 @@
                 return retVal;
             }
 
-        public IEnumerable<dynamic> GetLucrariByCNP(string cnp)
+        public IEnumerable<dynamic> GetLucrariByCnp(string cnp)
         {
             var holder = (from l in ContaContext.Lucrare
                           join c in ContaContext.Contract on l.ContractId equals c.ContractId
@@ -154,7 +164,7 @@
             return returnValue;
         }
 
-        public IEnumerable<dynamic> GetLucrariByStatusOCPI(string status)
+        public IEnumerable<dynamic> GetLucrariByStatusOcpi(string status)
         {
             var holder = (from l in ContaContext.Lucrare
                           join c in ContaContext.Contract on l.ContractId equals c.ContractId
@@ -198,6 +208,31 @@
                                   h.LucrareId,h.StatusAccept,AceptataRefuzata = String.Format(h.StatusAccept),NrinregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare),
                                   h.AvizatorRegistrator,Tiplucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari = String.Format("{0} {1}", h.Nume, h.Prenume),
                                   h.CadTop,h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
+                              };
+            return returnValue;
+        }
+
+        public IEnumerable<dynamic> GetLucrari()
+        {
+            var holder = (from l in ContaContext.Lucrare
+                          join c in ContaContext.Contract on l.ContractId equals c.ContractId
+                          join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId
+                          join a in ContaContext.AcceptataRefuzata on l.AcceptataRefuzataId equals a.AcceptataRefuzataId
+                          join r in ContaContext.ReceptionatRespins on l.ReceptionatRespinsId equals r.ReceptionatRespinsId
+                          join t in ContaContext.TipLucrare on l.TipLucrareId equals t.TipLucrareId
+                          select new
+                          {l.LucrareId,a.StatusAccept,l.Nr_OCPI,l.DataInregistrare,l.TermenSolutionare,l.AvizatorRegistrator,
+                              t.Tip_Lucrare,l.NrProiect,l.AnProiect,b.Nume,b.Prenume,l.CadTop,l.UAT,c.NrContract,c.Data.Year,
+                              r.StatusRec,l.Observatii}).ToList();
+
+            var returnValue = from h in holder
+                              select new
+                              { h.LucrareId,h.StatusAccept,AceptataRefuzata = String.Format(h.StatusAccept),
+                                  NrinregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare),
+                                  h.AvizatorRegistrator,Tiplucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),
+                                  Beneficiari = String.Format("{0} {1}", h.Nume, h.Prenume),h.CadTop,
+                                  h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),
+                                  ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
                               };
             return returnValue;
         }
