@@ -1,4 +1,4 @@
-﻿namespace ContabilitatePrimaraPFA.View.UserControls
+﻿namespace View.View.UserControls
 {
     partial class UcContracte
     {
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bttNewContract = new System.Windows.Forms.Button();
             this.bttDeleteContract = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -75,6 +75,7 @@
             // 
             // bttDeleteContract
             // 
+            this.bttDeleteContract.Enabled = false;
             this.bttDeleteContract.Location = new System.Drawing.Point(72, 16);
             this.bttDeleteContract.Name = "bttDeleteContract";
             this.bttDeleteContract.Size = new System.Drawing.Size(51, 23);
@@ -220,7 +221,6 @@
             this.txtObiect.Size = new System.Drawing.Size(208, 65);
             this.txtObiect.TabIndex = 1;
             this.txtObiect.Validating += new System.ComponentModel.CancelEventHandler(this.txtObiect_Validating);
-            this.txtObiect.Validated += new System.EventHandler(this.bttSave_Click);
             // 
             // txtSuma
             // 
@@ -229,7 +229,6 @@
             this.txtSuma.Size = new System.Drawing.Size(208, 20);
             this.txtSuma.TabIndex = 1;
             this.txtSuma.Validating += new System.ComponentModel.CancelEventHandler(this.txtSuma_Validating);
-            this.txtSuma.Validated += new System.EventHandler(this.bttSave_Click);
             // 
             // txtNrContr
             // 
@@ -238,7 +237,6 @@
             this.txtNrContr.Size = new System.Drawing.Size(208, 20);
             this.txtNrContr.TabIndex = 1;
             this.txtNrContr.Validating += new System.ComponentModel.CancelEventHandler(this.txtNrContr_Validating);
-            this.txtNrContr.Validated += new System.EventHandler(this.bttSave_Click);
             // 
             // lblBeneficiar
             // 
@@ -300,23 +298,23 @@
             this.gridViewContract.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridViewContract.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.gridViewContract.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridViewContract.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridViewContract.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gridViewContract.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridViewContract.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridViewContract.DefaultCellStyle = dataGridViewCellStyle2;
             this.gridViewContract.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridViewContract.Location = new System.Drawing.Point(3, 16);
             this.gridViewContract.Name = "gridViewContract";

@@ -1,10 +1,10 @@
-﻿using ContabilitatePrimaraPFA.View.Classes;
-
-namespace ContabilitatePrimaraPFA
+﻿using System;
+using System.Data.Entity;
+using System.Windows.Forms;
+using View.View.Classes;
+using Queries.Persitence;
+namespace View
 {
-    using System;
-    using System.Windows.Forms;
-
     public partial class Form1 : Form
     {
         #region declaration Area
@@ -15,9 +15,10 @@ namespace ContabilitatePrimaraPFA
         public Form1()
         {
             InitializeComponent();
+            Database.SetInitializer<ContaContext>(new ContaContextSeeder());
             object init = "Lucrari";
             PaintUserControl(init,null);
-            ((View.UserControls.UcLucrari)_userControl).UserControlChanging += PaintUserControl;
+            ((ContabilitatePrimaraPFA.View.UserControls.UcLucrari)_userControl).UserControlChanging += PaintUserControl;
         }
 
         //UserControl changer

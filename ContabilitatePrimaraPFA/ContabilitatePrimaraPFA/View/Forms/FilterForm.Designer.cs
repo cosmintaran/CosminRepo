@@ -1,4 +1,4 @@
-﻿namespace ContabilitatePrimaraPFA.View.Forms
+﻿namespace View.View.Forms
 {
     partial class FilterForm
     {

@@ -34,13 +34,13 @@
                          join t in ContaContext.TipLucrare on l.TipLucrareId equals t.TipLucrareId
                          where b.Nume.StartsWith(name) orderby l.AnProiect
                          select new {l.LucrareId, a.StatusAccept,l.Nr_OCPI,l.DataInregistrare, l.TermenSolutionare, l.AvizatorRegistrator,t.Tip_Lucrare,                         
-                                     l.NrProiect,l.AnProiect, b.Nume, b.Prenume, l.CadTop, l.UAT,c.NrContract,c.Data.Year, r.StatusRec, l.Observatii}).ToList();
+                                     l.NrProiect,l.AnProiect, b.Nume, l.CadTop, l.UAT,c.NrContract,c.Data.Year, r.StatusRec, l.Observatii}).ToList();
 
             var returnValue = from h in holder
                 select new
                     {
                         h.LucrareId, h.StatusAccept, AceptataRefuzata = String.Format(h.StatusAccept), NrinregOCPI = String.Format("{0}{1}{2}",h.Nr_OCPI,@"-",h.DataInregistrare),
-                        h.AvizatorRegistrator, TipLucrare = h.Tip_Lucrare, NrProiect = String.Format("{0}{1}{2}",h.NrProiect,@"/",h.AnProiect), Beneficiari = String.Format("{0} {1}", h.Nume, h.Prenume),
+                        h.AvizatorRegistrator, TipLucrare = h.Tip_Lucrare, NrProiect = String.Format("{0}{1}{2}",h.NrProiect,@"/",h.AnProiect), Beneficiari = h.Nume,
                         h.CadTop,h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
                     };
                            
@@ -59,12 +59,12 @@
                           select new
                           {
                               l.LucrareId, a.StatusAccept, l.Nr_OCPI, l.DataInregistrare, l.TermenSolutionare, l.AvizatorRegistrator, t.Tip_Lucrare,
-                              l.NrProiect, l.AnProiect, b.Nume, b.Prenume, l.CadTop, l.UAT, c.NrContract, c.Data.Year, l.Observatii, r.StatusRec }).ToList();
+                              l.NrProiect, l.AnProiect, b.Nume, l.CadTop, l.UAT, c.NrContract, c.Data.Year, l.Observatii, r.StatusRec }).ToList();
 
             var retVal = from h in holder
                          select new
                          {h.LucrareId,AceptataRefuzata = String.Format(h.StatusAccept),NrInregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare.Value.ToShortDateString()),
-                             h.TermenSolutionare,h.AvizatorRegistrator,TipLucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari = String.Format("{0} {1}", h.Nume, h.Prenume),
+                             h.TermenSolutionare,h.AvizatorRegistrator,TipLucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari = h.Nume, 
                              h.CadTop,h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
                          };
 
@@ -82,12 +82,12 @@
                           where t.CodLucrare == codLucrare
                           select new
                           {l.LucrareId, a.StatusAccept, l.Nr_OCPI, l.DataInregistrare, l.TermenSolutionare, l.AvizatorRegistrator, TipLucrare = t.Tip_Lucrare,
-                              l.NrProiect, l.AnProiect, b.Nume, b.Prenume, l.CadTop, l.UAT, c.NrContract, c.Data.Year, l.Observatii, r.StatusRec }).ToList();
+                              l.NrProiect, l.AnProiect, b.Nume,  l.CadTop, l.UAT, c.NrContract, c.Data.Year, l.Observatii, r.StatusRec }).ToList();
 
             var retVal = from h in holder
                          select new
                          {h.LucrareId, AceptataRefuzata = String.Format(h.StatusAccept), NrInregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare.Value.ToShortDateString()),
-                             h.TermenSolutionare, h.AvizatorRegistrator, h.TipLucrare, NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect), Beneficiari = String.Format("{0} {1}", h.Nume, h.Prenume),
+                             h.TermenSolutionare, h.AvizatorRegistrator, h.TipLucrare, NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect), Beneficiari = h.Nume,
                              h.CadTop, h.UAT, Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year), ReceptionataRespinsa = String.Format(h.StatusRec), h.Observatii
                          };
 
@@ -105,12 +105,12 @@
                     join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId
                     where l.AnProiect == year
                     select new{l.LucrareId,a.StatusAccept, l.Nr_OCPI, l.DataInregistrare, l.TermenSolutionare,l.AvizatorRegistrator,
-                        TipLucrare = t.Tip_Lucrare,l.NrProiect, l.AnProiect,b.Nume,b.Prenume, l.CadTop,l.UAT,c.NrContract, c.Data.Year, l.Observatii, r.StatusRec}).ToList();
+                        TipLucrare = t.Tip_Lucrare,l.NrProiect, l.AnProiect,b.Nume, l.CadTop,l.UAT,c.NrContract, c.Data.Year, l.Observatii, r.StatusRec}).ToList();
 
                 var retVal = from h in holder
                              select new{h.LucrareId, AceptataRefuzata = String.Format(h.StatusAccept),NrInregOCPI = String.Format("{0}{1}{2}",h.Nr_OCPI, @"-",h.DataInregistrare.Value.ToShortDateString()), h.TermenSolutionare,
                                         h.AvizatorRegistrator, h.TipLucrare, NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),
-                                        Beneficiari = String.Format("{0} {1}", h.Nume, h.Prenume), h.CadTop, h.UAT, Contracte= String.Format("{0}{1}{2}", h.NrContract,@"/", h.Year),
+                                        Beneficiari =  h.Nume, h.CadTop, h.UAT, Contracte= String.Format("{0}{1}{2}", h.NrContract,@"/", h.Year),
                                         ReceptionataRespinsa = String.Format(h.StatusRec), h.Observatii}; 
                      
                 return retVal;
@@ -127,12 +127,12 @@
                               where l.UAT == uat
                               select new
                               {l.LucrareId,a.StatusAccept, l.Nr_OCPI, l.DataInregistrare, l.TermenSolutionare, l.AvizatorRegistrator, TipLucrare = t.Tip_Lucrare,
-                                  l.NrProiect, l.AnProiect, b.Nume, b.Prenume, l.CadTop, l.UAT, c.NrContract, c.Data.Year, l.Observatii, r.StatusRec }).ToList();
+                                  l.NrProiect, l.AnProiect, b.Nume, l.CadTop, l.UAT, c.NrContract, c.Data.Year, l.Observatii, r.StatusRec }).ToList();
 
                 var retVal = from h in holder
                              select new
                              { h.LucrareId, AceptataRefuzata = String.Format(h.StatusAccept), NrInregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare.Value.ToShortDateString()),
-                                 h.TermenSolutionare, h.AvizatorRegistrator, h.TipLucrare, NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect), Beneficiari = String.Format("{0} {1}", h.Nume, h.Prenume),
+                                 h.TermenSolutionare, h.AvizatorRegistrator, h.TipLucrare, NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect), Beneficiari = h.Nume,
                                  h.CadTop, h.UAT, Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year), ReceptionataRespinsa = String.Format(h.StatusRec), h.Observatii
                              };
 
@@ -150,14 +150,14 @@
                           where b.CNP == cnp
                           select new
                           { l.LucrareId,a.StatusAccept,l.Nr_OCPI,l.DataInregistrare,l.TermenSolutionare,l.AvizatorRegistrator,t.Tip_Lucrare,l.NrProiect,
-                              l.AnProiect,b.Nume,b.Prenume,l.CadTop,l.UAT,c.NrContract,c.Data.Year,r.StatusRec,l.Observatii
+                              l.AnProiect,b.Nume,l.CadTop,l.UAT,c.NrContract,c.Data.Year,r.StatusRec,l.Observatii
                           }).ToList();
 
             var returnValue = from h in holder
                               select new
                               {
                                   h.LucrareId,h.StatusAccept,AceptataRefuzata = String.Format(h.StatusAccept),NrinregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare),
-                                  h.AvizatorRegistrator,TipLucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari = String.Format("{0} {1}", h.Nume, h.Prenume),
+                                  h.AvizatorRegistrator,TipLucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari =  h.Nume,
                                   h.CadTop,h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
                               };
 
@@ -176,13 +176,13 @@
                           select new
                           {
                               l.LucrareId,a.StatusAccept,l.Nr_OCPI,l.DataInregistrare,l.TermenSolutionare,l.AvizatorRegistrator,t.Tip_Lucrare,l.NrProiect,l.AnProiect,
-                              b.Nume,b.Prenume,l.CadTop,l.UAT,c.NrContract,c.Data.Year,r.StatusRec,l.Observatii}).ToList();
+                              b.Nume,l.CadTop,l.UAT,c.NrContract,c.Data.Year,r.StatusRec,l.Observatii}).ToList();
 
             var returnValue = from h in holder
                               select new
                               {
                                   h.LucrareId,h.StatusAccept,AceptataRefuzata = String.Format(h.StatusAccept),NrinregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare),
-                                  h.AvizatorRegistrator,TipLucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari = String.Format("{0} {1}", h.Nume, h.Prenume),
+                                  h.AvizatorRegistrator,TipLucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari = h.Nume,
                                   h.CadTop,h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
                               };
             return returnValue;
@@ -200,13 +200,13 @@
                           select new
                           {
                               l.LucrareId,a.StatusAccept,l.Nr_OCPI,l.DataInregistrare,l.TermenSolutionare,l.AvizatorRegistrator,t.Tip_Lucrare,l.NrProiect,l.AnProiect,b.Nume,
-                              b.Prenume,l.CadTop,l.UAT,c.NrContract,c.Data.Year,r.StatusRec,l.Observatii}).ToList();
+                             l.CadTop,l.UAT,c.NrContract,c.Data.Year,r.StatusRec,l.Observatii}).ToList();
 
             var returnValue = from h in holder
                               select new
                               {
                                   h.LucrareId,h.StatusAccept,AceptataRefuzata = String.Format(h.StatusAccept),NrinregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare),
-                                  h.AvizatorRegistrator,Tiplucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari = String.Format("{0} {1}", h.Nume, h.Prenume),
+                                  h.AvizatorRegistrator,Tiplucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari =  h.Nume,
                                   h.CadTop,h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
                               };
             return returnValue;
@@ -222,7 +222,7 @@
                           join t in ContaContext.TipLucrare on l.TipLucrareId equals t.TipLucrareId
                           select new
                           {l.LucrareId,a.StatusAccept,l.Nr_OCPI,l.DataInregistrare,l.TermenSolutionare,l.AvizatorRegistrator,
-                              t.Tip_Lucrare,l.NrProiect,l.AnProiect,b.Nume,b.Prenume,l.CadTop,l.UAT,c.NrContract,c.Data.Year,
+                              t.Tip_Lucrare,l.NrProiect,l.AnProiect,b.Nume,l.CadTop,l.UAT,c.NrContract,c.Data.Year,
                               r.StatusRec,l.Observatii}).ToList();
 
             var returnValue = from h in holder
@@ -230,7 +230,7 @@
                               { h.LucrareId,h.StatusAccept,AceptataRefuzata = String.Format(h.StatusAccept),
                                   NrinregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare),
                                   h.AvizatorRegistrator,Tiplucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),
-                                  Beneficiari = String.Format("{0} {1}", h.Nume, h.Prenume),h.CadTop,
+                                  Beneficiari =  h.Nume, h.CadTop,
                                   h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),
                                   ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
                               };

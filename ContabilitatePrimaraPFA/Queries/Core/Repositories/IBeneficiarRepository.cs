@@ -1,10 +1,11 @@
 ﻿using Queries.Core.Domain;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Queries.Core.Repositories
 {
     public interface IBeneficiarRepository : IRepository<Beneficiar>
     {
-        Beneficiar GetBeneficiarByCNP(string cnp);
+        Beneficiar GetBeneficiarByCnp(string cnp);
     }
 }

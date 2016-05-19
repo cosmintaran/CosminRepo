@@ -18,12 +18,12 @@ namespace Queries.Core.Domain
         public int BeneficiarId { get; set; }
 
         [Required]
-        [StringLength(40)]
+        [StringLength(150)]
         public string Nume { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string Prenume { get; set; }
+
+        /*[StringLength(50)]
+        public string Prenume { get; set; }*/
 
         [Required]
         [StringLength(14)]
@@ -31,16 +31,28 @@ namespace Queries.Core.Domain
 
         public int? TipActId { get; set; }
 
-        [Required]
         [StringLength(3)]
         public string Serie { get; set; }
 
-        [Required]
         [StringLength(6)]
         public string Numar { get; set; }
 
         [Column(TypeName = "text")]
         public string Adresa { get; set; }
+
+        [StringLength(3)]
+        public string AtributFiscal { get; set; }
+
+        [StringLength(25)]
+        public string NrRegComert { get; set; }
+
+        [RegularExpression(@"^\d+$")]
+        [StringLength(14)]
+        public string Telefon { get; set; }
+        [StringLength(50)]
+        public string AdresaEmail { get; set; }
+
+        public bool PersoanaFizica { get; set; }
 
         public virtual TipAct TipAct { get; set; }
 

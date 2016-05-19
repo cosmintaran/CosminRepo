@@ -69,6 +69,9 @@ namespace Queries.Persitence
                 .HasMany(e => e.Lucrare)
                 .WithRequired(e => e.ReceptionatRespins)
                 .WillCascadeOnDelete(false);
+
+                
         }
-    }
+
+  }
 }

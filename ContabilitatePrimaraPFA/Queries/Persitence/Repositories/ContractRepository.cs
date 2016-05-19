@@ -32,19 +32,13 @@ namespace Queries.Persitence.Repositories
             var holder = (from c in ContaContext.Contract
                           join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId
                           where c.Data.Year == year
-                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, b.Prenume, c.Suma, c.ObiectulContractului, c.Observatii })
+                          select new { c.ContractId, c.NrContract, c.Data, b.Nume,c.Suma, c.ObiectulContractului, c.Observatii })
                 .ToList();
 
             var returnVal = from h in holder
                             select new
-                            {
-                                h.ContractId,
-                                h.NrContract,
-                                Data = h.Data.ToShortDateString(),
-                                Titular = string.Format("{0} {1}", h.Nume, h.Prenume),
-                                h.Suma,
-                                h.ObiectulContractului,
-                                h.Observatii
+                            {h.ContractId,h.NrContract,Data = h.Data.ToShortDateString(),
+                                Titular = h.Nume,h.Suma,h.ObiectulContractului,h.Observatii
                             };
 
             return returnVal;
@@ -55,11 +49,10 @@ namespace Queries.Persitence.Repositories
             var holder = (from c in ContaContext.Contract
                           join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId
                           where c.NrContract == nrContract
-                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, b.Prenume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
+                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
 
             var returnVal = from h in holder
-                            select new{h.ContractId,h.NrContract,Data = h.Data.ToShortDateString(),Titular = string.Format("{0} {1}", h.Nume, h.Prenume),h.Suma,
-                                h.Factura,h.Observatii};
+                            select new{h.ContractId,h.NrContract,Data = h.Data.ToShortDateString(),Titular = h.Nume, h.Suma,h.Factura,h.Observatii};
             return returnVal;
         }
 
@@ -68,11 +61,10 @@ namespace Queries.Persitence.Repositories
             var holder = (from c in ContaContext.Contract
                           join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId
                           where b.Nume.StartsWith(name) orderby c.Data.Year
-                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, b.Prenume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
+                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
 
             var returnVal = from h in holder
-                            select new{h.ContractId, h.NrContract,Data = h.Data.ToShortDateString(),Titular = string.Format("{0} {1}", h.Nume, h.Prenume),
-                                h.Suma,h.Factura,h.Observatii};
+                            select new{h.ContractId, h.NrContract,Data = h.Data.ToShortDateString(),Titular = h.Nume,h.Suma,h.Factura,h.Observatii};
             return returnVal;
         }
 
@@ -81,11 +73,10 @@ namespace Queries.Persitence.Repositories
             var holder = (from c in ContaContext.Contract
                           join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId
                           where c.Suma == val orderby c.Data.Year
-                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, b.Prenume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
+                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
 
             var returnVal = from h in holder
-                            select new{h.ContractId,h.NrContract,Data = h.Data.ToShortDateString(),Titular = string.Format("{0} {1}", h.Nume, h.Prenume),
-                                h.Suma,h.Factura,h.Observatii};
+                            select new{h.ContractId,h.NrContract,Data = h.Data.ToShortDateString(),Titular = h.Nume,h.Suma,h.Factura,h.Observatii};
             return returnVal;
         }
 
@@ -94,12 +85,11 @@ namespace Queries.Persitence.Repositories
             var holder = (from c in ContaContext.Contract
                           join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId
                           where c.NrContract == number && c.Data.Year == year
-                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, b.Prenume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
+                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
 
             var returnVal = from h in holder
                             select new
-                            {h.ContractId, h.NrContract,Data = h.Data.ToShortDateString(),Titular = string.Format("{0} {1}", h.Nume, h.Prenume),
-                                h.Suma,h.Factura,h.Observatii};
+                            {h.ContractId, h.NrContract,Data = h.Data.ToShortDateString(),Titular = h.Nume,h.Suma,h.Factura,h.Observatii};
             return returnVal;
         }
 
@@ -107,12 +97,11 @@ namespace Queries.Persitence.Repositories
         {
             var holder = (from c in ContaContext.Contract
                           join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId                          
-                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, b.Prenume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
+                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
 
             var returnVal = from h in holder
                             select new
-                            {h.ContractId, h.NrContract,Data = h.Data.ToShortDateString(),Titular = string.Format("{0} {1}", h.Nume, h.Prenume),
-                                h.Suma,h.Factura,h.Observatii};
+                            {h.ContractId, h.NrContract,Data = h.Data.ToShortDateString(),Titular = h.Nume,h.Suma,h.Factura,h.Observatii};
             return returnVal;
         }
 

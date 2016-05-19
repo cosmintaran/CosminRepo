@@ -1,10 +1,11 @@
 ﻿
-namespace ContabilitatePrimaraPFA.View.Classes
-{
-    using System.Collections.Generic;
-    using System.Windows.Forms;
-    using UserControls;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using ContabilitatePrimaraPFA.View.UserControls;
+using View.View.UserControls;
 
+namespace View.View.Classes
+{
     public class UiFactory
     {
         private static Dictionary<string, UserControl> _mDUserControl = new Dictionary<string, UserControl>();

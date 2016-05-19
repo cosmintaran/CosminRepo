@@ -1,4 +1,6 @@
 ﻿
+using View.View.Forms;
+
 namespace ContabilitatePrimaraPFA.View.UserControls
 {
     using System.Collections.Generic;
@@ -527,7 +529,7 @@ namespace ContabilitatePrimaraPFA.View.UserControls
 
         private void cbContract_Validating(object sender, CancelEventArgs e)
         {
-            if (String.IsNullOrEmpty(cbContract.Text) || cbContract.Text == @"<new..>")
+            if (String.IsNullOrEmpty(cbContract.Text) || cbContract.Text == @"<new...>")
             {
                 e.Cancel = true;
                 

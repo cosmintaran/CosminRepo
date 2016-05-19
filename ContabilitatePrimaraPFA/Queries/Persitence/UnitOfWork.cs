@@ -6,7 +6,7 @@ namespace Queries.Persitence
     using Queries.Core.Repositories;
     using Queries.Persitence.Repositories;
 
-    public class UnitOfWork : IUnitOfWork
+    public sealed class UnitOfWork : IUnitOfWork
     {
         private ContaContext _mContext;
 

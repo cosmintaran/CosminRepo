@@ -26,3 +26,9 @@ D:\Repository\Resources\Resources\obj\Debug\Resources.csprojResolveAssemblyRefer
 D:\Repository\Resources\Resources\obj\Debug\Resources.csproj.ResolveComReference.cache
 D:\Repository\Resources\Resources\obj\Debug\Resources.dll
 D:\Repository\Resources\Resources\obj\Debug\Resources.pdb
+e:\SandBox\CosminRepo\Resources\Resources\bin\Debug\Resources.dll
+e:\SandBox\CosminRepo\Resources\Resources\bin\Debug\Resources.pdb
+e:\SandBox\CosminRepo\Resources\Resources\obj\Debug\Resources.csprojResolveAssemblyReference.cache
+e:\SandBox\CosminRepo\Resources\Resources\obj\Debug\Resources.csproj.ResolveComReference.cache
+e:\SandBox\CosminRepo\Resources\Resources\obj\Debug\Resources.dll
+e:\SandBox\CosminRepo\Resources\Resources\obj\Debug\Resources.pdb

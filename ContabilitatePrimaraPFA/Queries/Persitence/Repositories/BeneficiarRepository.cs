@@ -1,4 +1,6 @@
-﻿using Queries.Core.Domain;
+﻿using System.Collections.Generic;
+using System.Data;
+using Queries.Core.Domain;
 using Queries.Core.Repositories;
 using System.Linq;
 
@@ -15,14 +17,11 @@ namespace Queries.Persitence.Repositories
 
         }
 
-        public Beneficiar GetBeneficiarByCNP(string cnp)
+        public Beneficiar GetBeneficiarByCnp(string cnp)
         {
-           return ContaContext.Beneficiar.Where(s => s.CNP == cnp) as Beneficiar;
+           return (Beneficiar) ContaContext.Beneficiar.Where(s => s.CNP == cnp) ;
         }
 
-        public ContaContext ContaContext
-        {
-            get { return Context as ContaContext; }
-        }
+        public ContaContext ContaContext => Context as ContaContext;
     }
 }

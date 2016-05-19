@@ -7,8 +7,8 @@
     <ProjectGuid>{9E4CEEA5-DAD4-4620-8528-6F2AE9D2497F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ContabilitatePrimaraPFA</RootNamespace>
-    <AssemblyName>ContabilitatePrimaraPFA</AssemblyName>
+    <RootNamespace>View</RootNamespace>
+    <AssemblyName>View</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -91,6 +91,12 @@
     <Compile Include="View\Classes\UIFactory.cs" />
     <Compile Include="View\Classes\FormValidator.cs" />
     <Compile Include="View\Classes\Utilities.cs" />
+    <Compile Include="View\Forms\BeneficiarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\BeneficiarForm.Designer.cs">
+      <DependentUpon>BeneficiarForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\FilterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Forms\BeneficiarForm.resx">
+      <DependentUpon>BeneficiarForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\FilterForm.resx">
       <DependentUpon>FilterForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,13 +196,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\ContaDb.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database\ContaDb_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>ContaDb.mdf</DependentUpon>
-    </Content>
     <Content Include="Database\Queries\CitescJudet.sql" />
     <Content Include="Database\Queries\CreateDatabase.sql" />
     <Content Include="Database\Queries\FillListLucrari.sql" />

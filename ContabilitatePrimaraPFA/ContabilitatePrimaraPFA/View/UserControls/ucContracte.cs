@@ -1,16 +1,17 @@
 ﻿
-namespace ContabilitatePrimaraPFA.View.UserControls
-{
-    using System.Data.Entity.Infrastructure;
-    using System;
-    using System.Windows.Forms;
-    using Queries.Core.Domain;
-    using Queries.Persitence;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using Classes;
-    using Forms;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Globalization;
+using System.Windows.Forms;
+using ContabilitatePrimaraPFA.View.Classes;
+using ContabilitatePrimaraPFA.View.Forms;
+using Queries.Core.Domain;
+using Queries.Persitence;
+using View.View.Forms;
 
+namespace View.View.UserControls
+{
     public partial class UcContracte : UserControl
     {
         #region Declared Members
@@ -175,7 +176,11 @@ namespace ContabilitatePrimaraPFA.View.UserControls
 
         private void bttBeneficiar_Click(object sender, EventArgs e)
         {
-
+            BeneficiarForm ben = BeneficiarForm.GetBeneficiarInstance;
+            var result = ben.ShowDialog();
+            if (result != DialogResult.OK) return;
+            _contract.BeneficiarId = ben.GetBeneficiarId;
+            ben.Dispose();
         }
         private void bttEdit_Click(object sender, EventArgs e)
         {
@@ -235,7 +240,12 @@ namespace ContabilitatePrimaraPFA.View.UserControls
                 txtNrContr.Text = "";
                 return;
             }
-
+            if (_contract.BeneficiarId <= 0)
+            {
+                MessageBox.Show(@"Contractul nu poate fi salvat fara Beneficiar.\nVa rugam selectati unul sau creati unul nou ",
+                     @"Eroare la salvare", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             unityOfWork.Contracte.Add(_contract);
             unityOfWork.Complete();
             unityOfWork.Dispose();

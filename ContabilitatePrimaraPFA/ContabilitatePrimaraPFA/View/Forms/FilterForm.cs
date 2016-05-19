@@ -1,11 +1,11 @@
 ﻿
-namespace ContabilitatePrimaraPFA.View.Forms
-{
-    using System;
-    using System.Windows.Forms;
-    using Classes;
-    using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using ContabilitatePrimaraPFA.View.Classes;
 
+namespace View.View.Forms
+{
     public partial class FilterForm : Form
     {
         #region Class members declaration

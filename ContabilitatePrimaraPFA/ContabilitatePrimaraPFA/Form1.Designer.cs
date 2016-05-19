@@ -1,4 +1,4 @@
-﻿namespace ContabilitatePrimaraPFA
+﻿namespace View
 {
     partial class Form1
     {
