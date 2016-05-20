@@ -39,7 +39,7 @@
             var returnValue = from h in holder
                 select new
                     {
-                        h.LucrareId, h.StatusAccept, AceptataRefuzata = String.Format(h.StatusAccept), NrInregOCPI = String.Format("{0}{1}{2}",h.Nr_OCPI,@"-",h.DataInregistrare.Value.ToShortDateString()),
+                        h.LucrareId,  AceptataRefuzata = String.Format(h.StatusAccept), NrInregOCPI = String.Format("{0}{1}{2}",h.Nr_OCPI,@"-",h.DataInregistrare.Value.ToShortDateString()),
                        TermenSol = h.TermenSolutionare.Value.ToShortDateString(),h.AvizatorRegistrator, TipLucrare = h.Tip_Lucrare, NrProiect = String.Format("{0}{1}{2}",h.NrProiect,@"/",h.AnProiect), Beneficiari = h.Nume,
                         h.CadTop,h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
                     };
@@ -63,7 +63,7 @@
 
             var retVal = from h in holder
                          select new
-                         {h.LucrareId,AceptataRefuzata = String.Format(h.StatusAccept),NrInregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare.Value.ToShortDateString()),
+                         {h.LucrareId, AceptataRefuzata = String.Format(h.StatusAccept),NrInregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare.Value.ToShortDateString()),
                              TermenSol = h.TermenSolutionare.Value.ToShortDateString(),h.AvizatorRegistrator,TipLucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari = h.Nume, 
                              h.CadTop,h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
                          };
@@ -156,7 +156,7 @@
             var returnValue = from h in holder
                               select new
                               {
-                                  h.LucrareId,h.StatusAccept,AceptataRefuzata = String.Format(h.StatusAccept),NrInregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare.Value.ToShortDateString()),
+                                  h.LucrareId,AceptataRefuzata = String.Format(h.StatusAccept),NrInregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare.Value.ToShortDateString()),
                                   TermenSol = h.TermenSolutionare.Value.ToShortDateString(),h.AvizatorRegistrator,TipLucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari =  h.Nume,
                                   h.CadTop,h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
                               };
@@ -181,7 +181,7 @@
             var returnValue = from h in holder
                               select new
                               {
-                                  h.LucrareId,h.StatusAccept,AceptataRefuzata = String.Format(h.StatusAccept),NrInregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare.Value.ToShortDateString()),
+                                  h.LucrareId,AceptataRefuzata = String.Format(h.StatusAccept),NrInregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare.Value.ToShortDateString()),
                                   TermenSol = h.TermenSolutionare.Value.ToShortDateString(), h.AvizatorRegistrator,TipLucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari = h.Nume,
                                   h.CadTop,h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
                               };
@@ -205,7 +205,7 @@
             var returnValue = from h in holder
                               select new
                               {
-                                  h.LucrareId,h.StatusAccept,AceptataRefuzata = String.Format(h.StatusAccept),NrInregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare.Value.ToShortDateString()),
+                                  h.LucrareId,AceptataRefuzata = String.Format(h.StatusAccept),NrInregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare.Value.ToShortDateString()),
                                   TermenSol = h.TermenSolutionare.Value.ToShortDateString(),h.AvizatorRegistrator,Tiplucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),Beneficiari =  h.Nume,
                                   h.CadTop,h.UAT,Contracte = String.Format("{0}{1}{2}", h.NrContract, @"/", h.Year),ReceptionataRespinsa = String.Format(h.StatusRec),h.Observatii
                               };
@@ -227,7 +227,7 @@
 
             var returnValue = from h in holder
                               select new
-                              { h.LucrareId,h.StatusAccept,AceptataRefuzata = String.Format(h.StatusAccept),
+                              { h.LucrareId,AceptataRefuzata = String.Format(h.StatusAccept),
                                   NrInregOCPI = String.Format("{0}{1}{2}", h.Nr_OCPI, @"-", h.DataInregistrare.Value.ToShortDateString()),
                                   TermenSol = h.TermenSolutionare.Value.ToShortDateString(),h.AvizatorRegistrator,
                                   Tiplucrare = h.Tip_Lucrare,NrProiect = String.Format("{0}{1}{2}", h.NrProiect, @"/", h.AnProiect),

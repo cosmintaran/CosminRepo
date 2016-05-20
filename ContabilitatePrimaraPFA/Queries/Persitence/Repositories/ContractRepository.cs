@@ -97,11 +97,11 @@ namespace Queries.Persitence.Repositories
         {
             var holder = (from c in ContaContext.Contract
                           join b in ContaContext.Beneficiar on c.BeneficiarId equals b.BeneficiarId                          
-                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, c.Suma, c.ObiectulContractului, c.Observatii, c.Factura }).ToList();
+                          select new { c.ContractId, c.NrContract, c.Data, b.Nume, c.Suma, c.ObiectulContractului, c.Observatii }).ToList();
 
             var returnVal = from h in holder
                             select new
-                            {h.ContractId, h.NrContract,Data = h.Data.ToShortDateString(),Titular = h.Nume,h.Suma,h.Factura,h.Observatii};
+                            {h.ContractId, h.NrContract,Data = h.Data.ToShortDateString(),Titular = h.Nume,h.Suma, h.ObiectulContractului, h.Observatii};
             return returnVal;
         }
 

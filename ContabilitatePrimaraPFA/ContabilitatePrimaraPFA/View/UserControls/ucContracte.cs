@@ -23,6 +23,7 @@ namespace View.View.UserControls
         private Contract _contract;
         private const int DefValue = 1;
         private FilterCriteria _filter = FilterCriteria.None;
+        private string _filterKeyWordS;
         #endregion
 
         #region Init Area
@@ -161,10 +162,10 @@ namespace View.View.UserControls
             FilterForm sel = FilterForm.GetCautaForm(mDictionary);
             var result = sel.ShowDialog();
             if (result != DialogResult.OK) return;           
-            var key = sel.SearchKey;
+            _filterKeyWordS = sel.SearchKey;
             //if (string.IsNullOrEmpty(key)) return;
             _filter = sel.FilterCriteria;
-            FillGridView(_filter, key);
+            FillGridView(_filter, _filterKeyWordS);
 
             if (IsFilterd())
             {

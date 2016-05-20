@@ -26,7 +26,7 @@ namespace View.View.UserControls
         private static readonly object Padlock = new object();
         private Lucrare _lucrare;
         private FilterCriteria _filter = FilterCriteria.None;
-        
+        private string _filterKeyWordS;
         #endregion
 
         #region Init Area
@@ -73,7 +73,7 @@ namespace View.View.UserControls
             unitOfWork.Lucrari.Add(_lucrare);
             unitOfWork.Complete();
             unitOfWork.Dispose();
-            FillGridView(_filter, DateTime.Today.Year.ToString());
+            FillGridView(_filter, _filterKeyWordS);
 
             ClearFormLucrare();
             if (!bttNewLucrare.Enabled)
@@ -116,10 +116,10 @@ namespace View.View.UserControls
             FilterForm sel = FilterForm.GetCautaForm(mDictionary);
             var result = sel.ShowDialog();
             if (result != DialogResult.OK) return;
-            var key = sel.SearchKey;
-           // if (string.IsNullOrEmpty(key)) return;
+             _filterKeyWordS = sel.SearchKey;
+           // if (string.IsNullOrEmpty(_filterKeyWordS)) return;
             _filter = sel.FilterCriteria;
-            FillGridView(_filter, key);
+            FillGridView(_filter, _filterKeyWordS);
             if (IsFilterd())
             {
                 lblFilter.Text = @"Filter On";
@@ -455,6 +455,9 @@ namespace View.View.UserControls
         {
             FillCombobox();
             ChangeForm(sender.ToString());
+            if (_mContracte == null) return;
+            _mContracte.ReturnFromContracteEventHandler -= CallBackFromContracte;
+            _mContracte = null;
         }
 
         #endregion
