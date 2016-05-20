@@ -47,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AssamblyEmbeded.cs" />
     <Compile Include="Classes\Command.cs" />
     <Compile Include="Classes\CommandLucrari.cs" />
+    <Compile Include="Classes\SQLHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

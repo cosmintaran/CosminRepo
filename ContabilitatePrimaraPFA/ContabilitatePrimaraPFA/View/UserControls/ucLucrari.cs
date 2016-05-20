@@ -1,31 +1,32 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.Entity.Infrastructure;
+using System.Windows.Forms;
+using ContabilitatePrimaraPFA.View.Classes;
+using ContabilitatePrimaraPFA.View.Forms;
+using Queries.Core.Domain;
+using Queries.Persitence;
 using View.View.Forms;
+using View.View.Classes;
 
-namespace ContabilitatePrimaraPFA.View.UserControls
+namespace View.View.UserControls
 {
-    using System.Collections.Generic;
-    using System.Data.Entity.Infrastructure;
-    using System.Windows.Forms;
-    using System;
-    using Queries.Core.Domain;
-    using Queries.Persitence;
-    using System.ComponentModel;
-    using Classes;
-    using Forms;
-
     public partial class UcLucrari : UserControl
     {
 
-        public delegate void FormChangedEventHandler(object sender, EventArgs args);
-        public event FormChangedEventHandler UserControlChanging;
-
+        //public delegate void FormChangedEventHandler(object sender, EventArgs args);
+        //public event FormChangedEventHandler UserControlChanging;
+         public EventHandler<UserControlEventArgs> UserControlChanging;
 
         #region Declared Members
         private static UcLucrari _mInstance;
+        private UcContracte _mContracte;
         private static readonly object Padlock = new object();
         private Lucrare _lucrare;
         private FilterCriteria _filter = FilterCriteria.None;
-
+        
         #endregion
 
         #region Init Area
@@ -282,6 +283,16 @@ namespace ContabilitatePrimaraPFA.View.UserControls
             grBoxLucrare.Enabled = false;
         }
 
+        protected virtual void ChangeForm(string formName)
+        {
+            if (_mContracte == null)
+            {
+                _mContracte = UiFactory.GetUserControl("Contracte") as UcContracte;
+                if (_mContracte != null) _mContracte.ReturnFromContracteEventHandler += CallBackFromContracte;
+            }
+
+            UserControlChanging?.Invoke(formName,new UserControlEventArgs() {UsControl = this });
+        }
         #endregion
 
         # region Logical Area
@@ -384,16 +395,12 @@ namespace ContabilitatePrimaraPFA.View.UserControls
 
         private void cbContract_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             var contract = cbContract.SelectedItem as Contract;
             if (contract != null && contract.NrContract == "<new...>")
             {
                 ChangeForm("Contracte");
             }
-        }
-
-        protected virtual void ChangeForm(string formName)
-        {
-            UserControlChanging?.Invoke(formName, EventArgs.Empty);
         }
 
         private void PrepareObject()
@@ -442,6 +449,12 @@ namespace ContabilitatePrimaraPFA.View.UserControls
         {
             bool isFiltred = _filter != FilterCriteria.None;
             return isFiltred;
+        }
+
+        private void CallBackFromContracte(object sender, UserControlEventArgs arg)
+        {
+            FillCombobox();
+            ChangeForm(sender.ToString());
         }
 
         #endregion

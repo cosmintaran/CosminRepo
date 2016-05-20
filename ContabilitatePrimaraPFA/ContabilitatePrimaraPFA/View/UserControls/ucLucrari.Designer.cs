@@ -1,5 +1,4 @@
-﻿using System.Windows;
-namespace ContabilitatePrimaraPFA.View.UserControls
+﻿namespace View.View.UserControls
 {
     partial class UcLucrari
     {

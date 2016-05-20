@@ -8,12 +8,15 @@ using ContabilitatePrimaraPFA.View.Classes;
 using ContabilitatePrimaraPFA.View.Forms;
 using Queries.Core.Domain;
 using Queries.Persitence;
+using View.View.Classes;
 using View.View.Forms;
 
 namespace View.View.UserControls
 {
     public partial class UcContracte : UserControl
     {
+        public event EventHandler<UserControlEventArgs> ReturnFromContracteEventHandler;
+        
         #region Declared Members
         private static UcContracte _mContracte;
         private static readonly object Padlock = new object();
@@ -180,7 +183,6 @@ namespace View.View.UserControls
             var result = ben.ShowDialog();
             if (result != DialogResult.OK) return;
             _contract.BeneficiarId = ben.GetBeneficiarId;
-            ben.Dispose();
         }
         private void bttEdit_Click(object sender, EventArgs e)
         {
@@ -253,7 +255,12 @@ namespace View.View.UserControls
             grBoxContract.Enabled = false;
             bttNewContract.Enabled = true;
             FillGridView(_filter, DateTime.Today.Year.ToString());
+            OnUpdateLucrariCombo();
         }
+        protected virtual void OnUpdateLucrariCombo()
+        {
+            ReturnFromContracteEventHandler?.Invoke("Lucrari", new UserControlEventArgs() {UsControl = this});
+            }
         #endregion Command Region
 
         #region Logic Area
@@ -361,10 +368,6 @@ namespace View.View.UserControls
         #endregion LogicArea
 
         #region Validation area
-
-
-        #endregion
-
         private void txtNrContr_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (String.IsNullOrEmpty(txtNrContr.Text))
@@ -416,5 +419,8 @@ namespace View.View.UserControls
             }
 
         }
+
+        #endregion
+       
     }
 }

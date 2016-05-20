@@ -13,6 +13,7 @@ namespace Queries.Core
         IAcceptatRefuzataRepository AcceptateRespinse { get; }
         ITipLucrareRepository TipLucrare { get; }
         IReceptionatRespinsRepository ReceptionateRespinse { get; }
+        ITipAct TipActe { get; }
         int Complete();
     }
 }

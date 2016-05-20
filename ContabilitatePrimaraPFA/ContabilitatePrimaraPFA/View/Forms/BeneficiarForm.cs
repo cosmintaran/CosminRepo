@@ -25,11 +25,12 @@ namespace View.View.Forms
         private BeneficiarForm()
         {
             InitializeComponent();
-            //_beneficiar = new Beneficiar();
+            
             GetBeneficiarId = 0;
             FillComboBox();
             GetBeneficiariForDb();
             AutoCompleteText();
+            RadioButtonController();
         }
 
         public static BeneficiarForm GetBeneficiarInstance 
@@ -52,36 +53,12 @@ namespace View.View.Forms
         #region Command Area
         private void rbttPersFizica_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbPersJuridica.Checked)
-            {
-                grBoxActe.Enabled = false;
-                cbAtribFiscal.Enabled = true;
-                txtRegCom.Enabled = true;
-            }
-
-            else if (rbttPersFizica.Checked)
-            {
-                grBoxActe.Enabled = true;
-                cbAtribFiscal.Enabled = false;
-                txtRegCom.Enabled = false;
-            }
+            RadioButtonController();
         }
 
         private void rbPersJuridica_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbPersJuridica.Checked)
-            {
-                grBoxActe.Enabled = false;
-                cbAtribFiscal.Enabled = true;
-                txtRegCom.Enabled = true;
-            }
-
-            else if (rbttPersFizica.Checked)
-            {
-                grBoxActe.Enabled = true;
-                cbAtribFiscal.Enabled = false;
-                txtRegCom.Enabled = false;
-            }
+            RadioButtonController();
         }
 
         private void bttOK_Click(object sender, EventArgs e)
@@ -126,7 +103,6 @@ namespace View.View.Forms
         {
             CleanForm();
             this.Close();
-            this.Dispose();
         }
 
         #endregion
@@ -192,11 +168,12 @@ namespace View.View.Forms
         {
             ContaContext contaContext = new ContaContext();
             UnitOfWork unitOfWork = new UnitOfWork(contaContext);
-            BindingSource bindTipAct = new BindingSource {DataSource = unitOfWork.TipLucrare.GetAll()};
+            
+            BindingSource bindTipAct = new BindingSource {DataSource = unitOfWork.TipActe.GetAll()};
             unitOfWork.Dispose();
             contaContext.Dispose();
             cbTipAct.DataSource = bindTipAct;
-            cbTipAct.DisplayMember = "TipLucrare";
+            cbTipAct.DisplayMember = "TipAct";
             cbAtribFiscal.Items.Add("");
             cbAtribFiscal.Items.Add("RO");
 
@@ -208,7 +185,7 @@ namespace View.View.Forms
             _beneficiar.AdresaEmail = txtEmail.Text.Trim();
             _beneficiar.AtributFiscal = cbAtribFiscal.Text;
             _beneficiar.CNP = txtCNP.Text.Trim();
-            _beneficiar.NrRegComert = txtCNP.Text.Trim();
+            _beneficiar.NrRegComert = txtRegCom.Text.Trim();
             _beneficiar.Numar = txtNumar.Text.Trim();
             _beneficiar.Nume = txtDenumire.Text.Trim();
             _beneficiar.PersoanaFizica = rbttPersFizica.Checked;
@@ -253,6 +230,23 @@ namespace View.View.Forms
             txtTelefon.Text = "";
             cbTipAct.SelectedText = "";
 
+        }
+
+        private void RadioButtonController()
+        {
+            if (rbPersJuridica.Checked)
+            {
+                grBoxActe.Enabled = false;
+                cbAtribFiscal.Enabled = true;
+                txtRegCom.Enabled = true;
+            }
+
+            else if (rbttPersFizica.Checked)
+            {
+                grBoxActe.Enabled = true;
+                cbAtribFiscal.Enabled = false;
+                txtRegCom.Enabled = false;
+            }
         }
 
         #endregion

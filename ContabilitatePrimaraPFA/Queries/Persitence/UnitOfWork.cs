@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Queries.Persitence
+﻿namespace Queries.Persitence
 {
     using Queries.Core;
     using Queries.Core.Repositories;
@@ -19,6 +17,7 @@ namespace Queries.Persitence
             TipLucrare = new TipLucrareRepository(_mContext);
             ReceptionateRespinse = new ReceprionataRespinsaRepository(_mContext);
             Contracte = new ContractRepository(_mContext);
+            TipActe = new TipActRepository(_mContext);
         }
 
         #region Propertys
@@ -38,6 +37,8 @@ namespace Queries.Persitence
         public ITipLucrareRepository TipLucrare { get; set; }
 
         public IReceptionatRespinsRepository ReceptionateRespinse { get; set; }
+
+        public ITipAct TipActe { get;set; }
 
         #endregion //end of Properties
 

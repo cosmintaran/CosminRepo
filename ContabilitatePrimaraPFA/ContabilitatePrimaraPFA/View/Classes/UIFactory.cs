@@ -10,7 +10,7 @@ namespace View.View.Classes
     {
         private static Dictionary<string, UserControl> _mDUserControl = new Dictionary<string, UserControl>();
 
-        public static UserControl CreateUi(string uiName)
+        public static UserControl GetUserControl(string uiName)
         {
             if (_mDUserControl.Count != 0) return _mDUserControl[uiName];
             _mDUserControl.Add("Lucrari", UcLucrari.GetUiLucrari);

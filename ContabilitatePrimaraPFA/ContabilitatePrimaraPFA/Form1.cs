@@ -3,6 +3,8 @@ using System.Data.Entity;
 using System.Windows.Forms;
 using View.View.Classes;
 using Queries.Persitence;
+using View.View.UserControls;
+
 namespace View
 {
     public partial class Form1 : Form
@@ -18,7 +20,8 @@ namespace View
             Database.SetInitializer<ContaContext>(new ContaContextSeeder());
             object init = "Lucrari";
             PaintUserControl(init,null);
-            ((ContabilitatePrimaraPFA.View.UserControls.UcLucrari)_userControl).UserControlChanging += PaintUserControl;
+            ((UcLucrari)_userControl).UserControlChanging += PaintUserControl;
+
         }
 
         //UserControl changer
@@ -29,11 +32,11 @@ namespace View
             switch(sender.ToString())
             {
                 case "Lucrari":
-                    _userControl = UiFactory.CreateUi(sender.ToString());
+                    _userControl = UiFactory.GetUserControl(sender.ToString());
                     break;
 
                 case "Contracte":
-                    _userControl = UiFactory.CreateUi(sender.ToString());
+                    _userControl = UiFactory.GetUserControl(sender.ToString());
                     break;
                 default:
                     {
@@ -42,7 +45,7 @@ namespace View
                         var button = sender as Button;
                         if (button != null && button.Text != currentUserControl)
                         {
-                            _userControl = UiFactory.CreateUi(((Button) sender).Text);
+                            _userControl = UiFactory.GetUserControl(((Button) sender).Text);
                                                            
                         }
                     }
@@ -51,12 +54,10 @@ namespace View
             
             if (!mainPanel.Controls.Contains(_userControl))
             {
-                if (_userControl != null)
-                {
-                    mainPanel.Controls.Add(_userControl);
-                    _userControl.Dock = DockStyle.Fill;
-                    _userControl.BringToFront();
-                }
+                if (_userControl == null) return;
+                mainPanel.Controls.Add(_userControl);
+                _userControl.Dock = DockStyle.Fill;
+                _userControl.BringToFront();
             }
             else
             {

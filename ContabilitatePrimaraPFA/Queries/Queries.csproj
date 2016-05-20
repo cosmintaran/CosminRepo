@@ -71,6 +71,7 @@
     <Compile Include="Core\Domain\AcceptataRefuzata.cs" />
     <Compile Include="Core\Domain\Beneficiar.cs" />
     <Compile Include="Core\Domain\Chitanta.cs" />
+    <Compile Include="Core\Repositories\ITipAct.cs" />
     <Compile Include="Migrations\201605181019469_UpdateBeneficiari.cs" />
     <Compile Include="Migrations\201605181019469_UpdateBeneficiari.Designer.cs">
       <DependentUpon>201605181019469_UpdateBeneficiari.cs</DependentUpon>
@@ -109,6 +110,7 @@
     <Compile Include="Persitence\Repositories\LucrareRepository.cs" />
     <Compile Include="Persitence\Repositories\ReceprionataRespinsaRepository.cs" />
     <Compile Include="Persitence\Repositories\Repository.cs" />
+    <Compile Include="Persitence\Repositories\TipActRepository.cs" />
     <Compile Include="Persitence\Repositories\TipLucrareRepository.cs" />
     <Compile Include="Persitence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
