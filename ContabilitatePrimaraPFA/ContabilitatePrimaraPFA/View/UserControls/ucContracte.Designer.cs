@@ -55,12 +55,16 @@
             this.lblNrContract = new System.Windows.Forms.Label();
             this.gridViewContract = new System.Windows.Forms.DataGridView();
             this.groupBoxContracte = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.errorProviderContracte = new System.Windows.Forms.ErrorProvider(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.grBoxContract.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewContract)).BeginInit();
             this.groupBoxContracte.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderContracte)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // bttNewContract
@@ -94,7 +98,7 @@
             this.groupBox1.Controls.Add(this.bttDeleteContract);
             this.groupBox1.Location = new System.Drawing.Point(3, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(647, 49);
+            this.groupBox1.Size = new System.Drawing.Size(637, 49);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
@@ -120,34 +124,21 @@
             // 
             this.grBoxContract.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grBoxContract.Controls.Add(this.bttClear);
-            this.grBoxContract.Controls.Add(this.bttSave);
+            this.grBoxContract.Controls.Add(this.panel2);
             this.grBoxContract.Controls.Add(this.bttCancel);
             this.grBoxContract.Controls.Add(this.bttEdit);
-            this.grBoxContract.Controls.Add(this.bttBeneficiar);
-            this.grBoxContract.Controls.Add(this.dateTimePickerContr);
-            this.grBoxContract.Controls.Add(this.txtObs);
-            this.grBoxContract.Controls.Add(this.txtObiect);
-            this.grBoxContract.Controls.Add(this.txtSuma);
-            this.grBoxContract.Controls.Add(this.txtNrContr);
-            this.grBoxContract.Controls.Add(this.lblBeneficiar);
-            this.grBoxContract.Controls.Add(this.lblDataContr);
-            this.grBoxContract.Controls.Add(this.lblObservatii);
-            this.grBoxContract.Controls.Add(this.lblObiect);
-            this.grBoxContract.Controls.Add(this.lblSuma);
-            this.grBoxContract.Controls.Add(this.lblNrContract);
             this.grBoxContract.Enabled = false;
             this.grBoxContract.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grBoxContract.Location = new System.Drawing.Point(656, 22);
+            this.grBoxContract.Location = new System.Drawing.Point(646, 22);
             this.grBoxContract.Name = "grBoxContract";
-            this.grBoxContract.Size = new System.Drawing.Size(341, 715);
+            this.grBoxContract.Size = new System.Drawing.Size(351, 715);
             this.grBoxContract.TabIndex = 5;
             this.grBoxContract.TabStop = false;
             this.grBoxContract.Text = "Contract";
             // 
             // bttClear
             // 
-            this.bttClear.Location = new System.Drawing.Point(232, 530);
+            this.bttClear.Location = new System.Drawing.Point(236, 515);
             this.bttClear.Name = "bttClear";
             this.bttClear.Size = new System.Drawing.Size(75, 23);
             this.bttClear.TabIndex = 7;
@@ -157,7 +148,7 @@
             // 
             // bttSave
             // 
-            this.bttSave.Location = new System.Drawing.Point(10, 530);
+            this.bttSave.Location = new System.Drawing.Point(14, 515);
             this.bttSave.Name = "bttSave";
             this.bttSave.Size = new System.Drawing.Size(75, 23);
             this.bttSave.TabIndex = 6;
@@ -189,7 +180,7 @@
             // 
             // bttBeneficiar
             // 
-            this.bttBeneficiar.Location = new System.Drawing.Point(99, 123);
+            this.bttBeneficiar.Location = new System.Drawing.Point(103, 108);
             this.bttBeneficiar.Name = "bttBeneficiar";
             this.bttBeneficiar.Size = new System.Drawing.Size(208, 23);
             this.bttBeneficiar.TabIndex = 3;
@@ -200,14 +191,14 @@
             // dateTimePickerContr
             // 
             this.dateTimePickerContr.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerContr.Location = new System.Drawing.Point(99, 78);
+            this.dateTimePickerContr.Location = new System.Drawing.Point(103, 63);
             this.dateTimePickerContr.Name = "dateTimePickerContr";
             this.dateTimePickerContr.Size = new System.Drawing.Size(208, 20);
             this.dateTimePickerContr.TabIndex = 2;
             // 
             // txtObs
             // 
-            this.txtObs.Location = new System.Drawing.Point(100, 316);
+            this.txtObs.Location = new System.Drawing.Point(104, 301);
             this.txtObs.Multiline = true;
             this.txtObs.Name = "txtObs";
             this.txtObs.Size = new System.Drawing.Size(208, 65);
@@ -215,7 +206,7 @@
             // 
             // txtObiect
             // 
-            this.txtObiect.Location = new System.Drawing.Point(100, 225);
+            this.txtObiect.Location = new System.Drawing.Point(104, 210);
             this.txtObiect.Multiline = true;
             this.txtObiect.Name = "txtObiect";
             this.txtObiect.Size = new System.Drawing.Size(208, 65);
@@ -224,7 +215,7 @@
             // 
             // txtSuma
             // 
-            this.txtSuma.Location = new System.Drawing.Point(100, 170);
+            this.txtSuma.Location = new System.Drawing.Point(104, 155);
             this.txtSuma.Name = "txtSuma";
             this.txtSuma.Size = new System.Drawing.Size(208, 20);
             this.txtSuma.TabIndex = 1;
@@ -232,7 +223,7 @@
             // 
             // txtNrContr
             // 
-            this.txtNrContr.Location = new System.Drawing.Point(99, 33);
+            this.txtNrContr.Location = new System.Drawing.Point(103, 18);
             this.txtNrContr.Name = "txtNrContr";
             this.txtNrContr.Size = new System.Drawing.Size(208, 20);
             this.txtNrContr.TabIndex = 1;
@@ -241,7 +232,7 @@
             // lblBeneficiar
             // 
             this.lblBeneficiar.AutoSize = true;
-            this.lblBeneficiar.Location = new System.Drawing.Point(7, 128);
+            this.lblBeneficiar.Location = new System.Drawing.Point(11, 113);
             this.lblBeneficiar.Name = "lblBeneficiar";
             this.lblBeneficiar.Size = new System.Drawing.Size(64, 13);
             this.lblBeneficiar.TabIndex = 0;
@@ -250,7 +241,7 @@
             // lblDataContr
             // 
             this.lblDataContr.AutoSize = true;
-            this.lblDataContr.Location = new System.Drawing.Point(6, 78);
+            this.lblDataContr.Location = new System.Drawing.Point(10, 63);
             this.lblDataContr.Name = "lblDataContr";
             this.lblDataContr.Size = new System.Drawing.Size(86, 13);
             this.lblDataContr.TabIndex = 0;
@@ -259,7 +250,7 @@
             // lblObservatii
             // 
             this.lblObservatii.AutoSize = true;
-            this.lblObservatii.Location = new System.Drawing.Point(7, 338);
+            this.lblObservatii.Location = new System.Drawing.Point(11, 323);
             this.lblObservatii.Name = "lblObservatii";
             this.lblObservatii.Size = new System.Drawing.Size(64, 13);
             this.lblObservatii.TabIndex = 0;
@@ -268,7 +259,7 @@
             // lblObiect
             // 
             this.lblObiect.AutoSize = true;
-            this.lblObiect.Location = new System.Drawing.Point(7, 247);
+            this.lblObiect.Location = new System.Drawing.Point(11, 232);
             this.lblObiect.Name = "lblObiect";
             this.lblObiect.Size = new System.Drawing.Size(92, 13);
             this.lblObiect.TabIndex = 0;
@@ -277,7 +268,7 @@
             // lblSuma
             // 
             this.lblSuma.AutoSize = true;
-            this.lblSuma.Location = new System.Drawing.Point(7, 173);
+            this.lblSuma.Location = new System.Drawing.Point(11, 158);
             this.lblSuma.Name = "lblSuma";
             this.lblSuma.Size = new System.Drawing.Size(81, 13);
             this.lblSuma.TabIndex = 0;
@@ -286,7 +277,7 @@
             // lblNrContract
             // 
             this.lblNrContract.AutoSize = true;
-            this.lblNrContract.Location = new System.Drawing.Point(6, 36);
+            this.lblNrContract.Location = new System.Drawing.Point(10, 21);
             this.lblNrContract.Name = "lblNrContract";
             this.lblNrContract.Size = new System.Drawing.Size(76, 13);
             this.lblNrContract.TabIndex = 0;
@@ -295,8 +286,7 @@
             // gridViewContract
             // 
             this.gridViewContract.AllowUserToAddRows = false;
-            this.gridViewContract.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridViewContract.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.gridViewContract.AllowUserToDeleteRows = false;
             this.gridViewContract.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -316,11 +306,13 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gridViewContract.DefaultCellStyle = dataGridViewCellStyle2;
             this.gridViewContract.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridViewContract.Location = new System.Drawing.Point(3, 16);
+            this.gridViewContract.Location = new System.Drawing.Point(0, 0);
+            this.gridViewContract.MinimumSize = new System.Drawing.Size(100, 0);
+            this.gridViewContract.MultiSelect = false;
             this.gridViewContract.Name = "gridViewContract";
             this.gridViewContract.RowHeadersVisible = false;
             this.gridViewContract.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridViewContract.Size = new System.Drawing.Size(635, 643);
+            this.gridViewContract.Size = new System.Drawing.Size(631, 638);
             this.gridViewContract.TabIndex = 0;
             this.gridViewContract.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewContract_CellClick);
             this.gridViewContract.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewContract_CellDoubleClick);
@@ -330,18 +322,55 @@
             this.groupBoxContracte.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxContracte.Controls.Add(this.gridViewContract);
+            this.groupBoxContracte.Controls.Add(this.panel1);
             this.groupBoxContracte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxContracte.Location = new System.Drawing.Point(9, 77);
+            this.groupBoxContracte.Location = new System.Drawing.Point(3, 72);
             this.groupBoxContracte.Name = "groupBoxContracte";
-            this.groupBoxContracte.Size = new System.Drawing.Size(641, 662);
+            this.groupBoxContracte.Size = new System.Drawing.Size(637, 660);
             this.groupBoxContracte.TabIndex = 6;
             this.groupBoxContracte.TabStop = false;
             this.groupBoxContracte.Text = "Contracte";
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.gridViewContract);
+            this.panel1.Location = new System.Drawing.Point(3, 16);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(631, 638);
+            this.panel1.TabIndex = 1;
+            // 
             // errorProviderContracte
             // 
             this.errorProviderContracte.ContainerControl = this;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.bttClear);
+            this.panel2.Controls.Add(this.lblNrContract);
+            this.panel2.Controls.Add(this.bttSave);
+            this.panel2.Controls.Add(this.lblSuma);
+            this.panel2.Controls.Add(this.lblObiect);
+            this.panel2.Controls.Add(this.lblObservatii);
+            this.panel2.Controls.Add(this.bttBeneficiar);
+            this.panel2.Controls.Add(this.lblDataContr);
+            this.panel2.Controls.Add(this.dateTimePickerContr);
+            this.panel2.Controls.Add(this.lblBeneficiar);
+            this.panel2.Controls.Add(this.txtObs);
+            this.panel2.Controls.Add(this.txtNrContr);
+            this.panel2.Controls.Add(this.txtObiect);
+            this.panel2.Controls.Add(this.txtSuma);
+            this.panel2.Location = new System.Drawing.Point(6, 19);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(345, 690);
+            this.panel2.TabIndex = 8;
             // 
             // UcContracte
             // 
@@ -355,10 +384,13 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.grBoxContract.ResumeLayout(false);
-            this.grBoxContract.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewContract)).EndInit();
             this.groupBoxContracte.ResumeLayout(false);
+            this.groupBoxContracte.PerformLayout();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderContracte)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -390,5 +422,7 @@
         private System.Windows.Forms.GroupBox groupBoxContracte;
         private System.Windows.Forms.Label lblFilter;
         private System.Windows.Forms.ErrorProvider errorProviderContracte;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

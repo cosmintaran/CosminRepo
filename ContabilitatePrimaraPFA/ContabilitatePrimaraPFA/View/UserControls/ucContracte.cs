@@ -5,7 +5,6 @@ using System.Data.Entity.Infrastructure;
 using System.Globalization;
 using System.Windows.Forms;
 using ContabilitatePrimaraPFA.View.Classes;
-using ContabilitatePrimaraPFA.View.Forms;
 using Queries.Core.Domain;
 using Queries.Persitence;
 using View.View.Classes;
@@ -161,7 +160,7 @@ namespace View.View.UserControls
 
             FilterForm sel = FilterForm.GetCautaForm(mDictionary);
             var result = sel.ShowDialog();
-            if (result != DialogResult.OK) return;           
+            if (result != DialogResult.OK) return;
             _filterKeyWordS = sel.SearchKey;
             //if (string.IsNullOrEmpty(key)) return;
             _filter = sel.FilterCriteria;
@@ -356,6 +355,19 @@ namespace View.View.UserControls
                     var dataGridViewColumn = gridViewContract.Columns["ContractId"];
                     dataGridViewColumn.Visible = false;
                 }
+
+                //gridViewContract.Columns.Add("","");
+                //int test = gridViewContract.Columns.Count;
+
+                gridViewContract.Columns[1].MinimumWidth = 100;
+                gridViewContract.Columns[2].MinimumWidth = 150;
+                gridViewContract.Columns[3].MinimumWidth = 300;
+                gridViewContract.Columns[4].MinimumWidth = 120;
+                gridViewContract.Columns[5].MinimumWidth = 500;
+                gridViewContract.Columns[6].MinimumWidth = 350;
+
+               // gridViewContract.Columns[test-1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+               // gridViewContract.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             }
             catch (InvalidOperationException ex) { MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }

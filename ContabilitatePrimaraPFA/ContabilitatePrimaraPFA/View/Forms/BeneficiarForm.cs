@@ -1,7 +1,5 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Windows.Forms;
 using Queries.Core.Domain;
 using Queries.Persitence;
@@ -16,7 +14,7 @@ namespace View.View.Forms
         public int GetBeneficiarId { get; private set; }
         private List<Beneficiar> _mlBeneficiari;
         public static readonly object Padlock = new object();
-        private static BeneficiarForm _mBeneficiarForm = null;
+        private static BeneficiarForm _mBeneficiarForm;
         private AutoCompleteStringCollection _names;
         private Beneficiar _beneficiar;
         #endregion
@@ -67,16 +65,16 @@ namespace View.View.Forms
             {
                 PrepareObject();
                 UpDate();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                DialogResult = DialogResult.OK;
+                Close();
             }
             else
             {
                 _beneficiar = new Beneficiar();
                 PrepareObject();
                 Save();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                DialogResult = DialogResult.OK;
+                Close();
             }
             CleanForm();
         }
@@ -102,7 +100,7 @@ namespace View.View.Forms
         private void bttCancel_Click(object sender, EventArgs e)
         {
             CleanForm();
-            this.Close();
+            Close();
         }
 
         #endregion
@@ -173,7 +171,7 @@ namespace View.View.Forms
             unitOfWork.Dispose();
             contaContext.Dispose();
             cbTipAct.DataSource = bindTipAct;
-            cbTipAct.DisplayMember = "TipAct";
+            cbTipAct.DisplayMember = "TipAct1";
             cbAtribFiscal.Items.Add("");
             cbAtribFiscal.Items.Add("RO");
 

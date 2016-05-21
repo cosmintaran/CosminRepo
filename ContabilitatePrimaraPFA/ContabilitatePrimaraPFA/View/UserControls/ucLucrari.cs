@@ -388,7 +388,6 @@ namespace View.View.UserControls
                     var dataGridViewColumn = LucrariView.Columns["LucrareId"];
                     dataGridViewColumn.Visible = false;
                 }
-
             }
             catch (InvalidOperationException ex) { MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }

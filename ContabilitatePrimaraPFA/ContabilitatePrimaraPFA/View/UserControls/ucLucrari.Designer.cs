@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bttNewLucrare = new System.Windows.Forms.Button();
             this.bttDeleteLucrari = new System.Windows.Forms.Button();
             this.grBoxLucrare = new System.Windows.Forms.GroupBox();
@@ -64,15 +64,17 @@
             this.lblTermenSolutionare = new System.Windows.Forms.Label();
             this.dateTimePickerTermen = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblFilter = new System.Windows.Forms.Label();
             this.bttSearch = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panelView = new System.Windows.Forms.Panel();
             this.LucrariView = new System.Windows.Forms.DataGridView();
             this.errorProviderLucrari = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblFilter = new System.Windows.Forms.Label();
             this.grBoxLucrare.SuspendLayout();
             this.pControls.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panelView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LucrariView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLucrari)).BeginInit();
             this.SuspendLayout();
@@ -105,9 +107,9 @@
             this.grBoxLucrare.Controls.Add(this.pControls);
             this.grBoxLucrare.Enabled = false;
             this.grBoxLucrare.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grBoxLucrare.Location = new System.Drawing.Point(646, 24);
+            this.grBoxLucrare.Location = new System.Drawing.Point(646, 17);
             this.grBoxLucrare.Name = "grBoxLucrare";
-            this.grBoxLucrare.Size = new System.Drawing.Size(341, 715);
+            this.grBoxLucrare.Size = new System.Drawing.Size(341, 722);
             this.grBoxLucrare.TabIndex = 4;
             this.grBoxLucrare.TabStop = false;
             this.grBoxLucrare.Text = "Lucrare";
@@ -115,10 +117,9 @@
             // pControls
             // 
             this.pControls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.pControls.AutoScroll = true;
-            this.pControls.AutoSize = true;
+            //this.pControls.AutoSize = true;
             this.pControls.Controls.Add(this.bttCancel);
             this.pControls.Controls.Add(this.bttEdit);
             this.pControls.Controls.Add(this.bttTipLucrare);
@@ -149,7 +150,7 @@
             this.pControls.Controls.Add(this.dateTimePickerTermen);
             this.pControls.Location = new System.Drawing.Point(6, 21);
             this.pControls.Name = "pControls";
-            this.pControls.Size = new System.Drawing.Size(335, 694);
+            this.pControls.Size = new System.Drawing.Size(329, 655);
             this.pControls.TabIndex = 0;
             this.pControls.TabStop = true;
             // 
@@ -436,6 +437,14 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
+            // lblFilter
+            // 
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.Location = new System.Drawing.Point(231, 21);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(0, 13);
+            this.lblFilter.TabIndex = 5;
+            // 
             // bttSearch
             // 
             this.bttSearch.Location = new System.Drawing.Point(155, 16);
@@ -451,44 +460,55 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.LucrariView);
+            this.groupBox2.Controls.Add(this.panelView);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(3, 72);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(643, 660);
+            this.groupBox2.Size = new System.Drawing.Size(637, 660);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Evidenta Lucrari";
             // 
+            // panelView
+            // 
+            this.panelView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelView.AutoScroll = true;
+            this.panelView.Controls.Add(this.LucrariView);
+            this.panelView.Location = new System.Drawing.Point(3, 16);
+            this.panelView.Name = "panelView";
+            this.panelView.Size = new System.Drawing.Size(635, 640);
+            this.panelView.TabIndex = 1;
+            // 
             // LucrariView
             // 
             this.LucrariView.AllowUserToAddRows = false;
-            this.LucrariView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.LucrariView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.LucrariView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.LucrariView.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LucrariView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LucrariView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.LucrariView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LucrariView.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LucrariView.DefaultCellStyle = dataGridViewCellStyle8;
             this.LucrariView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LucrariView.Location = new System.Drawing.Point(3, 16);
+            this.LucrariView.Location = new System.Drawing.Point(0, 0);
             this.LucrariView.Name = "LucrariView";
             this.LucrariView.RowHeadersVisible = false;
             this.LucrariView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LucrariView.Size = new System.Drawing.Size(637, 641);
+            this.LucrariView.Size = new System.Drawing.Size(635, 640);
             this.LucrariView.TabIndex = 0;
             this.LucrariView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LucrariView_CellClick);
             this.LucrariView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LucrariView_CellDoubleClick);
@@ -498,14 +518,6 @@
             this.errorProviderLucrari.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderLucrari.ContainerControl = this;
             this.errorProviderLucrari.Tag = "Test";
-            // 
-            // lblFilter
-            // 
-            this.lblFilter.AutoSize = true;
-            this.lblFilter.Location = new System.Drawing.Point(231, 21);
-            this.lblFilter.Name = "lblFilter";
-            this.lblFilter.Size = new System.Drawing.Size(0, 13);
-            this.lblFilter.TabIndex = 5;
             // 
             // UcLucrari
             // 
@@ -523,6 +535,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.panelView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LucrariView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLucrari)).EndInit();
             this.ResumeLayout(false);
@@ -569,5 +582,6 @@
         private System.Windows.Forms.Button bttCancel;
         private System.Windows.Forms.Button bttEdit;
         private System.Windows.Forms.Label lblFilter;
+        private System.Windows.Forms.Panel panelView;
     }
 }
