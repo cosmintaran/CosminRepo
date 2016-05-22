@@ -349,26 +349,20 @@ namespace View.View.UserControls
                 {
                     gridViewContract.Rows.Clear();
                     gridViewContract.Refresh();
+                    var dataGridViewColumn = gridViewContract.Columns["Current"];
+                    if (dataGridViewColumn != null) dataGridViewColumn.Visible = false;
                 }
                 else
                 {
                     var dataGridViewColumn = gridViewContract.Columns["ContractId"];
                     dataGridViewColumn.Visible = false;
+                    gridViewContract.Columns[1].MinimumWidth = 100;
+                    gridViewContract.Columns[2].MinimumWidth = 150;
+                    gridViewContract.Columns[3].MinimumWidth = 300;
+                    gridViewContract.Columns[4].MinimumWidth = 120;
+                    gridViewContract.Columns[5].MinimumWidth = 500;
+                    gridViewContract.Columns[6].MinimumWidth = 350;
                 }
-
-                //gridViewContract.Columns.Add("","");
-                //int test = gridViewContract.Columns.Count;
-
-                gridViewContract.Columns[1].MinimumWidth = 100;
-                gridViewContract.Columns[2].MinimumWidth = 150;
-                gridViewContract.Columns[3].MinimumWidth = 300;
-                gridViewContract.Columns[4].MinimumWidth = 120;
-                gridViewContract.Columns[5].MinimumWidth = 500;
-                gridViewContract.Columns[6].MinimumWidth = 350;
-
-               // gridViewContract.Columns[test-1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-               // gridViewContract.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
             }
             catch (InvalidOperationException ex) { MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }

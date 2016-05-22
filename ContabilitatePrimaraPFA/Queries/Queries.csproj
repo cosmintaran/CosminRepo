@@ -84,6 +84,10 @@
     <Compile Include="Migrations\201605190647254_Remove Prenume.Designer.cs">
       <DependentUpon>201605190647254_Remove Prenume.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605211408123_Facturi_chitante.cs" />
+    <Compile Include="Migrations\201605211408123_Facturi_chitante.Designer.cs">
+      <DependentUpon>201605211408123_Facturi_chitante.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persitence\ContaContext.cs" />
     <Compile Include="Core\Domain\Contract.cs" />
@@ -148,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605190647254_Remove Prenume.resx">
       <DependentUpon>201605190647254_Remove Prenume.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605211408123_Facturi_chitante.resx">
+      <DependentUpon>201605211408123_Facturi_chitante.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

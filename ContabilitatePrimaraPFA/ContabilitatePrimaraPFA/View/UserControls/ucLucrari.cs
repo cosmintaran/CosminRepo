@@ -42,7 +42,7 @@ namespace View.View.UserControls
         }
 
         private UcLucrari()
-        {
+      {
             InitializeComponent();
             _lucrare = new Lucrare();
             FillCombobox();
@@ -319,8 +319,8 @@ namespace View.View.UserControls
                 cbReceptionatRespins.DisplayMember = "StatusRec";
 
                 //Numar contract
-                bindContract.DataSource = unitOfWork.Contracte.GetContractByYear(DateTime.Today.Year);
                 bindContract.Add(new Contract { NrContract = "<new...>" });
+                bindContract.DataSource = unitOfWork.Contracte.GetContractByYear(DateTime.Today.Year);              
                 cbContract.DataSource = bindContract;
                 cbContract.DisplayMember = "NrContract";
 
@@ -382,6 +382,8 @@ namespace View.View.UserControls
                 {
                     LucrariView.Rows.Clear();
                     LucrariView.Refresh();
+                    var dataGridViewColumn = LucrariView.Columns["Current"];
+                    if (dataGridViewColumn != null) dataGridViewColumn.Visible = false;
                 }
                 else
                 {

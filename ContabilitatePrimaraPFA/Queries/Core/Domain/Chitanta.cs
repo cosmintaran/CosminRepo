@@ -1,10 +1,8 @@
 namespace Queries.Core.Domain
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Chitanta")]
     public partial class Chitanta
@@ -18,10 +16,12 @@ namespace Queries.Core.Domain
         [Column("Nr.Chitanta")]
         [Required]
         [StringLength(6)]
-        public string Nr_Chitanta { get; set; }
+        public string NrChitanta { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime DataEmiterii { get; set; }
+        [Column("Plata Numerar")]
+        public bool PlataNumerar { get; set; }
 
         public int FacturaId { get; set; }
 

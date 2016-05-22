@@ -45,7 +45,7 @@ namespace Queries.Persitence
                 .IsUnicode(false);
 
             modelBuilder.Entity<Factura>()
-                .Property(e => e.Suma)
+                .Property(e => e.Pret)
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<Factura>()

@@ -4,14 +4,14 @@ namespace Queries.Core.Domain
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Factura")]
-    public partial class Factura
+    public class Factura
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Factura()
         {
+            // ReSharper disable once DoNotCallOverridableMethodsInConstructor
             Chitanta = new HashSet<Chitanta>();
         }
 
@@ -21,21 +21,23 @@ namespace Queries.Core.Domain
         [StringLength(4)]
         public string SerieFactura { get; set; }
 
-        [Column("Nr.Factura")]
+        [Column("NrFactura")]
         [Required]
         [StringLength(6)]
-        public string Nr_Factura { get; set; }
+        public string NrFactura { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime DataFactura { get; set; }
-
-        public decimal Suma { get; set; }
+        [Column("Pret + T.V.A.")]
+        public decimal Pret { get; set; }
+        [Column("Valoare T.V.A.")]
+        public decimal Tva { get; set; }
+        [Column("Achizitie/Vanzare")]
+        public bool EsteIncasare { get; set; }
+        [Column("Plateste T.V.A")]
+        public bool PlatitorTva { get; set; }
 
         public int? ContractId { get; set; }
-
-        public bool Plata { get; set; }
-
-        public bool PlatitorTVA { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Chitanta> Chitanta { get; set; }
