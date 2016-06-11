@@ -29,16 +29,19 @@
         private void InitializeComponent()
         {
             this.grBoxOperatiuni = new System.Windows.Forms.GroupBox();
-            this.btttFacturi = new System.Windows.Forms.Button();
+            this.btttOperatiuni = new System.Windows.Forms.Button();
             this.bttContracte = new System.Windows.Forms.Button();
             this.bttLucrari = new System.Windows.Forms.Button();
             this.grBoxCursValutar = new System.Windows.Forms.GroupBox();
+            this.lblUsd = new System.Windows.Forms.Label();
+            this.lblEuro = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.grBoxOperatiuni.SuspendLayout();
+            this.grBoxCursValutar.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +49,7 @@
             // 
             this.grBoxOperatiuni.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.grBoxOperatiuni.Controls.Add(this.btttFacturi);
+            this.grBoxOperatiuni.Controls.Add(this.btttOperatiuni);
             this.grBoxOperatiuni.Controls.Add(this.bttContracte);
             this.grBoxOperatiuni.Controls.Add(this.bttLucrari);
             this.grBoxOperatiuni.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -57,16 +60,16 @@
             this.grBoxOperatiuni.TabStop = false;
             this.grBoxOperatiuni.Text = "Operatiuni";
             // 
-            // btttFacturi
+            // btttOperatiuni
             // 
-            this.btttFacturi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btttFacturi.Location = new System.Drawing.Point(6, 124);
-            this.btttFacturi.Name = "btttFacturi";
-            this.btttFacturi.Size = new System.Drawing.Size(88, 28);
-            this.btttFacturi.TabIndex = 0;
-            this.btttFacturi.Text = "Facturi";
-            this.btttFacturi.UseVisualStyleBackColor = true;
-            this.btttFacturi.Click += new System.EventHandler(this.PaintUserControl);
+            this.btttOperatiuni.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btttOperatiuni.Location = new System.Drawing.Point(6, 124);
+            this.btttOperatiuni.Name = "btttOperatiuni";
+            this.btttOperatiuni.Size = new System.Drawing.Size(88, 28);
+            this.btttOperatiuni.TabIndex = 0;
+            this.btttOperatiuni.Text = "Operatiuni";
+            this.btttOperatiuni.UseVisualStyleBackColor = true;
+            this.btttOperatiuni.Click += new System.EventHandler(this.PaintUserControl);
             // 
             // bttContracte
             // 
@@ -92,6 +95,8 @@
             // 
             // grBoxCursValutar
             // 
+            this.grBoxCursValutar.Controls.Add(this.lblUsd);
+            this.grBoxCursValutar.Controls.Add(this.lblEuro);
             this.grBoxCursValutar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grBoxCursValutar.Location = new System.Drawing.Point(12, 27);
             this.grBoxCursValutar.Name = "grBoxCursValutar";
@@ -99,6 +104,24 @@
             this.grBoxCursValutar.TabIndex = 1;
             this.grBoxCursValutar.TabStop = false;
             this.grBoxCursValutar.Text = "Curs B.N.R.";
+            // 
+            // lblUsd
+            // 
+            this.lblUsd.AutoSize = true;
+            this.lblUsd.Location = new System.Drawing.Point(6, 57);
+            this.lblUsd.Name = "lblUsd";
+            this.lblUsd.Size = new System.Drawing.Size(29, 13);
+            this.lblUsd.TabIndex = 1;
+            this.lblUsd.Text = "Usd";
+            // 
+            // lblEuro
+            // 
+            this.lblEuro.AutoSize = true;
+            this.lblEuro.Location = new System.Drawing.Point(6, 27);
+            this.lblEuro.Name = "lblEuro";
+            this.lblEuro.Size = new System.Drawing.Size(33, 13);
+            this.lblEuro.TabIndex = 0;
+            this.lblEuro.Text = "Euro";
             // 
             // menuStrip1
             // 
@@ -140,12 +163,10 @@
             this.mainPanel.Location = new System.Drawing.Point(119, 28);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(1062, 565);
-            
             this.mainPanel.TabIndex = 3;
             // 
             // Form1
             // 
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1193, 605);
@@ -155,8 +176,11 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Conta PFA";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.grBoxOperatiuni.ResumeLayout(false);
+            this.grBoxCursValutar.ResumeLayout(false);
+            this.grBoxCursValutar.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -172,10 +196,12 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.Button btttFacturi;
+        private System.Windows.Forms.Button btttOperatiuni;
         private System.Windows.Forms.Button bttContracte;
         private System.Windows.Forms.Button bttLucrari;
         private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.Label lblUsd;
+        private System.Windows.Forms.Label lblEuro;
     }
 }
 

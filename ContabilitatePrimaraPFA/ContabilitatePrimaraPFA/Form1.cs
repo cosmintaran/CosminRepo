@@ -10,7 +10,7 @@ namespace View
     public partial class Form1 : Form
     {
         #region declaration Area
-        UserControl _userControl = null;
+        UserControl _userControl;
         //string 
         #endregion
         //Constructor
@@ -18,6 +18,7 @@ namespace View
         {
             InitializeComponent();
             Database.SetInitializer<ContaContext>(new ContaContextSeeder());
+            GetBNR();
             object init = "Lucrari";
             PaintUserControl(init,null);
             ((UcLucrari)_userControl).UserControlChanging += PaintUserControl;
@@ -63,6 +64,25 @@ namespace View
             {
                 _userControl.BringToFront();
             }
+        }
+
+        private void GetBNR()
+        {
+            try
+            {
+                Currency valute = Currency.None;
+                valute |= Currency.EUR;
+                valute |= Currency.USD;
+                var curs = new CursBNR("http://www.bnr.ro/nbrfxrates.xml");
+                var content = curs.GetCurrentExchangeRate(valute);
+                lblEuro.Text = @"Euro " + content["EUR"] /*+ @"/Lei"*/;
+                lblUsd.Text = @"Usd " + content["USD"] /*+ @"/Lei"*/;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,@"Eroare curs valutar",MessageBoxButtons.OK,MessageBoxIcon.Error );
+            }
+            
         }
     }
 }

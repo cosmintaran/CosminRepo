@@ -7,8 +7,8 @@ namespace Queries.Core
     {
         ILucrareRepository Lucrari        { get; }
         IContractRepository Contracte     { get; }
-        IFacturaRepository Facturi        { get; }
-        IChitantaRepository Chitante      { get; }
+        IIncasareRepository Incasari        { get; }
+        IPlataRepository Plati      { get; }
         IBeneficiarRepository Beneficiari { get; }
         IAcceptatRefuzataRepository AcceptateRespinse { get; }
         ITipLucrareRepository TipLucrare { get; }

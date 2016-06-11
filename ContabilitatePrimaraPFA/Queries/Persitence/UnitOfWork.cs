@@ -18,17 +18,19 @@
             ReceptionateRespinse = new ReceprionataRespinsaRepository(_mContext);
             Contracte = new ContractRepository(_mContext);
             TipActe = new TipActRepository(_mContext);
+            Incasari = new IncasareRepository(_mContext);
+            Plati = new PlataRepository(_mContext);
         }
 
         #region Propertys
 
         public IBeneficiarRepository Beneficiari { get; set; }
 
-        public IChitantaRepository Chitante { get; set; }
+        public IIncasareRepository Incasari { get; set; }
 
         public IContractRepository Contracte { get; set; }
 
-        public IFacturaRepository Facturi { get; set; }
+        public IPlataRepository Plati { get; set; }
 
         public ILucrareRepository Lucrari { get; set; }
 

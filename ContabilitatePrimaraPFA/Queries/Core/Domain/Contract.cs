@@ -4,7 +4,7 @@ namespace Queries.Core.Domain
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+    
 
     [Table("Contract")]
     public partial class Contract
@@ -12,7 +12,8 @@ namespace Queries.Core.Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Contract()
         {
-            Factura = new HashSet<Factura>();
+            Plata = new HashSet<Plata>();
+            Incasare = new HashSet<Incasare>();
             Lucrare = new HashSet<Lucrare>();
         }
 
@@ -39,8 +40,8 @@ namespace Queries.Core.Domain
         public virtual Beneficiar Beneficiar { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Factura> Factura { get; set; }
-
+        public virtual ICollection<Plata> Plata { get; set; }
+        public virtual ICollection<Incasare> Incasare { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lucrare> Lucrare { get; set; }
     }

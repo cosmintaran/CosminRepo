@@ -303,7 +303,7 @@ namespace View.View.UserControls
             {
                 var bindAcceptrefuz = new BindingSource();
                 var bindRecResp = new BindingSource();
-                var bindContract = new BindingSource();
+                //var bindContract = new BindingSource();
 
                 var contaContext = new ContaContext();
                 var unitOfWork = new UnitOfWork(contaContext);
@@ -318,12 +318,18 @@ namespace View.View.UserControls
                 cbReceptionatRespins.DataSource = bindRecResp;
                 cbReceptionatRespins.DisplayMember = "StatusRec";
 
-                //Numar contract
+                //Numar contract                  
+               /* bindContract.DataSource = unitOfWork.Contracte.GetContractByYear(DateTime.Today.Year);
                 bindContract.Add(new Contract { NrContract = "<new...>" });
-                bindContract.DataSource = unitOfWork.Contracte.GetContractByYear(DateTime.Today.Year);              
                 cbContract.DataSource = bindContract;
-                cbContract.DisplayMember = "NrContract";
-
+                cbContract.DisplayMember = "NrContract";*/
+                var listOfContracts = unitOfWork.Contracte.GetContractByYear(DateTime.Today.Year);              
+                foreach (var item in listOfContracts)
+                {
+                    cbContract.Items.Add(item);
+                }
+               // cbContract.Items.Add(new Contract { NrContract = "<new...>" });
+                cbContract.DisplayMember = "NrContract"; 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, @"Error initializing fields", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
@@ -398,7 +404,7 @@ namespace View.View.UserControls
         {
             
             var contract = cbContract.SelectedItem as Contract;
-            if (contract != null && contract.NrContract == "<new...>")
+            if (contract == null || contract.NrContract == "<new...>")
             {
                 ChangeForm("Contracte");
             }

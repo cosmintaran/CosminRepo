@@ -1,4 +1,5 @@
-﻿using Queries.Core.Domain;
+﻿
+using Queries.Core.Domain;
 using System;
 using System.Collections.Generic;
 

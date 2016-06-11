@@ -61,7 +61,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Messaging" />
     <Reference Include="System.ServiceModel.DomainServices.EntityFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xaml" />
@@ -86,6 +85,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Classes\CursBNR.cs" />
     <Compile Include="View\Classes\UserControlEventArgs.cs" />
     <Compile Include="View\Classes\UIFactory.cs" />
     <Compile Include="View\Classes\FormValidator.cs" />
@@ -114,11 +114,11 @@
     <Compile Include="View\UserControls\ucContracte.Designer.cs">
       <DependentUpon>ucContracte.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ucFacturi.cs">
+    <Compile Include="View\UserControls\ucOperatiuni.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\UserControls\ucFacturi.Designer.cs">
-      <DependentUpon>ucFacturi.cs</DependentUpon>
+    <Compile Include="View\UserControls\ucOperatiuni.Designer.cs">
+      <DependentUpon>ucOperatiuni.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\ucLucrari.cs">
       <SubType>UserControl</SubType>
@@ -151,8 +151,8 @@
     <EmbeddedResource Include="View\UserControls\ucContracte.resx">
       <DependentUpon>ucContracte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UserControls\ucFacturi.resx">
-      <DependentUpon>ucFacturi.cs</DependentUpon>
+    <EmbeddedResource Include="View\UserControls\ucOperatiuni.resx">
+      <DependentUpon>ucOperatiuni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserControls\ucLucrari.resx">
       <DependentUpon>ucLucrari.cs</DependentUpon>

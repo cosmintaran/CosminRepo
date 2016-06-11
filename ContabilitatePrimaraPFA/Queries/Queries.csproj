@@ -57,7 +57,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -70,29 +69,22 @@
   <ItemGroup>
     <Compile Include="Core\Domain\AcceptataRefuzata.cs" />
     <Compile Include="Core\Domain\Beneficiar.cs" />
-    <Compile Include="Core\Domain\Chitanta.cs" />
+    <Compile Include="Core\Domain\Incasare.cs" />
+    <Compile Include="Core\Domain\Plata.cs" />
+    <Compile Include="Core\Repositories\IIncasareRepository.cs" />
+    <Compile Include="Core\Repositories\IPlataRepository.cs" />
     <Compile Include="Core\Repositories\ITipAct.cs" />
-    <Compile Include="Migrations\201605181019469_UpdateBeneficiari.cs" />
-    <Compile Include="Migrations\201605181019469_UpdateBeneficiari.Designer.cs">
-      <DependentUpon>201605181019469_UpdateBeneficiari.cs</DependentUpon>
+    <Compile Include="Migrations\201606040710178_InitialCreate.cs" />
+    <Compile Include="Migrations\201606040710178_InitialCreate.Designer.cs">
+      <DependentUpon>201606040710178_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605181033563_Persoana fizica.cs" />
-    <Compile Include="Migrations\201605181033563_Persoana fizica.Designer.cs">
-      <DependentUpon>201605181033563_Persoana fizica.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605190647254_Remove Prenume.cs" />
-    <Compile Include="Migrations\201605190647254_Remove Prenume.Designer.cs">
-      <DependentUpon>201605190647254_Remove Prenume.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605211408123_Facturi_chitante.cs" />
-    <Compile Include="Migrations\201605211408123_Facturi_chitante.Designer.cs">
-      <DependentUpon>201605211408123_Facturi_chitante.cs</DependentUpon>
+    <Compile Include="Migrations\201606040949012_Plata-Incasare.cs" />
+    <Compile Include="Migrations\201606040949012_Plata-Incasare.Designer.cs">
+      <DependentUpon>201606040949012_Plata-Incasare.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persitence\ContaContext.cs" />
     <Compile Include="Core\Domain\Contract.cs" />
-    <Compile Include="Core\Domain\Factura.cs" />
-    <Compile Include="Core\Domain\Judet.cs" />
     <Compile Include="Core\Domain\Lucrare.cs" />
     <Compile Include="Core\Domain\ReceptionatRespins.cs" />
     <Compile Include="Core\Domain\TipAct.cs" />
@@ -101,9 +93,7 @@
     <Compile Include="Core\Repositories\IReceptionatRespinsRepository.cs" />
     <Compile Include="Core\Repositories\ITipLucrareRepository.cs" />
     <Compile Include="Core\Repositories\IBeneficiarRepository.cs" />
-    <Compile Include="Core\Repositories\IChitantaRepository.cs" />
     <Compile Include="Core\Repositories\IContractRepository.cs" />
-    <Compile Include="Core\Repositories\IFacturaRepository.cs" />
     <Compile Include="Core\Repositories\ILucrareRepository.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
@@ -111,7 +101,9 @@
     <Compile Include="Persitence\Repositories\AcceptatRefuzataRepository.cs" />
     <Compile Include="Persitence\Repositories\BeneficiarRepository.cs" />
     <Compile Include="Persitence\Repositories\ContractRepository.cs" />
+    <Compile Include="Persitence\Repositories\IncasareRepository.cs" />
     <Compile Include="Persitence\Repositories\LucrareRepository.cs" />
+    <Compile Include="Persitence\Repositories\PlataRepository.cs" />
     <Compile Include="Persitence\Repositories\ReceprionataRespinsaRepository.cs" />
     <Compile Include="Persitence\Repositories\Repository.cs" />
     <Compile Include="Persitence\Repositories\TipActRepository.cs" />
@@ -144,17 +136,11 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605181019469_UpdateBeneficiari.resx">
-      <DependentUpon>201605181019469_UpdateBeneficiari.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606040710178_InitialCreate.resx">
+      <DependentUpon>201606040710178_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605181033563_Persoana fizica.resx">
-      <DependentUpon>201605181033563_Persoana fizica.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605190647254_Remove Prenume.resx">
-      <DependentUpon>201605190647254_Remove Prenume.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605211408123_Facturi_chitante.resx">
-      <DependentUpon>201605211408123_Facturi_chitante.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606040949012_Plata-Incasare.resx">
+      <DependentUpon>201606040949012_Plata-Incasare.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

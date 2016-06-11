@@ -8,7 +8,7 @@ namespace Queries.Persitence
     {
         protected override void Seed(ContaContext context)
         {
-            List<ReceptionatRespins> rec = new List<ReceptionatRespins>()
+            var rec = new List<ReceptionatRespins>()
             {
                 new ReceptionatRespins {StatusRec = "In Lucru"},
                 new ReceptionatRespins {StatusRec = "Receptionat" },
@@ -16,13 +16,13 @@ namespace Queries.Persitence
 
             };
 
-            List<AcceptataRefuzata> accept = new List<AcceptataRefuzata>()
+            var accept = new List<AcceptataRefuzata>()
             {
                 new AcceptataRefuzata {StatusAccept = "Acceptata"},
                 new AcceptataRefuzata {StatusAccept = "Refuzata"}
             };
 
-            List<TipLucrare> tipLucrare = new List<TipLucrare>()
+            var tipLucrare = new List<TipLucrare>()
             {
                 new TipLucrare {CodLucrare = "0.0.0", Tip_Lucrare = "None"},
                 new TipLucrare {CodLucrare = "1.1.1", Tip_Lucrare = "Aviz incepere lucrari" },
@@ -40,12 +40,13 @@ namespace Queries.Persitence
                 new TipLucrare {CodLucrare = "2.6.2", Tip_Lucrare = "Extindere sau desfiintare constructii si actualizare categorie de folosinta, destinatie sau alte informatii tehnice" }
             };
 
-            List<TipAct> tipAct = new List<TipAct>()
+            var tipAct = new List<TipAct>()
             {
                 new TipAct {TipAct1 = "B.I."},
                 new TipAct {TipAct1 = "C.I."},
                 new TipAct {TipAct1 = "Pasaport"}
             };
+
             foreach (var it in rec)
                 context.ReceptionatRespins.Add(it);
             foreach (var it in accept)

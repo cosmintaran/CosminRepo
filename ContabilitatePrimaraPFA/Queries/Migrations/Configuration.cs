@@ -10,6 +10,7 @@ namespace Queries.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "Queries.Persitence.ContaContext";
         }
 
         protected override void Seed(Queries.Persitence.ContaContext context)
