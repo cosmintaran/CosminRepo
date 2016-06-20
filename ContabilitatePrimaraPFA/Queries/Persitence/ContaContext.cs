@@ -1,3 +1,4 @@
+using System;
 using System.Data.Entity;
 using Queries.Core.Domain;
 
@@ -8,6 +9,7 @@ namespace Queries.Persitence
         public ContaContext()
             : base("name=ContaContext")
         {
+          AppDomain.CurrentDomain.SetData("DataDirectory", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
         }
 
         public virtual DbSet<AcceptataRefuzata> AcceptataRefuzata { get; set; }

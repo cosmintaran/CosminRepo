@@ -46,10 +46,11 @@ namespace View.View.Classes
         private readonly string _downloadPath;
         private readonly string _fileName;
         private readonly DateTime _updateHour;
+        //private readonly string tempPath; 
         public CursBNR(string downloadPath)
         {
             _downloadPath = downloadPath;
-            _fileName = @"CursBnr.xml";
+            _fileName = Environment.GetEnvironmentVariable("TEMP") + @"CursBnr.xml";
             _updateHour = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 30, 00);
         }
         public CursBNR(string downloadPath, string fileName)
