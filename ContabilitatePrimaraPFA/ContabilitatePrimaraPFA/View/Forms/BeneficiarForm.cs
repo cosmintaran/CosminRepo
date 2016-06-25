@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using Queries.Core.Domain;
 using Queries.Persitence;
 
-namespace View.View.Forms
+namespace ContaPFA.View.Forms
 {
     public partial class BeneficiarForm : Form
     {

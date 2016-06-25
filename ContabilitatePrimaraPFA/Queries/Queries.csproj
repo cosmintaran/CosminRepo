@@ -133,9 +133,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201606040710178_InitialCreate.resx">
       <DependentUpon>201606040710178_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,9 +1,9 @@
-﻿namespace ContabilitatePrimaraPFA.View.Classes
-{
-    using System;
+﻿using System;
 
+namespace ContaPFA.View.Classes
+{
     [Flags]
-    public enum FilterCriteria : int
+    public enum FilterCriteria 
     {
         None            = 0 << 0, //0000
         NrDoc           = 1 << 0, //0001

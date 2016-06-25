@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Globalization;
 using System.Windows.Forms;
-using ContabilitatePrimaraPFA.View.Classes;
+using ContaPFA.View.Classes;
+using ContaPFA.View.Forms;
 using Queries.Core.Domain;
 using Queries.Persitence;
-using View.View.Classes;
 using View.View.Forms;
 
-namespace View.View.UserControls
+namespace ContaPFA.View.UserControls
 {
     public partial class UcContracte : UserControl
     {
@@ -395,7 +395,7 @@ namespace View.View.UserControls
 
         private void txtSuma_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (String.IsNullOrEmpty(txtNrContr.Text))
+            if (String.IsNullOrEmpty(txtSuma.Text))
             {
                 e.Cancel = true;
                 txtSuma.Focus(); errorProviderContracte.SetError(txtSuma, "Campul Valoare Contract trebuie completat");
@@ -414,7 +414,7 @@ namespace View.View.UserControls
 
         private void txtObiect_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (String.IsNullOrEmpty(txtNrContr.Text))
+            if (String.IsNullOrEmpty(txtObiect.Text))
             {
                 e.Cancel = true;
                 txtObiect.Focus(); errorProviderContracte.SetError(txtNrContr, "Campul Obiect Contract trebuie completat");

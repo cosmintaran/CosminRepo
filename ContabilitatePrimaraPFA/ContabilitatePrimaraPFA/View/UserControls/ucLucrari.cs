@@ -1,17 +1,16 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity.Infrastructure;
 using System.Windows.Forms;
-using ContabilitatePrimaraPFA.View.Classes;
 using ContabilitatePrimaraPFA.View.Forms;
+using ContaPFA.View.Classes;
 using Queries.Core.Domain;
 using Queries.Persitence;
 using View.View.Forms;
-using View.View.Classes;
+using View.View.UserControls;
 
-namespace View.View.UserControls
+namespace ContaPFA.View.UserControls
 {
     public partial class UcLucrari : UserControl
     {

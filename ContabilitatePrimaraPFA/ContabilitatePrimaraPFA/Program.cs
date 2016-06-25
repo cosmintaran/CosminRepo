@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using View;
 
-namespace ContabilitatePrimaraPFA
+namespace ContaPFA
 {
     static class Program
     {
@@ -17,7 +13,7 @@ namespace ContabilitatePrimaraPFA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new ContaPfaForm());
         }
     }
 }

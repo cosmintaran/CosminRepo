@@ -1,8 +1,8 @@
 ﻿
-namespace ContabilitatePrimaraPFA.View.Classes
-{
-    using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 
+namespace ContaPFA.View.Classes
+{
     public class FormValidator
     {
         public static bool NamesValidator(string value, string pattern)

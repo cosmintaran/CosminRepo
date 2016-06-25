@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml;
 using System.IO;
+using System.Xml;
 
-namespace View.View.Classes
+namespace ContaPFA.View.Classes
 {
     [Flags]
     public enum Currency 
@@ -50,7 +50,7 @@ namespace View.View.Classes
         public CursBNR(string downloadPath)
         {
             _downloadPath = downloadPath;
-            _fileName = Environment.GetEnvironmentVariable("TEMP") + @"CursBnr.xml";
+            _fileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"CursBnr.xml";
             _updateHour = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 30, 00);
         }
         public CursBNR(string downloadPath, string fileName)

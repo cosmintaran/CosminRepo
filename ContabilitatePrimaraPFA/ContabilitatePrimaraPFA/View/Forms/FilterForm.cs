@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using ContabilitatePrimaraPFA.View.Classes;
+using ContaPFA.View.Classes;
 
 namespace View.View.Forms
 {

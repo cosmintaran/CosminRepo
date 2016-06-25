@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Windows.Forms;
-using View.View.Classes;
+using ContaPFA.View.Classes;
+using ContaPFA.View.UserControls;
 using Queries.Persitence;
-using View.View.UserControls;
 
-namespace View
+namespace ContaPFA
 {
-    public partial class Form1 : Form
+    public partial class ContaPfaForm : Form
     {
         #region declaration Area
         UserControl _userControl;
         //string 
         #endregion
         //Constructor
-        public Form1()
+        public ContaPfaForm()
         {
             InitializeComponent();
             Database.SetInitializer<ContaContext>(new ContaContextSeeder());

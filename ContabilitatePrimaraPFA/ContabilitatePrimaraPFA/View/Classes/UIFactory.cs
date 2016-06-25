@@ -1,9 +1,9 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using ContaPFA.View.UserControls;
 using View.View.UserControls;
 
-namespace View.View.Classes
+namespace ContaPFA.View.Classes
 {
     public class UiFactory
     {

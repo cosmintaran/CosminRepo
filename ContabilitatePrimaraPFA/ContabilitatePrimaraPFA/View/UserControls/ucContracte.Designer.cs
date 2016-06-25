@@ -1,4 +1,4 @@
-﻿namespace View.View.UserControls
+﻿namespace ContaPFA.View.UserControls
 {
     partial class UcContracte
     {

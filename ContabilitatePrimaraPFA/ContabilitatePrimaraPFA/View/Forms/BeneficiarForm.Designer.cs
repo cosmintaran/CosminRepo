@@ -1,4 +1,4 @@
-﻿namespace View.View.Forms
+﻿namespace ContaPFA.View.Forms
 {
     partial class BeneficiarForm
     {

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Windows.Controls;
 
-namespace View.View.Classes
+namespace ContaPFA.View.Classes
 {
     public class UserControlEventArgs : EventArgs
     {
