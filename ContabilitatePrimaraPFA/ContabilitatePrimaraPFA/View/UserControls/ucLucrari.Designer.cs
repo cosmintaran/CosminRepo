@@ -361,8 +361,8 @@
             this.cbContract.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbContract.FormattingEnabled = true;
             this.cbContract.ItemHeight = 15;
-            this.cbContract.Items.AddRange(new object[] {
-            "<new...>"});
+            /*this.cbContract.Items.AddRange(new object[] {
+            "<new...>"});*/
             this.cbContract.Location = new System.Drawing.Point(111, 397);
             this.cbContract.Name = "cbContract";
             this.cbContract.Size = new System.Drawing.Size(209, 23);

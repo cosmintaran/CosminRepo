@@ -15,8 +15,6 @@ namespace ContaPFA.View.UserControls
     public partial class UcLucrari : UserControl
     {
 
-        //public delegate void FormChangedEventHandler(object sender, EventArgs args);
-        //public event FormChangedEventHandler UserControlChanging;
          public EventHandler<UserControlEventArgs> UserControlChanging;
 
         #region Declared Members
@@ -285,12 +283,15 @@ namespace ContaPFA.View.UserControls
         protected virtual void ChangeForm(string formName)
         {
             if (_mContracte == null)
-            {
-                _mContracte = UiFactory.GetUserControl("Contracte") as UcContracte;
-                if (_mContracte != null) _mContracte.ReturnFromContracteEventHandler += CallBackFromContracte;
-            }
+            _mContracte = UiFactory.GetUserControl("Contracte") as UcContracte;
 
-            UserControlChanging?.Invoke(formName,new UserControlEventArgs() {UsControl = this });
+            if (_mContracte != null) _mContracte.OnContractSaveEventHandler += CallBackFromContracte;
+
+            if (UserControlChanging != null)
+            {
+                UserControlChanging(formName, new UserControlEventArgs {UsControlName = formName});
+            }
+            //UserControlChanging?.Invoke(formName,new UserControlEventArgs() {UsControlName = this });
         }
         #endregion
 
@@ -322,12 +323,15 @@ namespace ContaPFA.View.UserControls
                 bindContract.Add(new Contract { NrContract = "<new...>" });
                 cbContract.DataSource = bindContract;
                 cbContract.DisplayMember = "NrContract";*/
-                var listOfContracts = unitOfWork.Contracte.GetContractByYear(DateTime.Today.Year);              
+                var listOfContracts = unitOfWork.Contracte.GetContractByYear(DateTime.Today.Year);
+                if(cbContract.Items.Count > 0)
+                    cbContract.Items.Clear();
+                cbContract.Items.Add(new Contract { NrContract = "<new...>" });              
                 foreach (var item in listOfContracts)
                 {
                     cbContract.Items.Add(item);
                 }
-               // cbContract.Items.Add(new Contract { NrContract = "<new...>" });
+               
                 cbContract.DisplayMember = "NrContract"; 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, @"Error initializing fields", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -403,7 +407,7 @@ namespace ContaPFA.View.UserControls
         {
             
             var contract = cbContract.SelectedItem as Contract;
-            if (contract == null || contract.NrContract == "<new...>")
+            if (contract?.NrContract == "<new...>")
             {
                 ChangeForm("Contracte");
             }
@@ -460,9 +464,9 @@ namespace ContaPFA.View.UserControls
         private void CallBackFromContracte(object sender, UserControlEventArgs arg)
         {
             FillCombobox();
-            ChangeForm(sender.ToString());
+            ChangeForm(arg.UsControlName);
             if (_mContracte == null) return;
-            _mContracte.ReturnFromContracteEventHandler -= CallBackFromContracte;
+            _mContracte.OnContractSaveEventHandler -= CallBackFromContracte;
             _mContracte = null;
         }
 

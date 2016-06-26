@@ -4,6 +4,6 @@ namespace ContaPFA.View.Classes
 {
     public class UserControlEventArgs : EventArgs
     {
-        public object UsControl { get; set; }
+        public string UsControlName { get; set; }
     }
 }

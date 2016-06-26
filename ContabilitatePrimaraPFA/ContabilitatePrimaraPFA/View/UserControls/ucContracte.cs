@@ -13,7 +13,7 @@ namespace ContaPFA.View.UserControls
 {
     public partial class UcContracte : UserControl
     {
-        public event EventHandler<UserControlEventArgs> ReturnFromContracteEventHandler;
+        public event EventHandler<UserControlEventArgs> OnContractSaveEventHandler;
         
         #region Declared Members
         private static UcContracte _mContracte;
@@ -39,6 +39,7 @@ namespace ContaPFA.View.UserControls
         private UcContracte()
         {
             InitializeComponent();
+            this.Name = "Contracte";
             FillGridView(_filter, DateTime.Today.Year.ToString());
         }
         #endregion
@@ -183,6 +184,7 @@ namespace ContaPFA.View.UserControls
             if (result != DialogResult.OK) return;
             _contract.BeneficiarId = ben.GetBeneficiarId;
         }
+
         private void bttEdit_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren(ValidationConstraints.Enabled)) return;
@@ -214,6 +216,7 @@ namespace ContaPFA.View.UserControls
         {
             ClearFormContract();
             bttClear.Visible = true;
+            bttSave.Visible = true;
             bttNewContract.Visible = true;
             bttEdit.Visible = false;
             bttCancel.Visible = false;
@@ -258,8 +261,13 @@ namespace ContaPFA.View.UserControls
         }
         protected virtual void OnUpdateLucrariCombo()
         {
-            ReturnFromContracteEventHandler?.Invoke("Lucrari", new UserControlEventArgs() {UsControl = this});
+            if (OnContractSaveEventHandler != null)
+            {
+                OnContractSaveEventHandler("Lucrari", new UserControlEventArgs {UsControlName = "Lucrari"});
             }
+            
+            //OnContractSaveEventHandler?.Invoke("Lucrari", new UserControlEventArgs() {UsControlName = this});
+        }
         #endregion Command Region
 
         #region Logic Area

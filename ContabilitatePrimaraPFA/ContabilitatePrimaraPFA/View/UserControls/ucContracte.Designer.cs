@@ -158,7 +158,7 @@
             // 
             // bttCancel
             // 
-            this.bttCancel.Location = new System.Drawing.Point(232, 530);
+            this.bttCancel.Location = new System.Drawing.Point(236, 515);
             this.bttCancel.Name = "bttCancel";
             this.bttCancel.Size = new System.Drawing.Size(75, 23);
             this.bttCancel.TabIndex = 5;
@@ -169,7 +169,7 @@
             // 
             // bttEdit
             // 
-            this.bttEdit.Location = new System.Drawing.Point(10, 530);
+            this.bttEdit.Location = new System.Drawing.Point(14, 515);
             this.bttEdit.Name = "bttEdit";
             this.bttEdit.Size = new System.Drawing.Size(75, 23);
             this.bttEdit.TabIndex = 4;
@@ -356,6 +356,8 @@
             this.panel2.Controls.Add(this.bttClear);
             this.panel2.Controls.Add(this.lblNrContract);
             this.panel2.Controls.Add(this.bttSave);
+            this.panel2.Controls.Add(this.bttEdit);
+            this.panel2.Controls.Add(this.bttCancel);
             this.panel2.Controls.Add(this.lblSuma);
             this.panel2.Controls.Add(this.lblObiect);
             this.panel2.Controls.Add(this.lblObservatii);
