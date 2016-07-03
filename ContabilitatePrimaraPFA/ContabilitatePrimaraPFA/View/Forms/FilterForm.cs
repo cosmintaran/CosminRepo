@@ -1,10 +1,9 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using ContaPFA.View.Classes;
 
-namespace View.View.Forms
+namespace ContaPFA.View.Forms
 {
     public partial class FilterForm : Form
     {

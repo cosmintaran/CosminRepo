@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using ContaPFA.View.UserControls;
-using View.View.UserControls;
 
 namespace ContaPFA.View.Classes
 {

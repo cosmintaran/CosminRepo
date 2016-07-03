@@ -37,8 +37,12 @@
             this.lblEuro = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lucrariToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contracteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operatiuniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iesireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informatiiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.grBoxOperatiuni.SuspendLayout();
             this.grBoxCursValutar.SuspendLayout();
@@ -56,7 +60,7 @@
             this.grBoxOperatiuni.Location = new System.Drawing.Point(12, 165);
             this.grBoxOperatiuni.Name = "grBoxOperatiuni";
             this.grBoxOperatiuni.Size = new System.Drawing.Size(100, 428);
-            this.grBoxOperatiuni.TabIndex = 0;
+            this.grBoxOperatiuni.TabIndex = 2;
             this.grBoxOperatiuni.TabStop = false;
             this.grBoxOperatiuni.Text = "Operatiuni";
             // 
@@ -66,7 +70,7 @@
             this.btttOperatiuni.Location = new System.Drawing.Point(6, 124);
             this.btttOperatiuni.Name = "btttOperatiuni";
             this.btttOperatiuni.Size = new System.Drawing.Size(88, 28);
-            this.btttOperatiuni.TabIndex = 0;
+            this.btttOperatiuni.TabIndex = 2;
             this.btttOperatiuni.Text = "Operatiuni";
             this.btttOperatiuni.UseVisualStyleBackColor = true;
             this.btttOperatiuni.Click += new System.EventHandler(this.PaintUserControl);
@@ -77,7 +81,7 @@
             this.bttContracte.Location = new System.Drawing.Point(6, 78);
             this.bttContracte.Name = "bttContracte";
             this.bttContracte.Size = new System.Drawing.Size(88, 28);
-            this.bttContracte.TabIndex = 0;
+            this.bttContracte.TabIndex = 1;
             this.bttContracte.Text = "Contracte";
             this.bttContracte.UseVisualStyleBackColor = true;
             this.bttContracte.Click += new System.EventHandler(this.PaintUserControl);
@@ -127,31 +131,66 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.viewToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1193, 24);
-            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lucrariToolStripMenuItem,
+            this.contracteToolStripMenuItem,
+            this.operatiuniToolStripMenuItem,
+            this.iesireToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // viewToolStripMenuItem
+            // lucrariToolStripMenuItem
             // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
+            this.lucrariToolStripMenuItem.Name = "lucrariToolStripMenuItem";
+            this.lucrariToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.lucrariToolStripMenuItem.Text = "Lucrari";
+            this.lucrariToolStripMenuItem.Click += new System.EventHandler(this.PaintUserControl);
+            // 
+            // contracteToolStripMenuItem
+            // 
+            this.contracteToolStripMenuItem.Name = "contracteToolStripMenuItem";
+            this.contracteToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.contracteToolStripMenuItem.Text = "Contracte";
+            this.contracteToolStripMenuItem.Click += new System.EventHandler(this.PaintUserControl);
+            // 
+            // operatiuniToolStripMenuItem
+            // 
+            this.operatiuniToolStripMenuItem.Name = "operatiuniToolStripMenuItem";
+            this.operatiuniToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.operatiuniToolStripMenuItem.Text = "Operatiuni";
+            this.operatiuniToolStripMenuItem.Click += new System.EventHandler(this.PaintUserControl);
+            // 
+            // iesireToolStripMenuItem
+            // 
+            this.iesireToolStripMenuItem.Name = "iesireToolStripMenuItem";
+            this.iesireToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.iesireToolStripMenuItem.Text = "Iesire";
+            this.iesireToolStripMenuItem.Click += new System.EventHandler(this.iesireToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.informatiiToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // informatiiToolStripMenuItem
+            // 
+            this.informatiiToolStripMenuItem.Name = "informatiiToolStripMenuItem";
+            this.informatiiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.informatiiToolStripMenuItem.Text = "Informatii";
+            this.informatiiToolStripMenuItem.Click += new System.EventHandler(this.informatiiToolStripMenuItem_Click);
             // 
             // mainPanel
             // 
@@ -194,7 +233,6 @@
         private System.Windows.Forms.GroupBox grBoxCursValutar;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.Button btttOperatiuni;
         private System.Windows.Forms.Button bttContracte;
@@ -202,6 +240,11 @@
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Label lblUsd;
         private System.Windows.Forms.Label lblEuro;
+        private System.Windows.Forms.ToolStripMenuItem lucrariToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contracteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem operatiuniToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iesireToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem informatiiToolStripMenuItem;
     }
 }
 

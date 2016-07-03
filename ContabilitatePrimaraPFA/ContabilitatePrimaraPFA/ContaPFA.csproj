@@ -102,6 +102,12 @@
     <Compile Include="View\Forms\FilterForm.Designer.cs">
       <DependentUpon>FilterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Forms\AppHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\AppHelp.Designer.cs">
+      <DependentUpon>AppHelp.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\SelectTipLucrari.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\FilterForm.resx">
       <DependentUpon>FilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Forms\AppHelp.resx">
+      <DependentUpon>AppHelp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\SelectTipLucrari.resx">
       <DependentUpon>SelectTipLucrari.cs</DependentUpon>

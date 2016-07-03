@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using ContaPFA.View.Classes;
 using ContaPFA.View.UserControls;
 using Queries.Persitence;
+using ContaPFA.View.Forms;
 
 namespace ContaPFA
 {
@@ -20,7 +21,7 @@ namespace ContaPFA
             Database.SetInitializer<ContaContext>(new ContaContextSeeder());
             GetBNR();
             object init = "Lucrari";
-            PaintUserControl(init,null);
+            PaintUserControl(init, null);
             ((UcLucrari)_userControl).UserControlChanging += PaintUserControl;
 
         }
@@ -30,7 +31,7 @@ namespace ContaPFA
         {
             mainPanel.Controls.Clear();
 
-            switch(sender.ToString())
+            switch (sender.ToString())
             {
                 case "Lucrari":
                     _userControl = UiFactory.GetUserControl(sender.ToString());
@@ -39,20 +40,24 @@ namespace ContaPFA
                 case "Contracte":
                     _userControl = UiFactory.GetUserControl(sender.ToString());
                     break;
+
+                case "Operatiuni":
+                    _userControl = UiFactory.GetUserControl(sender.ToString());
+                    break;
                 default:
                     {
                         var currentUserControl = _userControl.Name;
-                       currentUserControl = currentUserControl.Remove(0, 2);
+                        currentUserControl = currentUserControl.Remove(0, 2);
                         var button = sender as Button;
                         if (button != null && button.Text != currentUserControl)
                         {
-                            _userControl = UiFactory.GetUserControl(((Button) sender).Text);
-                                                           
+                            _userControl = UiFactory.GetUserControl(((Button)sender).Text);
+
                         }
                     }
                     break;
             }
-            
+
             if (!mainPanel.Controls.Contains(_userControl))
             {
                 if (_userControl == null) return;
@@ -80,9 +85,21 @@ namespace ContaPFA
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,@"Eroare curs valutar",MessageBoxButtons.OK,MessageBoxIcon.Error );
+                MessageBox.Show(ex.Message, @"Eroare curs valutar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
+
+        private void iesireToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void informatiiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var hp = AppHelp.ShowAppHelp;
+            hp.Show();
+        }
+
     }
 }

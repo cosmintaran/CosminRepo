@@ -7,7 +7,6 @@ using ContaPFA.View.Classes;
 using ContaPFA.View.Forms;
 using Queries.Core.Domain;
 using Queries.Persitence;
-using View.View.Forms;
 
 namespace ContaPFA.View.UserControls
 {

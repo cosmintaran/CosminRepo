@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContaPFA", "ContabilitatePr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Queries", "Queries\Queries.csproj", "{8BDCE35A-F058-4E49-8E3A-8623550E2AC4}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup_ContaPFA", "Setup_ContaPFA\Setup_ContaPFA.vdproj", "{9D6DD32D-E673-47FC-B364-FFBC7332530E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{8BDCE35A-F058-4E49-8E3A-8623550E2AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BDCE35A-F058-4E49-8E3A-8623550E2AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BDCE35A-F058-4E49-8E3A-8623550E2AC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D6DD32D-E673-47FC-B364-FFBC7332530E}.Debug|Any CPU.ActiveCfg = Debug
+		{9D6DD32D-E673-47FC-B364-FFBC7332530E}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

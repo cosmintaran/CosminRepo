@@ -61,7 +61,7 @@
             this.listViewTipLucrare.MultiSelect = false;
             this.listViewTipLucrare.Name = "listViewTipLucrare";
             this.listViewTipLucrare.Size = new System.Drawing.Size(450, 97);
-            this.listViewTipLucrare.TabIndex = 2;
+            this.listViewTipLucrare.TabIndex = 0;
             this.listViewTipLucrare.UseCompatibleStateImageBehavior = false;
             this.listViewTipLucrare.View = System.Windows.Forms.View.Details;
             this.listViewTipLucrare.DoubleClick += new System.EventHandler(this.listViewTipLucrare_SelectedIndexChanged);

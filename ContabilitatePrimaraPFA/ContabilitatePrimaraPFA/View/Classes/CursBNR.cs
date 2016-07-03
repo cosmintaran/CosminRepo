@@ -50,7 +50,9 @@ namespace ContaPFA.View.Classes
         public CursBNR(string downloadPath)
         {
             _downloadPath = downloadPath;
-            _fileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"CursBnr.xml";
+            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
+                                      @"\ContaPFA");
+            _fileName = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ContaPFA\CursBnr.xml";
             _updateHour = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 30, 00);
         }
         public CursBNR(string downloadPath, string fileName)

@@ -1,4 +1,4 @@
-﻿namespace View.View.Forms
+﻿namespace ContaPFA.View.Forms
 {
     partial class FilterForm
     {
@@ -51,7 +51,7 @@
             this.txtCautaLucrare.Location = new System.Drawing.Point(13, 12);
             this.txtCautaLucrare.Name = "txtCautaLucrare";
             this.txtCautaLucrare.Size = new System.Drawing.Size(259, 20);
-            this.txtCautaLucrare.TabIndex = 2;
+            this.txtCautaLucrare.TabIndex = 0;
             // 
             // listView1
             // 
@@ -85,12 +85,12 @@
             this.bttExit.Location = new System.Drawing.Point(294, 53);
             this.bttExit.Name = "bttExit";
             this.bttExit.Size = new System.Drawing.Size(56, 23);
-            this.bttExit.TabIndex = 4;
+            this.bttExit.TabIndex = 2;
             this.bttExit.Text = "Renunta";
             this.bttExit.UseVisualStyleBackColor = true;
             this.bttExit.Click += new System.EventHandler(this.bttExit_Click);
             // 
-            // CautaLucrari
+            // FilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -101,7 +101,7 @@
             this.Controls.Add(this.bttCautaLucrare);
             this.MaximumSize = new System.Drawing.Size(377, 243);
             this.MinimumSize = new System.Drawing.Size(377, 243);
-            this.Name = "CautaLucrari";
+            this.Name = "FilterForm";
             this.Text = "Cautare Lucrari";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,5 +1,6 @@
 using System;
 using System.Data.Entity;
+using System.IO;
 using Queries.Core.Domain;
 
 namespace Queries.Persitence
@@ -9,7 +10,8 @@ namespace Queries.Persitence
         public ContaContext()
             : base("name=ContaContext")
         {
-          AppDomain.CurrentDomain.SetData("DataDirectory", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)+@"\ContaPFA");
+            AppDomain.CurrentDomain.SetData("DataDirectory", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
         }
 
         public virtual DbSet<AcceptataRefuzata> AcceptataRefuzata { get; set; }

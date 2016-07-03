@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bttNewLucrare = new System.Windows.Forms.Button();
             this.bttDeleteLucrari = new System.Windows.Forms.Button();
             this.grBoxLucrare = new System.Windows.Forms.GroupBox();
@@ -110,7 +110,7 @@
             this.grBoxLucrare.Location = new System.Drawing.Point(646, 17);
             this.grBoxLucrare.Name = "grBoxLucrare";
             this.grBoxLucrare.Size = new System.Drawing.Size(341, 722);
-            this.grBoxLucrare.TabIndex = 4;
+            this.grBoxLucrare.TabIndex = 1;
             this.grBoxLucrare.TabStop = false;
             this.grBoxLucrare.Text = "Lucrare";
             // 
@@ -159,7 +159,7 @@
             this.bttCancel.Location = new System.Drawing.Point(248, 626);
             this.bttCancel.Name = "bttCancel";
             this.bttCancel.Size = new System.Drawing.Size(75, 23);
-            this.bttCancel.TabIndex = 16;
+            this.bttCancel.TabIndex = 14;
             this.bttCancel.Text = "Cancel";
             this.bttCancel.UseVisualStyleBackColor = true;
             this.bttCancel.Visible = false;
@@ -170,7 +170,7 @@
             this.bttEdit.Location = new System.Drawing.Point(33, 625);
             this.bttEdit.Name = "bttEdit";
             this.bttEdit.Size = new System.Drawing.Size(75, 23);
-            this.bttEdit.TabIndex = 15;
+            this.bttEdit.TabIndex = 13;
             this.bttEdit.Text = "Edit";
             this.bttEdit.UseVisualStyleBackColor = true;
             this.bttEdit.Visible = false;
@@ -182,7 +182,7 @@
             this.bttTipLucrare.Location = new System.Drawing.Point(111, 355);
             this.bttTipLucrare.Name = "bttTipLucrare";
             this.bttTipLucrare.Size = new System.Drawing.Size(206, 23);
-            this.bttTipLucrare.TabIndex = 14;
+            this.bttTipLucrare.TabIndex = 9;
             this.bttTipLucrare.Text = "Tip Lucrare...";
             this.bttTipLucrare.UseVisualStyleBackColor = true;
             this.bttTipLucrare.Click += new System.EventHandler(this.bttTipLucrare_Click);
@@ -213,7 +213,7 @@
             this.txtObservatii.Multiline = true;
             this.txtObservatii.Name = "txtObservatii";
             this.txtObservatii.Size = new System.Drawing.Size(206, 42);
-            this.txtObservatii.TabIndex = 11;
+            this.txtObservatii.TabIndex = 12;
             // 
             // lblNrDoc
             // 
@@ -222,7 +222,7 @@
             this.lblNrDoc.Location = new System.Drawing.Point(46, 34);
             this.lblNrDoc.Name = "lblNrDoc";
             this.lblNrDoc.Size = new System.Drawing.Size(48, 15);
-            this.lblNrDoc.TabIndex = 0;
+            this.lblNrDoc.TabIndex = 1;
             this.lblNrDoc.Text = "Nr. Doc";
             // 
             // lblObservatii
@@ -232,7 +232,7 @@
             this.lblObservatii.Location = new System.Drawing.Point(33, 528);
             this.lblObservatii.Name = "lblObservatii";
             this.lblObservatii.Size = new System.Drawing.Size(61, 15);
-            this.lblObservatii.TabIndex = 0;
+            this.lblObservatii.TabIndex = 12;
             this.lblObservatii.Text = "Observatii";
             // 
             // txtAvizator
@@ -250,7 +250,7 @@
             this.lblAvizReg.Location = new System.Drawing.Point(33, 471);
             this.lblAvizReg.Name = "lblAvizReg";
             this.lblAvizReg.Size = new System.Drawing.Size(60, 15);
-            this.lblAvizReg.TabIndex = 0;
+            this.lblAvizReg.TabIndex = 11;
             this.lblAvizReg.Text = "Aviz./Reg.";
             // 
             // lblUAT
@@ -260,7 +260,7 @@
             this.lblUAT.Location = new System.Drawing.Point(54, 311);
             this.lblUAT.Name = "lblUAT";
             this.lblUAT.Size = new System.Drawing.Size(39, 15);
-            this.lblUAT.TabIndex = 0;
+            this.lblUAT.TabIndex = 8;
             this.lblUAT.Text = "U.A.T.";
             // 
             // txtDoc
@@ -268,7 +268,7 @@
             this.txtDoc.Location = new System.Drawing.Point(111, 31);
             this.txtDoc.Name = "txtDoc";
             this.txtDoc.Size = new System.Drawing.Size(206, 21);
-            this.txtDoc.TabIndex = 1;
+            this.txtDoc.TabIndex = 2;
             this.txtDoc.Validating += new System.ComponentModel.CancelEventHandler(this.txtDoc_Validating);
             // 
             // txtCad
@@ -276,7 +276,7 @@
             this.txtCad.Location = new System.Drawing.Point(111, 275);
             this.txtCad.Name = "txtCad";
             this.txtCad.Size = new System.Drawing.Size(206, 21);
-            this.txtCad.TabIndex = 10;
+            this.txtCad.TabIndex = 7;
             this.txtCad.Validating += new System.ComponentModel.CancelEventHandler(this.txtCad_Validating);
             // 
             // lblCadastralTop
@@ -286,7 +286,7 @@
             this.lblCadastralTop.Location = new System.Drawing.Point(40, 275);
             this.lblCadastralTop.Name = "lblCadastralTop";
             this.lblCadastralTop.Size = new System.Drawing.Size(53, 15);
-            this.lblCadastralTop.TabIndex = 0;
+            this.lblCadastralTop.TabIndex = 7;
             this.lblCadastralTop.Text = "Cad/Top";
             // 
             // lblAcceptResp
@@ -296,7 +296,7 @@
             this.lblAcceptResp.Location = new System.Drawing.Point(18, 195);
             this.lblAcceptResp.Name = "lblAcceptResp";
             this.lblAcceptResp.Size = new System.Drawing.Size(81, 15);
-            this.lblAcceptResp.TabIndex = 2;
+            this.lblAcceptResp.TabIndex = 5;
             this.lblAcceptResp.Text = "Accept/Refuz.";
             // 
             // txtUAT
@@ -304,7 +304,7 @@
             this.txtUAT.Location = new System.Drawing.Point(111, 315);
             this.txtUAT.Name = "txtUAT";
             this.txtUAT.Size = new System.Drawing.Size(206, 21);
-            this.txtUAT.TabIndex = 10;
+            this.txtUAT.TabIndex = 8;
             this.txtUAT.Validating += new System.ComponentModel.CancelEventHandler(this.txtUAT_Validating);
             // 
             // lblNrInregOCPI
@@ -324,7 +324,7 @@
             this.lblReceptionatRespins.Location = new System.Drawing.Point(24, 238);
             this.lblReceptionatRespins.Name = "lblReceptionatRespins";
             this.lblReceptionatRespins.Size = new System.Drawing.Size(75, 15);
-            this.lblReceptionatRespins.TabIndex = 0;
+            this.lblReceptionatRespins.TabIndex = 6;
             this.lblReceptionatRespins.Text = "Recep/Resp";
             // 
             // cbReceptionatRespins
@@ -334,7 +334,7 @@
             this.cbReceptionatRespins.Location = new System.Drawing.Point(111, 233);
             this.cbReceptionatRespins.Name = "cbReceptionatRespins";
             this.cbReceptionatRespins.Size = new System.Drawing.Size(206, 23);
-            this.cbReceptionatRespins.TabIndex = 2;
+            this.cbReceptionatRespins.TabIndex = 6;
             // 
             // cbAcceptResp
             // 
@@ -343,7 +343,7 @@
             this.cbAcceptResp.Location = new System.Drawing.Point(111, 191);
             this.cbAcceptResp.Name = "cbAcceptResp";
             this.cbAcceptResp.Size = new System.Drawing.Size(206, 23);
-            this.cbAcceptResp.TabIndex = 2;
+            this.cbAcceptResp.TabIndex = 5;
             this.cbAcceptResp.Validating += new System.ComponentModel.CancelEventHandler(this.cbAcceptResp_Validating);
             // 
             // lblContract
@@ -353,7 +353,7 @@
             this.lblContract.Location = new System.Drawing.Point(41, 408);
             this.lblContract.Name = "lblContract";
             this.lblContract.Size = new System.Drawing.Size(52, 15);
-            this.lblContract.TabIndex = 0;
+            this.lblContract.TabIndex = 10;
             this.lblContract.Text = "Contract";
             // 
             // cbContract
@@ -361,12 +361,10 @@
             this.cbContract.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbContract.FormattingEnabled = true;
             this.cbContract.ItemHeight = 15;
-            /*this.cbContract.Items.AddRange(new object[] {
-            "<new...>"});*/
             this.cbContract.Location = new System.Drawing.Point(111, 397);
             this.cbContract.Name = "cbContract";
             this.cbContract.Size = new System.Drawing.Size(209, 23);
-            this.cbContract.TabIndex = 5;
+            this.cbContract.TabIndex = 10;
             this.cbContract.SelectedIndexChanged += new System.EventHandler(this.cbContract_SelectedIndexChanged);
             this.cbContract.Validating += new System.ComponentModel.CancelEventHandler(this.cbContract_Validating);
             // 
@@ -375,7 +373,7 @@
             this.txtInreg.Location = new System.Drawing.Point(111, 71);
             this.txtInreg.Name = "txtInreg";
             this.txtInreg.Size = new System.Drawing.Size(206, 21);
-            this.txtInreg.TabIndex = 4;
+            this.txtInreg.TabIndex = 2;
             this.txtInreg.Validating += new System.ComponentModel.CancelEventHandler(this.txtInreg_Validating);
             // 
             // lblTipLucrare
@@ -385,7 +383,7 @@
             this.lblTipLucrare.Location = new System.Drawing.Point(30, 365);
             this.lblTipLucrare.Name = "lblTipLucrare";
             this.lblTipLucrare.Size = new System.Drawing.Size(69, 15);
-            this.lblTipLucrare.TabIndex = 0;
+            this.lblTipLucrare.TabIndex = 9;
             this.lblTipLucrare.Text = "Tip Lucrare";
             // 
             // dateTimePickerInreg
@@ -394,7 +392,7 @@
             this.dateTimePickerInreg.Location = new System.Drawing.Point(111, 151);
             this.dateTimePickerInreg.Name = "dateTimePickerInreg";
             this.dateTimePickerInreg.Size = new System.Drawing.Size(206, 21);
-            this.dateTimePickerInreg.TabIndex = 5;
+            this.dateTimePickerInreg.TabIndex = 4;
             // 
             // lblDataInreg
             // 
@@ -403,7 +401,7 @@
             this.lblDataInreg.Location = new System.Drawing.Point(26, 159);
             this.lblDataInreg.Name = "lblDataInreg";
             this.lblDataInreg.Size = new System.Drawing.Size(67, 15);
-            this.lblDataInreg.TabIndex = 0;
+            this.lblDataInreg.TabIndex = 4;
             this.lblDataInreg.Text = "Data Inreg.";
             // 
             // lblTermenSolutionare
@@ -413,7 +411,7 @@
             this.lblTermenSolutionare.Location = new System.Drawing.Point(20, 119);
             this.lblTermenSolutionare.Name = "lblTermenSolutionare";
             this.lblTermenSolutionare.Size = new System.Drawing.Size(74, 15);
-            this.lblTermenSolutionare.TabIndex = 0;
+            this.lblTermenSolutionare.TabIndex = 3;
             this.lblTermenSolutionare.Text = "Termen Sol.";
             // 
             // dateTimePickerTermen
@@ -422,7 +420,7 @@
             this.dateTimePickerTermen.Location = new System.Drawing.Point(111, 111);
             this.dateTimePickerTermen.Name = "dateTimePickerTermen";
             this.dateTimePickerTermen.Size = new System.Drawing.Size(206, 21);
-            this.dateTimePickerTermen.TabIndex = 6;
+            this.dateTimePickerTermen.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -435,7 +433,7 @@
             this.groupBox1.Location = new System.Drawing.Point(3, 17);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(637, 49);
-            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // lblFilter
@@ -466,7 +464,7 @@
             this.groupBox2.Location = new System.Drawing.Point(3, 72);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(637, 660);
-            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Evidenta Lucrari";
             // 
@@ -487,23 +485,23 @@
             this.LucrariView.AllowUserToAddRows = false;
             this.LucrariView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.LucrariView.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LucrariView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LucrariView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.LucrariView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LucrariView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LucrariView.DefaultCellStyle = dataGridViewCellStyle4;
             this.LucrariView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LucrariView.Location = new System.Drawing.Point(0, 0);
             this.LucrariView.Name = "LucrariView";
